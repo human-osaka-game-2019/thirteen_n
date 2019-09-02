@@ -9,7 +9,9 @@
 #include"DrawTexture.h"
 #include"Device.h"
 #include"GameScene.h"
-#include"Gamesystem.h"
+
+#include"InputKey.h"
+
 
 
 extern int g_SceneStep;
@@ -169,6 +171,7 @@ void InitGameScene(DirectX* directX)
 // ゲーム設定記入
 void UpdateGameScene(Count* count, VariableNumber* var)
 {
+	InptKeystate(count, &keyState, bullet);
 
 	if (GetKeyStatus(DIK_RETURN))
 	{
