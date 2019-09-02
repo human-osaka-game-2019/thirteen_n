@@ -13,6 +13,7 @@
 #include"InputKey.h"
 #include"MainCara.h"
 #include"Enemy.h"
+#include"Meteorite.h"
 
 extern int g_SceneStep;
 void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var);
@@ -185,6 +186,11 @@ void UpdateGameScene(Count* count, VariableNumber* var)
 
 	void EnemyMove(Count * count, VariableNumber * var, Enemy_Green e_green[], Enemy_White e_white[]);
 
+	void DrawMeteorite(Count * count, VariableNumber * var, int MapChipList[20][28], Meteorite meteorite[]);
+
+	void DrawMeteoriteTwo(Count * count, VariableNumber * var, int MapChipList[20][28], Meteorite meteorite[]);
+
+	void HitCharMeteorite(Meteorite meteorite[], MainChar * mainChar, Count * count, KeyState * keyState);
 
 
 	if (GetKeyStatus(DIK_RETURN))
