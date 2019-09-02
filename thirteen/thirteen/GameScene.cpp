@@ -15,6 +15,7 @@
 #include"Enemy.h"
 #include"Meteorite.h"
 #include"Beam.h"
+#include"Bullet.h"
 
 extern int g_SceneStep;
 void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var);
@@ -194,6 +195,14 @@ void UpdateGameScene(Count* count, VariableNumber* var)
 	void HitCharMeteorite(Meteorite meteorite[], MainChar * mainChar, Count * count, KeyState * keyState);
 
 	void SetBeam_first(Count * count, VariableNumber * var, int MapChipList[20][28], BeamSide * beamSide, BeamVerticality * beamVerticality, int beamNumbre);
+
+	void HitBulletStar(MainChar * mainChar, Star star[12], Count * count, KeyState * keyState);
+
+	void Shot(Bullet bullet[5], KeyState * keyState);
+
+	void ShotMove(KeyState * keyState, Bullet bullet[5], MainChar * mainChar);
+
+	void ShotHitJudge(Bullet bullet[5], KeyState * keyState, MainChar * mainChar);
 
 
 	if (GetKeyStatus(DIK_RETURN))
