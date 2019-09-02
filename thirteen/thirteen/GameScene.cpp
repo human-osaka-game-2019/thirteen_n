@@ -16,6 +16,7 @@
 #include"Meteorite.h"
 #include"Beam.h"
 #include"Bullet.h"
+#include"Star.h"
 
 extern int g_SceneStep;
 void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var);
@@ -203,6 +204,8 @@ void UpdateGameScene(Count* count, VariableNumber* var)
 	void ShotMove(KeyState * keyState, Bullet bullet[5], MainChar * mainChar);
 
 	void ShotHitJudge(Bullet bullet[5], KeyState * keyState, MainChar * mainChar);
+
+	void StarDraw(Star star[12], Count * count);
 
 
 	if (GetKeyStatus(DIK_RETURN))

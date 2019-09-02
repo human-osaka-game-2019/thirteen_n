@@ -25,12 +25,6 @@
     <ClCompile Include="drawTexture.cpp">
       <Filter>Draw</Filter>
     </ClCompile>
-    <ClCompile Include="Source17.cpp">
-      <Filter>仮置き</Filter>
-    </ClCompile>
-    <ClCompile Include="Source18.cpp">
-      <Filter>仮置き</Filter>
-    </ClCompile>
     <ClCompile Include="Source19.cpp">
       <Filter>仮置き</Filter>
     </ClCompile>
@@ -88,11 +82,14 @@
     <ClCompile Include="TitleScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="GameSystem.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="ResultScene.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="InputKey.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="STAR.cpp">
+      <Filter>GameSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,12 +97,6 @@
       <Filter>Draw</Filter>
     </ClInclude>
     <ClInclude Include="Header20.h">
-      <Filter>仮置き</Filter>
-    </ClInclude>
-    <ClInclude Include="Header17.h">
-      <Filter>仮置き</Filter>
-    </ClInclude>
-    <ClInclude Include="Header18.h">
       <Filter>仮置き</Filter>
     </ClInclude>
     <ClInclude Include="Header21.h">
@@ -159,11 +150,14 @@
     <ClInclude Include="class.h">
       <Filter>Draw</Filter>
     </ClInclude>
-    <ClInclude Include="GameSystem.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="ResultScene.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="InputKey.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Star.h">
+      <Filter>GameSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -150,9 +150,8 @@
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="SetScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
-    <ClCompile Include="GameSystem.cpp" />
-    <ClCompile Include="Source17.cpp" />
-    <ClCompile Include="Source18.cpp" />
+    <ClCompile Include="InputKey.cpp" />
+    <ClCompile Include="STAR.cpp" />
     <ClCompile Include="Source19.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Source20.cpp" />
@@ -176,9 +175,8 @@
     <ClInclude Include="SetScene.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="class.h" />
-    <ClInclude Include="GameSystem.h" />
-    <ClInclude Include="Header17.h" />
-    <ClInclude Include="Header18.h" />
+    <ClInclude Include="InputKey.h" />
+    <ClInclude Include="Star.h" />
     <ClInclude Include="Header19.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Header20.h" />
