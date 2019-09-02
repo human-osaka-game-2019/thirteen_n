@@ -17,134 +17,153 @@
     <Filter Include="GameSystem">
       <UniqueIdentifier>{65ee1b67-0c3d-4a44-9663-4b5591fb50d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="仮置き">
+      <UniqueIdentifier>{5b1140e5-beb6-4b3d-9096-038e0c24217d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="drawTexture.cpp">
       <Filter>Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="Source2.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Source1.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Source3.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Source9.cpp">
-      <Filter>Main</Filter>
-    </ClCompile>
-    <ClCompile Include="Source12.cpp">
-      <Filter>Main</Filter>
-    </ClCompile>
-    <ClCompile Include="Source8.cpp">
-      <Filter>GameSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="Source10.cpp">
-      <Filter>GameSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="Source7.cpp">
-      <Filter>GameSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="Source11.cpp">
-      <Filter>GameSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="Source5.cpp">
-      <Filter>GameSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="Source6.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Source4.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Source15.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Source14.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Source13.cpp">
-      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Source16.cpp">
-      <Filter>Draw</Filter>
+      <Filter>仮置き</Filter>
     </ClCompile>
     <ClCompile Include="Source17.cpp">
-      <Filter>Draw</Filter>
+      <Filter>仮置き</Filter>
     </ClCompile>
     <ClCompile Include="Source18.cpp">
-      <Filter>Draw</Filter>
+      <Filter>仮置き</Filter>
     </ClCompile>
     <ClCompile Include="Source19.cpp">
-      <Filter>Draw</Filter>
+      <Filter>仮置き</Filter>
     </ClCompile>
     <ClCompile Include="Source20.cpp">
-      <Filter>Draw</Filter>
+      <Filter>仮置き</Filter>
     </ClCompile>
     <ClCompile Include="Source21.cpp">
-      <Filter>Draw</Filter>
+      <Filter>仮置き</Filter>
     </ClCompile>
     <ClCompile Include="Source22.cpp">
-      <Filter>Draw</Filter>
+      <Filter>仮置き</Filter>
     </ClCompile>
     <ClCompile Include="Source23.cpp">
-      <Filter>Draw</Filter>
+      <Filter>仮置き</Filter>
+    </ClCompile>
+    <ClCompile Include="Device.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="window.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Beam.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Meteorite.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="MainCara.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Option.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultScene..cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SetScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h">
+    <ClInclude Include="DrawTexture.h">
       <Filter>Draw</Filter>
     </ClInclude>
-    <ClInclude Include="Header1.h">
+    <ClInclude Include="Header15.h">
+      <Filter>仮置き</Filter>
+    </ClInclude>
+    <ClInclude Include="Header16.h">
+      <Filter>仮置き</Filter>
+    </ClInclude>
+    <ClInclude Include="Header20.h">
+      <Filter>仮置き</Filter>
+    </ClInclude>
+    <ClInclude Include="Header17.h">
+      <Filter>仮置き</Filter>
+    </ClInclude>
+    <ClInclude Include="Header18.h">
+      <Filter>仮置き</Filter>
+    </ClInclude>
+    <ClInclude Include="Header21.h">
+      <Filter>仮置き</Filter>
+    </ClInclude>
+    <ClInclude Include="Header19.h">
+      <Filter>仮置き</Filter>
+    </ClInclude>
+    <ClInclude Include="Header22.h">
+      <Filter>仮置き</Filter>
+    </ClInclude>
+    <ClInclude Include="Device.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Header2.h">
+    <ClInclude Include="Engine.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Header3.h">
+    <ClInclude Include="window.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Header4.h">
+    <ClInclude Include="Bullet.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Beam.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Meteorite.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="MainCara.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
       <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="Header5.h">
-      <Filter>GameSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Header8.h">
-      <Filter>GameSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Header6.h">
-      <Filter>GameSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Header7.h">
-      <Filter>GameSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Header9.h">
-      <Filter>GameSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Header10.h">
+    <ClInclude Include="GameScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Header11.h">
+    <ClInclude Include="Option.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Header12.h">
+    <ClInclude Include="ResultScene..h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Header13.h">
+    <ClInclude Include="SetScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Header14.h">
+    <ClInclude Include="TitleScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Header15.h" />
-    <ClInclude Include="Header16.h" />
-    <ClInclude Include="Header17.h" />
-    <ClInclude Include="Header18.h" />
-    <ClInclude Include="Header19.h" />
-    <ClInclude Include="Header20.h" />
-    <ClInclude Include="Header21.h" />
-    <ClInclude Include="Header22.h" />
   </ItemGroup>
 </Project>
