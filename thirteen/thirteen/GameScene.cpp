@@ -175,37 +175,35 @@ void InitGameScene(DirectX* directX)
 // ゲーム設定記入
 void UpdateGameScene(Count* count, VariableNumber* var)
 {
+	FrameCount(count, &keyState);
+
 	InptKeystate(count, &keyState, bullet);
 
-	void ChraMove(Count * count, KeyState * keyState, MainChar * mainChar);
+	ChraMove(count, &keyState, &mainChar);
 
-	void CharTextureChange(Count * count, MainChar * mainChar, Bullet * bullet);
+	CharTextureChange(count, &mainChar, bullet);
 
-	void FrameCount(Count * count, KeyState * keyState);
+	HitJudge(&mainChar);
 
-	void HitJudge(MainChar * mainChar);
+	SetBeam_first(count, var, MapChipList, &beamSide, &beamVerticality, 1);
 
-	void DrawEnemy(Count * count, VariableNumber * var, int MapChipList[20][28], Enemy_Green e_green[], Enemy_White e_white[]);
+	DrawMeteorite(count, var, MapChipList, meteorite);
 
-	void EnemyMove(Count * count, VariableNumber * var, Enemy_Green e_green[], Enemy_White e_white[]);
+	DrawMeteoriteTwo(count, var, MapChipList, meteorite);
 
-	void DrawMeteorite(Count * count, VariableNumber * var, int MapChipList[20][28], Meteorite meteorite[]);
+	EnemyMove(count, var, e_green, e_white);
 
-	void DrawMeteoriteTwo(Count * count, VariableNumber * var, int MapChipList[20][28], Meteorite meteorite[]);
+	DrawEnemy(count, var, MapChipList, e_green, e_white);
 
-	void HitCharMeteorite(Meteorite meteorite[], MainChar * mainChar, Count * count, KeyState * keyState);
+	ShotMove(&keyState, bullet, &mainChar);
 
-	void SetBeam_first(Count * count, VariableNumber * var, int MapChipList[20][28], BeamSide * beamSide, BeamVerticality * beamVerticality, int beamNumbre);
+	ShotHitJudge(bullet, &keyState, &mainChar);
 
-	void HitBulletStar(MainChar * mainChar, Star star[12], Count * count, KeyState * keyState);
+	StarDraw(star, count);
 
-	void Shot(Bullet bullet[5], KeyState * keyState);
+	HitBulletStar(&mainChar, star, count, &keyState);
 
-	void ShotMove(KeyState * keyState, Bullet bullet[5], MainChar * mainChar);
-
-	void ShotHitJudge(Bullet bullet[5], KeyState * keyState, MainChar * mainChar);
-
-	void StarDraw(Star star[12], Count * count);
+	HitCharMeteorite(meteorite, &mainChar, count, &keyState);
 
 
 	if (GetKeyStatus(DIK_RETURN))
