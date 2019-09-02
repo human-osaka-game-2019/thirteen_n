@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Draw">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{211f24a3-8b40-45b7-a258-76bca090d265}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{f4aa007e-359c-410a-a8df-954f4c85457a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{1226d4b9-7864-4f7f-8116-41e81e156b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameSystem">
+      <UniqueIdentifier>{65ee1b67-0c3d-4a44-9663-4b5591fb50d8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Source2.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source1.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source3.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source9.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Source12.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Source8.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Source10.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Source7.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Source11.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Source5.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Source6.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source4.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source15.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source14.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source13.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source16.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Source17.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Source18.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Source19.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Source20.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Source21.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Source22.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Source23.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Header1.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header2.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header3.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Header4.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Header5.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Header8.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Header6.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Header7.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Header9.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Header10.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Header11.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Header12.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Header13.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Header14.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Header15.h" />
+    <ClInclude Include="Header16.h" />
+    <ClInclude Include="Header17.h" />
+    <ClInclude Include="Header18.h" />
+    <ClInclude Include="Header19.h" />
+    <ClInclude Include="Header20.h" />
+    <ClInclude Include="Header21.h" />
+    <ClInclude Include="Header22.h" />
+  </ItemGroup>
+</Project>
