@@ -12,7 +12,7 @@
 
 #include"InputKey.h"
 #include"MainCara.h"
-
+#include"Enemy.h"
 
 extern int g_SceneStep;
 void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var);
@@ -180,6 +180,11 @@ void UpdateGameScene(Count* count, VariableNumber* var)
 	void FrameCount(Count * count, KeyState * keyState);
 
 	void HitJudge(MainChar * mainChar);
+
+	void DrawEnemy(Count * count, VariableNumber * var, int MapChipList[20][28], Enemy_Green e_green[], Enemy_White e_white[]);
+
+	void EnemyMove(Count * count, VariableNumber * var, Enemy_Green e_green[], Enemy_White e_white[]);
+
 
 
 	if (GetKeyStatus(DIK_RETURN))
