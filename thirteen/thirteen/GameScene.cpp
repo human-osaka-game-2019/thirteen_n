@@ -11,7 +11,7 @@
 #include"GameScene.h"
 
 #include"InputKey.h"
-
+#include"MainCara.h"
 
 
 extern int g_SceneStep;
@@ -172,6 +172,15 @@ void InitGameScene(DirectX* directX)
 void UpdateGameScene(Count* count, VariableNumber* var)
 {
 	InptKeystate(count, &keyState, bullet);
+
+	void ChraMove(Count * count, KeyState * keyState, MainChar * mainChar);
+
+	void CharTextureChange(Count * count, MainChar * mainChar, Bullet * bullet);
+
+	void FrameCount(Count * count, KeyState * keyState);
+
+	void HitJudge(MainChar * mainChar);
+
 
 	if (GetKeyStatus(DIK_RETURN))
 	{
