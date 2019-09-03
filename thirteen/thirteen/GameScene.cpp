@@ -18,9 +18,9 @@
 #include"Star.h"
 
 extern int g_SceneStep;
-void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var);
+void DrawGameScene(DirectX* directX, MapChipData MapData);
 void InitGameScene(DirectX* directX);
-void UpdateGameScene(Count* count, VariableNumber* var);
+void UpdateGameScene(Count* count);
 SceneId FinisGameScene();
 int* MAPR[22];
 
@@ -56,7 +56,7 @@ int MapChipList[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH]
 };
 
 
-SceneId GameSceneMain(DirectX* directX, VariableNumber* var, Count* count)
+SceneId GameSceneMain(DirectX* directX, Count* count)
 {
 	switch (GetCurrentSceneStep())
 	{
@@ -67,7 +67,7 @@ SceneId GameSceneMain(DirectX* directX, VariableNumber* var, Count* count)
 		break;
 		// 本編
 	case SceneStep::MainStep:
-		UpdateGameScene(count, var);
+		UpdateGameScene(count);
 		break;
 		// 終了
 	case SceneStep::EndStep:
@@ -86,9 +86,9 @@ MainCharacter mainCara;
 KeyState keyState;
 Star star[12];
 Beam beam;
+Enemy enemy;
 
-
-void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var)
+void DrawGameScene(DirectX* directX, MapChipData MapData)
 {
 	// 背景
 	DrawTest(0, 0, 1280, 960, 0, 0, 1, 1, &GameTextureData.m_pTexture[GameTextureList::BackTexture], *directX);
@@ -97,7 +97,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var)
 	// 自キャラ 操作キャラ
 	DrawTest(mainCara.m_PosX, mainCara.m_PosY, mainCara.DrawSize, mainCara.DrawSize, mainCara.m_PosTu, mainCara.m_PosTv, mainCara.m_PosTu_Size, mainCara.m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 
-	if (var->EnemyDrawState == 1)
+	if (enemy.EnemyDrawState == 1)
 	{
 		// 敵1 緑敵
 		DrawTest(e_green[0].m_PosX, e_green[0].m_PosY, e_green[0].m_DrawSize, e_green[0].m_DrawSize, e_green[0].m_PosTu, e_green[0].m_PosTv, e_green[0].m_PosTu_Size, e_green[0].m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
@@ -108,7 +108,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var)
 	}
 
 	// メテオ(第一弾)
-	if (var->MeteoriteDrawState == 1)
+	if (meteorite->MeteoriteDrawState == 1)
 	{
 		for (int a = 0; a < 4; a++)
 		{
@@ -118,7 +118,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var)
 	}
 
 	// メテオ(第二弾)
-	if (var->MeteoriteDrawState2 == 1)
+	if (meteorite->MeteoriteDrawStateTwo == 1)
 	{
 		for (int a = 4; a < 8; a++)
 		{
@@ -173,7 +173,7 @@ void InitGameScene(DirectX* directX)
 
 // 次のシーンに行くための条件記入
 // ゲーム設定記入
-void UpdateGameScene(Count* count, VariableNumber* var)
+void UpdateGameScene(Count* count)
 {
 	FrameCount(count, &keyState);
 
@@ -187,13 +187,13 @@ void UpdateGameScene(Count* count, VariableNumber* var)
 
 	SetBeam_first(count, MapChipList, &beamSide, &beamVerticality, 1,&beam);
 
-	DrawMeteorite(count, var, MapChipList, meteorite);
+	DrawMeteorite(count, MapChipList, meteorite);
 
-	DrawMeteoriteTwo(count, var, MapChipList, meteorite);
+	DrawMeteoriteTwo(count , MapChipList, meteorite);
 
-	EnemyMove(count, var, e_green, e_white);
+	EnemyMove(count , e_green, e_white,&enemy);
 
-	DrawEnemy(count, var, MapChipList, e_green, e_white);
+	DrawEnemy(count , MapChipList, e_green, e_white,&enemy);
 
 	ShotMove(&keyState,bullet,&mainCara);
 

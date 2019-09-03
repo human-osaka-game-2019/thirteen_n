@@ -5,6 +5,12 @@
 #include"Device.h"
 #include"GameScene.h"
 
+class Enemy
+{
+public:
+	int EnemyState;
+	int EnemyDrawState;
+};
 
 class Enemy_Green
 {
@@ -34,9 +40,9 @@ public:
 
 };
 
-void DrawEnemy(Count* count, VariableNumber* var, int MapChipList[20][28], Enemy_Green e_green[], Enemy_White e_white[]);
+void DrawEnemy(Count* count  , int MapChipList[20][28], Enemy_Green e_green[], Enemy_White e_white[], Enemy* enemy);
 
-void EnemyMove(Count* count, VariableNumber* var, Enemy_Green e_green[], Enemy_White e_white[]);
+void EnemyMove(Count* count  , Enemy_Green e_green[], Enemy_White e_white[], Enemy* enemy);
 
 
 #endif // !

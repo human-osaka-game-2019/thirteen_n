@@ -9,7 +9,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
 {
 	DirectX directX;
 	MapChipData MapData;
-	VariableNumber variable;
 	Count count;
 	HWND* hWnd;
 
@@ -46,7 +45,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
 
 				}
 
-				UpdateScene(&directX, MapData, &variable, &count);
+				UpdateScene(&directX, MapData, &count);
 			}
 			prevtime = time;
 		}

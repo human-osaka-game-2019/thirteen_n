@@ -47,7 +47,7 @@ void Count::AllReset()
 }
 
 
-void UpdateScene(DirectX* directX, MapChipData MapData, VariableNumber* var, Count* count)
+void UpdateScene(DirectX* directX, MapChipData MapData  , Count* count)
 {
 	int current_scene_id = SceneId::TitleScene;
 
@@ -65,7 +65,7 @@ void UpdateScene(DirectX* directX, MapChipData MapData, VariableNumber* var, Cou
 			break;
 			// 難易度設定シーン
 		case SceneId::SetScene:
-			result_id = SetSceneMain(directX, count, var);
+			result_id = SetSceneMain(directX, count );
 			break;
 			// 設定、ヘルプシーン
 		case SceneId::OptionScene:
@@ -73,7 +73,7 @@ void UpdateScene(DirectX* directX, MapChipData MapData, VariableNumber* var, Cou
 			break;
 			// メインゲームシーン
 		case SceneId::GameScene:
-			result_id = GameSceneMain(directX, var, count);
+			result_id = GameSceneMain(directX , count);
 			break;
 			// リザルトシーン
 		case SceneId::ResultScene:
@@ -82,7 +82,7 @@ void UpdateScene(DirectX* directX, MapChipData MapData, VariableNumber* var, Cou
 
 		}
 
-		DrawScene(directX, MapData, count, var);
+		DrawScene(directX, MapData, count );
 
 		FrameCount(count);
 
@@ -94,7 +94,7 @@ void UpdateScene(DirectX* directX, MapChipData MapData, VariableNumber* var, Cou
 	}
 }
 
-void DrawScene(DirectX* directX, MapChipData MapData, Count* count, VariableNumber* var)
+void DrawScene(DirectX* directX, MapChipData MapData, Count* count  )
 {
 	if (DrawStart(directX) == false)
 	{
@@ -108,13 +108,13 @@ void DrawScene(DirectX* directX, MapChipData MapData, Count* count, VariableNumb
 			DrawTitleScene(directX, count);
 			break;
 		case SceneId::SetScene:
-			DrawSetScene(directX, count, var);
+			DrawSetScene(directX, count );
 			break;
 		case SceneId::OptionScene:
 			DrawOptionScene(directX);
 			break;
 		case SceneId::GameScene:
-			DrawGameScene(directX, MapData, var);
+			DrawGameScene(directX, MapData );
 			break;
 		case SceneId::ResultScene:
 			DrawResultScene(directX, count);

@@ -4,9 +4,9 @@
 #include"DrawTexture.h"
 #include"Scene.h"
 
-SceneId GameSceneMain(DirectX* directX, VariableNumber* var, Count* count);
+SceneId GameSceneMain(DirectX* directX, Count* count);
 
-void DrawGameScene(DirectX* directX, MapChipData Mapdata, VariableNumber* var);
+void DrawGameScene(DirectX* directX, MapChipData Mapdata  );
 
 enum GameTextureList
 {

@@ -9,7 +9,7 @@
 #include <iostream>
 
 // 敵の描画
-void DrawEnemy(Count* count, VariableNumber* var, int MapChipList[20][28], Enemy_Green e_green[], Enemy_White e_white[])
+void DrawEnemy(Count* count  , int MapChipList[20][28], Enemy_Green e_green[], Enemy_White e_white[],Enemy * enemy)
 {
 
 	std::mt19937 mt{ std::random_device{}() };
@@ -47,14 +47,13 @@ void DrawEnemy(Count* count, VariableNumber* var, int MapChipList[20][28], Enemy
 		e_white[1].m_PosX = (dorw_width) * 40 + 80;
 		e_white[1].m_PosY = 840;
 
-
-		var->EnemyState = 1;
+		enemy->EnemyState = 1;
 		count->draw_enemy = 0;
 		count->draw_enemy_indication = 0;
 
 	}
 
-	if (var->EnemyState == 1)
+	if (enemy->EnemyState == 1)
 	{
 		if (count->draw_enemy == (60 * 2))
 		{
@@ -72,17 +71,17 @@ void DrawEnemy(Count* count, VariableNumber* var, int MapChipList[20][28], Enemy
 						MapChipList[a][b] = 1;
 					}
 				}
-				var->EnemyState = 0;
+				enemy->EnemyState = 0;
 			}
-			var->EnemyDrawState = 1;
+			enemy->EnemyDrawState = 1;
 		}
 	}
 }
 
 // 敵の動き
-void EnemyMove(Count* count, VariableNumber* var, Enemy_Green e_green[], Enemy_White e_white[])
+void EnemyMove(Count* count  , Enemy_Green e_green[], Enemy_White e_white[],Enemy* enemy)
 {
-	if (var->EnemyDrawState == 1)
+	if (enemy->EnemyDrawState == 1)
 	{
 		e_green[0].m_PosX = e_green[0].m_PosX + 4;
 		e_green[1].m_PosX = e_green[1].m_PosX - 4;
@@ -105,6 +104,6 @@ void EnemyMove(Count* count, VariableNumber* var, Enemy_Green e_green[], Enemy_W
 		e_white[0].m_PosX = 2000;
 		e_white[1].m_PosY = 2000;
 
-		var->EnemyDrawState = 0;
+		enemy->EnemyDrawState = 0;
 	}
 }

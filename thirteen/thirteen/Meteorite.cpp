@@ -10,7 +10,7 @@
 #include <iostream>
 
 // 隕石の描画(一段階目)
-void DrawMeteorite(Count* count, VariableNumber* var, int MapChipList[20][28], Meteorite meteorite[])
+void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[])
 {
 	// if(GetKeyStatus(DIK_M))
 	if (count->Frame0 == (60 * 12))
@@ -62,13 +62,13 @@ void DrawMeteorite(Count* count, VariableNumber* var, int MapChipList[20][28], M
 		meteorite[3].m_PosX = (g) * 40 + 80;
 		meteorite[3].m_PosY = (h) * 40 + 80;
 
-		var->MeteoriteDrawState = 0;
-		var->MeteoriteState = 1;
+		meteorite->MeteoriteDrawState = 0;
+		meteorite->MeteoriteState = 1;
 		count->draw_meteorite_two_indication = 0;
 		count->draw_meteorite_indication = 0;
 	}
 
-	if (var->MeteoriteState == 1)
+	if (meteorite->MeteoriteState == 1)
 	{
 		if (count->draw_meteorite_indication == (60 * 2))
 		{
@@ -82,15 +82,15 @@ void DrawMeteorite(Count* count, VariableNumber* var, int MapChipList[20][28], M
 						MapChipList[a][b] = 1;
 					}
 				}
-				var->MeteoriteState = 0;
-				var->MeteoriteDrawState = 1;
+				meteorite->MeteoriteState = 0;
+				meteorite->MeteoriteDrawState = 1;
 			}
 		}
 	}
 }
 
 // 隕石の描画(二段階目)
-void DrawMeteoriteTwo(Count* count, VariableNumber* var, int MapChipList[20][28], Meteorite meteorite[])
+void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteorite[])
 {
 	// 
 	// if(GetKeyStatus(DIK_M))
@@ -143,13 +143,13 @@ void DrawMeteoriteTwo(Count* count, VariableNumber* var, int MapChipList[20][28]
 		meteorite[7].m_PosX = (g) * 40 + 80;
 		meteorite[7].m_PosY = (h) * 40 + 80;
 
-		var->MeteoriteDrawState2 = 0;
-		var->MeteoriteState = 1;
+		meteorite->MeteoriteDrawStateTwo = 0;
+		meteorite->MeteoriteState = 1;
 		count->draw_meteorite_two = 0;
 		count->Frame0 = 0;
 	}
 
-	if (var->MeteoriteState == 1)
+	if (meteorite->MeteoriteState == 1)
 	{
 		if (count->draw_meteorite_two == (60 * 2))
 		{
@@ -163,8 +163,8 @@ void DrawMeteoriteTwo(Count* count, VariableNumber* var, int MapChipList[20][28]
 						MapChipList[a][b] = 1;
 					}
 				}
-				var->MeteoriteState = 0;
-				var->MeteoriteDrawState2 = 1;
+				meteorite->MeteoriteState = 0;
+				meteorite->MeteoriteDrawStateTwo = 1;
 			}
 		}
 	}

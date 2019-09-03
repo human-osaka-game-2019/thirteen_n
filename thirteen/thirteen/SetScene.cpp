@@ -5,18 +5,17 @@
 #include"Device.h"
 
 
-void DrawSetScene(DirectX* directX, Count* count, VariableNumber* var);
+void DrawSetScene(DirectX* directX, Count* count  );
 void InitSetScene(DirectX* directX);
-void ResetSetScene(Count* count, VariableNumber* var);
+void ResetSetScene(Count* count  );
 void UpdateSetScene();
 SceneId FinishSetScene();
 
-VariableNumber var;
 static bool KeyFlag = false;
 
 TEXTUREDATA SetTextureData;
 
-SceneId SetSceneMain(DirectX* directX, Count* count, VariableNumber* var)
+SceneId SetSceneMain(DirectX* directX, Count* count  )
 {
 	switch (GetCurrentSceneStep())
 	{
@@ -30,7 +29,7 @@ SceneId SetSceneMain(DirectX* directX, Count* count, VariableNumber* var)
 		break;
 		// 終了
 	case SceneStep::EndStep:
-		ResetSetScene(count, var);
+		ResetSetScene(count );
 		return FinishSetScene();
 		break;
 	}
@@ -38,10 +37,10 @@ SceneId SetSceneMain(DirectX* directX, Count* count, VariableNumber* var)
 }
 
 // 描画設定等
-void DrawSetScene(DirectX* directX, Count* count, VariableNumber* var)
+void DrawSetScene(DirectX* directX, Count* count  )
 {
 }
-void ResetSetScene(Count* count, VariableNumber* var)
+void ResetSetScene(Count* count  )
 {
 };
 

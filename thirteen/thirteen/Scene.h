@@ -67,18 +67,6 @@ public:
 	void AllReset();
 };
 
-class VariableNumber
-{
-public:
-	float BeamState;
-	float MeteoriteState;
-	float MeteoriteDrawState;
-	float MeteoriteDrawState2;
-	float BemaDrawState;
-	float EnemyState;
-	float EnemyDrawState;
-
-};
 
 /**
 * @brief 現在のシーンIDを戻り値で取得する
@@ -98,8 +86,8 @@ SceneStep GetCurrentSceneStep();
 */
 void ChangeSceneStep(SceneStep next_step);
 
-void UpdateScene(DirectX* directX, MapChipData MapData, VariableNumber* var, Count* count);
+void UpdateScene(DirectX* directX, MapChipData MapData, Count* count);
 
-void DrawScene(DirectX* directX, MapChipData MapData, Count* count, VariableNumber* var);
+void DrawScene(DirectX* directX, MapChipData MapData, Count* count);
 
 #endif // !

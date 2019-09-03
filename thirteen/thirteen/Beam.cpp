@@ -24,7 +24,7 @@ void BeamVerticality::InputVerticalityPosTv(float Tv, float TvSize)
 }
 
 // ビーム描画(複数)
-void SetBeams(Count* count, VariableNumber* var, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, int WithDarwNumber, int HeightDrawNumber)
+void SetBeams(Count* count  , int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, int WithDarwNumber, int HeightDrawNumber)
 {
 	std::mt19937 mt{ std::random_device{}() };
 
