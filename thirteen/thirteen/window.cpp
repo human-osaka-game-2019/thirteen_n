@@ -2,8 +2,9 @@
 #include<tchar.h>
 #include<dinput.h>
 
-#include "window.h"
-#include "class.h"
+#include"window.h"
+#include"Engine.h"
+
 
 ////// ウィンドウプロシージャー //////
 

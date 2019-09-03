@@ -1,7 +1,7 @@
 ﻿#ifndef DEVICE_H
 #define DEVICE_H
 
-#include "class.h"
+#include"Engine.h"
 
 HRESULT BuildDxDevice(HWND* hInst, DirectX* directX);
 

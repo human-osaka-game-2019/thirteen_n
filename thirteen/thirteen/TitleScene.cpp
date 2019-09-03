@@ -1,6 +1,6 @@
 ﻿#include<stdio.h>
 #include"Scene.h"
-#include"class.h"
+#include"TitleScene.h"
 #include"DrawTexture.h"
 #include"Device.h"
 
@@ -38,7 +38,7 @@ SceneId TitleSceneMain(DirectX* directX, Count* count)
 void DrawTitleScene(DirectX* directX, Count* count)
 {
 	DrawEx(0, 0, 1280, 960, &TitleTextureData.m_pTexture[TitleTextureList::MainTitleTexture], *directX);
-	DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::RogTexture], *directX);
+	DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture], *directX);
 }
 
 // 描画設定等
@@ -46,9 +46,9 @@ void InitTitleScene(DirectX* directX, Count* count)
 {
 
 	LoadTexture("Texture/Title.png", &TitleTextureData.m_pTexture[TitleTextureList::MainTitleTexture], 0, directX);
-	LoadTexture("Texture/image.png", &TitleTextureData.m_pTexture[TitleTextureList::RogTexture], 0, directX);
+	LoadTexture("Texture/image.png", &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture], 0, directX);
 
-	count->Frame = 0;
+	count->Frame0 = 0;
 
 	ChangeSceneStep(SceneStep::MainStep);
 

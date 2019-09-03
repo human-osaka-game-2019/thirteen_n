@@ -1,7 +1,10 @@
-﻿#include"class.h"
-#include"Engine.h"
+﻿#include"Engine.h"
 #include"Device.h"
-#include"GameScene.h"
+#include"Enemy.h"
+#include"Scene.h"
+
+#include"Enemy.h"
+
 #include <random>
 #include <iostream>
 
@@ -11,7 +14,7 @@ void DrawEnemy(Count* count, VariableNumber* var, int MapChipList[20][28], Enemy
 
 	std::mt19937 mt{ std::random_device{}() };
 
-	if (count->Frame6 == (60 * 15))
+	if (count->draw_enemy_indication == (60 * 15))
 	{
 
 		std::uniform_int_distribution<int> a(1, 4);
@@ -31,29 +34,29 @@ void DrawEnemy(Count* count, VariableNumber* var, int MapChipList[20][28], Enemy
 		e_green[1].m_PosY = (right_hight) * 40 + 80;
 
 		// 上壁
-		std::uniform_int_distribution<int> UpWith(0, 27);
-		int up_with = UpWith(mt);
-		MapChipList[0][up_with] = 4;
-		e_white[0].m_PosX = (up_with) * 40 + 80;
+		std::uniform_int_distribution<int> Upwidth(0, 27);
+		int up_width = Upwidth(mt);
+		MapChipList[0][up_width] = 4;
+		e_white[0].m_PosX = (up_width) * 40 + 80;
 		e_white[0].m_PosY = 80;
 
 		// 下壁
-		std::uniform_int_distribution<int> DownWith(0, 27);
-		int dorw_with = DownWith(mt);
-		MapChipList[19][dorw_with] = 4;
-		e_white[1].m_PosX = (dorw_with) * 40 + 80;
+		std::uniform_int_distribution<int> Downwidth(0, 27);
+		int dorw_width = Downwidth(mt);
+		MapChipList[19][dorw_width] = 4;
+		e_white[1].m_PosX = (dorw_width) * 40 + 80;
 		e_white[1].m_PosY = 840;
 
 
 		var->EnemyState = 1;
-		count->Frame7 = 0;
-		count->Frame6 = 0;
+		count->draw_enemy = 0;
+		count->draw_enemy_indication = 0;
 
 	}
 
 	if (var->EnemyState == 1)
 	{
-		if (count->Frame7 == (60 * 2))
+		if (count->draw_enemy == (60 * 2))
 		{
 
 			for (int a = 0; a < 20; a++)

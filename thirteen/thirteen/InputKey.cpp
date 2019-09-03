@@ -1,7 +1,9 @@
-﻿#include"class.h"
-#include"Engine.h"
+﻿#include"Engine.h"
 #include"Device.h"
-#include"GameScene.h"
+
+#include"Bullet.h"
+#include"InputKey.h"
+
 #include <random>
 #include <iostream>
 
@@ -13,11 +15,11 @@ Enemy_White e_white[2];
 */
 
 // キーの入力情報設定
-void InptKeystate(Count* count, KeyState* keyState, Bullet bullet[5])
+void InputKeyState(Count* count, KeyState* keyState, Bullet bullet[5])
 {
 	if (keyState->Move == 0)
 	{
-		count->Frame4 = 0;
+		count->re_input_move_key = 0;
 
 		if (GetKeyStatus(DIK_S))
 		{

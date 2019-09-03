@@ -2,8 +2,8 @@
 #include <d3dx9.h>
 #include <D3dx9tex.h>
 
-#include "DrawTexture.h"
-#include "class.h"
+#include"DrawTexture.h"
+#include"Engine.h"
 
 const int D3DFVF_CUSTOMVERTEX(D3DFVF_XYZRHW | D3DFVF_TEX1);//(D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1);
 
@@ -72,20 +72,20 @@ void LoadTexture(const char* file_name, LPDIRECT3DTEXTURE9* Texture, int texture
 
 void DrawMap(MapChipData MapData, DirectX* directX, LPDIRECT3DTEXTURE9* Texture)
 {
-	float cy = MapData.chip_y / MapData.Texture_Height;// 高さ
-	float cx = MapData.chip_x / MapData.Texture_Widht; // 横
-	float cx_size = MapData.MapChipWidht / MapData.Texture_Widht;
-	float cy_size = MapData.MapChipHeight / MapData.Texture_Height;
+	float cy = MapData.m_chip_y / MapData.m_texture_height;// 高さ
+	float cx = MapData.m_chip_x / MapData.m_texture_width; // 横
+	float cx_size = MapData.m_mapChip_widht / MapData.m_texture_width;
+	float cy_size = MapData.m_mapChip_height / MapData.m_texture_height;
 
 	float cu_add = cx + cx_size;
 	float cv_add = cy + cy_size;
 
 	CUSTOMVERTEX sprite[] =
 	{
-		{ MapData.x                       , MapData.y                        , 0.0f, 1.0f,cx      ,cy      },
-		{ MapData.x + MapData.MapChipWidht, MapData.y                        , 0.0f, 1.0f,cu_add  ,cy      },
-		{ MapData.x + MapData.MapChipWidht, MapData.y + MapData.MapChipHeight, 0.0f, 1.0f,cu_add  ,cv_add  },
-		{ MapData.x                       , MapData.y + MapData.MapChipHeight, 0.0f, 1.0f,cx      ,cv_add  },
+		{ MapData.m_draw_x                          , MapData.m_draw_y                           , 0.0f, 1.0f,cx      ,cy      },
+		{ MapData.m_draw_x + MapData.m_mapChip_widht, MapData.m_draw_y                           , 0.0f, 1.0f,cu_add  ,cy      },
+		{ MapData.m_draw_x + MapData.m_mapChip_widht, MapData.m_draw_y + MapData.m_mapChip_height, 0.0f, 1.0f,cu_add  ,cv_add  },
+		{ MapData.m_draw_x                          , MapData.m_draw_y + MapData.m_mapChip_height, 0.0f, 1.0f,cx      ,cv_add  },
 	};
 
 	directX->pDevice->SetFVF(D3DFVF_CUSTOMVERTEX);
@@ -95,27 +95,24 @@ void DrawMap(MapChipData MapData, DirectX* directX, LPDIRECT3DTEXTURE9* Texture)
 
 void DrawMapChip(DirectX* directX, MapChipData MapData, LPDIRECT3DTEXTURE9* Texture, int MapChipList[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH])
 {
-	for (int i = 0; i < MapData.Map_HeigjtNumber; i++)
+	for (int i = 0; i < MapData.m_map_height_number; i++)
 	{
-		for (int j = 0; j < MapData.Map_WidhtNumber; j++)
+		for (int j = 0; j < MapData.m_map_widht_number; j++)
 		{
 			int chip_id = MapChipList[i][j];
-			if (MapChipList[i][j] == 3)
-			{
-				directX->a = directX->a + 1;
-			}
-			int width_num = MapData.Texture_Widht / MapData.MapChipWidht;
-			int height_num = MapData.Texture_Height / MapData.MapChipHeight;
 
-			float chip_pos_x = (float)((chip_id % width_num) * MapData.MapChipWidht);
-			float chip_pos_y = (float)((chip_id / height_num) * MapData.MapChipHeight);
+			int width_num = MapData.m_texture_width / MapData.m_mapChip_widht;
+			int height_num = MapData.m_texture_height / MapData.m_mapChip_height;
+
+			float chip_pos_x = (float)((chip_id % width_num) * MapData.m_mapChip_widht);
+			float chip_pos_y = (float)((chip_id / height_num) * MapData.m_mapChip_height);
 
 			// 描画する場所の指定 // 
-			MapData.chip_x = chip_pos_x;
-			MapData.chip_y = chip_pos_y;
+			MapData.m_chip_x = chip_pos_x;
+			MapData.m_chip_y = chip_pos_y;
 			// チップ指定 //
-			MapData.x = MapData.MapChipWidht * j + 80;
-			MapData.y = MapData.MapChipHeight * i + 80;
+			MapData.m_draw_x = MapData.m_mapChip_widht * j + 80;
+			MapData.m_draw_y = MapData.m_mapChip_height * i + 80;
 
 			DrawMap(MapData, directX, Texture);
 
@@ -123,6 +120,4 @@ void DrawMapChip(DirectX* directX, MapChipData MapData, LPDIRECT3DTEXTURE9* Text
 
 	}
 
-	directX->a = 0;
 }
-

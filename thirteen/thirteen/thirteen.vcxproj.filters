@@ -61,9 +61,6 @@
     <ClCompile Include="Meteorite.cpp">
       <Filter>GameSystem</Filter>
     </ClCompile>
-    <ClCompile Include="MainCara.cpp">
-      <Filter>GameSystem</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Main</Filter>
     </ClCompile>
@@ -91,18 +88,15 @@
     <ClCompile Include="STAR.cpp">
       <Filter>GameSystem</Filter>
     </ClCompile>
+    <ClCompile Include="MainCaracter.cpp">
+      <Filter>GameSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DrawTexture.h">
-      <Filter>Draw</Filter>
-    </ClInclude>
     <ClInclude Include="Header20.h">
       <Filter>仮置き</Filter>
     </ClInclude>
     <ClInclude Include="Header21.h">
-      <Filter>仮置き</Filter>
-    </ClInclude>
-    <ClInclude Include="Header19.h">
       <Filter>仮置き</Filter>
     </ClInclude>
     <ClInclude Include="Header22.h">
@@ -129,9 +123,6 @@
     <ClInclude Include="Meteorite.h">
       <Filter>GameSystem</Filter>
     </ClInclude>
-    <ClInclude Include="MainCara.h">
-      <Filter>GameSystem</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Main</Filter>
     </ClInclude>
@@ -147,9 +138,6 @@
     <ClInclude Include="TitleScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="class.h">
-      <Filter>Draw</Filter>
-    </ClInclude>
     <ClInclude Include="ResultScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -157,6 +145,12 @@
       <Filter>GameSystem</Filter>
     </ClInclude>
     <ClInclude Include="Star.h">
+      <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawTexture.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="MainCaracter.h">
       <Filter>GameSystem</Filter>
     </ClInclude>
   </ItemGroup>

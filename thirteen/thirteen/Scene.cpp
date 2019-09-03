@@ -3,7 +3,6 @@
 #include <d3d9.h>
 
 #include "Engine.h"
-#include "class.h"
 
 #include "Scene.h"
 #include "TitleScene.h"
@@ -11,14 +10,6 @@
 #include "Option.h"
 #include "GameScene.h"
 #include "ResultScene.h"
-#include "Scene.h"
-
-
-/*
-Sceneの流れ
-Title -> Set -> Option -> Set -> Game -> Result -> Set
-
-*/
 
 //Pointa point;
 
@@ -40,6 +31,21 @@ void ChangeSceneStep(SceneStep next_step)
 {
 	g_CurrentSceneStep = next_step;
 }
+
+void Count::AllReset()
+{
+	Frame0 = 0;
+	draw_beam = 0;
+	draw_beam_indication = 0;
+	re_input_move_key = 0;
+	draw_meteorite_indication = 0;
+	draw_enemy_indication = 0;
+	draw_enemy = 0;
+	draw_meteorite_two_indication = 0;
+	draw_meteorite_two = 0;
+	draw_main_caracter= 0;
+}
+
 
 void UpdateScene(DirectX* directX, MapChipData MapData, VariableNumber* var, Count* count)
 {
@@ -123,15 +129,15 @@ void DrawScene(DirectX* directX, MapChipData MapData, Count* count, VariableNumb
 
 void FrameCount(Count* count)
 {
-	count->Frame = count->Frame + 1;
-	count->Frame2 = count->Frame2 + 1;
-	count->Frame3 = count->Frame3 + 1;
-	count->Frame4 = count->Frame4 + 1;
-	count->Frame5 = count->Frame5 + 1;
-	count->Frame6 = count->Frame6 + 1;
-	count->Frame7 = count->Frame7 + 1;
-	count->Frame8 = count->Frame8 + 1;
-	count->Frame9 = count->Frame9 + 1;
-	count->Frame10 = count->Frame10 + 1;
-	count->StarDrawCount = count->StarDrawCount + 1;
+	count->Frame0 = count->Frame0 + 1;
+	count->draw_beam = count->draw_beam + 1;
+	count->draw_beam_indication = count->draw_beam_indication + 1;
+	count->re_input_move_key = count->re_input_move_key + 1;
+	count->draw_meteorite_indication = count->draw_meteorite_indication + 1;
+	count->draw_enemy_indication = count->draw_enemy_indication + 1;
+	count->draw_enemy = count->draw_enemy + 1;
+	count->draw_meteorite_two_indication = count->draw_meteorite_two_indication + 1;
+	count->draw_meteorite_two = count->draw_meteorite_two + 1;
+	count->draw_main_caracter = count->draw_main_caracter + 1;
+	count->DrawStarCount = count->DrawStarCount + 1;
 }

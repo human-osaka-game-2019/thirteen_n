@@ -5,13 +5,12 @@
 #include <iostream>
 
 #include"Scene.h"
-#include"class.h"
 #include"DrawTexture.h"
 #include"Device.h"
 #include"GameScene.h"
 
 #include"InputKey.h"
-#include"MainCara.h"
+#include"MainCaracter.h"
 #include"Enemy.h"
 #include"Meteorite.h"
 #include"Beam.h"
@@ -57,7 +56,6 @@ int MapChipList[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH]
 };
 
 
-
 SceneId GameSceneMain(DirectX* directX, VariableNumber* var, Count* count)
 {
 	switch (GetCurrentSceneStep())
@@ -84,9 +82,11 @@ Bullet bullet[5];
 Meteorite meteorite[8];
 Enemy_Green e_green[2];
 Enemy_White e_white[2];
-MainChar mainChar;
+MainCharacter mainCara;
 KeyState keyState;
 Star star[12];
+Beam beam;
+
 
 void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var)
 {
@@ -95,16 +95,16 @@ void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var)
 	// マップチップ
 	DrawMapChip(directX, MapData, &GameTextureData.m_pTexture[GameTextureList::MapChipTexture], MapChipList);
 	// 自キャラ 操作キャラ
-	DrawTest(mainChar.m_PosX, mainChar.m_PosY, mainChar.DrawSize, mainChar.DrawSize, mainChar.m_PosTu, mainChar.m_PosTv, mainChar.m_PosTu_Size, mainChar.m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::ChraTexture], *directX);
+	DrawTest(mainCara.m_PosX, mainCara.m_PosY, mainCara.DrawSize, mainCara.DrawSize, mainCara.m_PosTu, mainCara.m_PosTv, mainCara.m_PosTu_Size, mainCara.m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 
 	if (var->EnemyDrawState == 1)
 	{
 		// 敵1 緑敵
-		DrawTest(e_green[0].m_PosX, e_green[0].m_PosY, e_green[0].m_DrawSize, e_green[0].m_DrawSize, e_green[0].m_PosTu, e_green[0].m_PosTv, e_green[0].m_PosTu_Size, e_green[0].m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::ChraTexture], *directX);
-		DrawTest(e_green[1].m_PosX, e_green[1].m_PosY, e_green[1].m_DrawSize, e_green[1].m_DrawSize, e_green[1].m_PosTu, e_green[1].m_PosTv, e_green[1].m_PosTu_Size, e_green[1].m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::ChraTexture], *directX);
+		DrawTest(e_green[0].m_PosX, e_green[0].m_PosY, e_green[0].m_DrawSize, e_green[0].m_DrawSize, e_green[0].m_PosTu, e_green[0].m_PosTv, e_green[0].m_PosTu_Size, e_green[0].m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+		DrawTest(e_green[1].m_PosX, e_green[1].m_PosY, e_green[1].m_DrawSize, e_green[1].m_DrawSize, e_green[1].m_PosTu, e_green[1].m_PosTv, e_green[1].m_PosTu_Size, e_green[1].m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		// 敵2 紫敵
-		DrawTest(e_white[0].m_PosX, e_white[0].m_PosY, e_white[0].m_DrawSize, e_white[0].m_DrawSize, e_white[0].m_PosTu, e_white[0].m_PosTv, e_white[0].m_PosTu_Size, e_white[0].m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::ChraTexture], *directX);
-		DrawTest(e_white[1].m_PosX, e_white[1].m_PosY, e_white[1].m_DrawSize, e_white[1].m_DrawSize, e_white[1].m_PosTu, e_white[1].m_PosTv, e_white[1].m_PosTu_Size, e_white[1].m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::ChraTexture], *directX);
+		DrawTest(e_white[0].m_PosX, e_white[0].m_PosY, e_white[0].m_DrawSize, e_white[0].m_DrawSize, e_white[0].m_PosTu, e_white[0].m_PosTv, e_white[0].m_PosTu_Size, e_white[0].m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+		DrawTest(e_white[1].m_PosX, e_white[1].m_PosY, e_white[1].m_DrawSize, e_white[1].m_DrawSize, e_white[1].m_PosTu, e_white[1].m_PosTv, e_white[1].m_PosTu_Size, e_white[1].m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 	}
 
 	// メテオ(第一弾)
@@ -112,7 +112,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var)
 	{
 		for (int a = 0; a < 4; a++)
 		{
-			DrawTest(meteorite[a].m_PosX, meteorite[a].m_PosY, meteorite[a].m_DrawSize, meteorite[a].m_DrawSize, meteorite[a].m_PosTu, meteorite[a].m_Postv, meteorite[a].m_Tu_Size, meteorite[a].m_Tv_Size, &GameTextureData.m_pTexture[GameTextureList::ChraTexture], *directX);
+			DrawTest(meteorite[a].m_PosX, meteorite[a].m_PosY, meteorite[a].m_DrawSize, meteorite[a].m_DrawSize, meteorite[a].m_PosTu, meteorite[a].m_Postv, meteorite[a].m_Tu_Size, meteorite[a].m_Tv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		}
 
 	}
@@ -122,7 +122,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var)
 	{
 		for (int a = 4; a < 8; a++)
 		{
-			DrawTest(meteorite[a].m_PosX, meteorite[a].m_PosY, meteorite[a].m_DrawSize, meteorite[a].m_DrawSize, meteorite[a].m_PosTu, meteorite[a].m_Postv, meteorite[a].m_Tu_Size, meteorite[a].m_Tv_Size, &GameTextureData.m_pTexture[GameTextureList::ChraTexture], *directX);
+			DrawTest(meteorite[a].m_PosX, meteorite[a].m_PosY, meteorite[a].m_DrawSize, meteorite[a].m_DrawSize, meteorite[a].m_PosTu, meteorite[a].m_Postv, meteorite[a].m_Tu_Size, meteorite[a].m_Tv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		}
 
 	}
@@ -132,7 +132,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var)
 	{
 		if (bullet[a].ShotFlag == true)
 		{
-			DrawTest(bullet[a].m_PosX, bullet[a].m_PosY, bullet->m_DrawSize, bullet->m_DrawSize, bullet->m_PosTu, bullet->m_PosTv, bullet->m_PosTu_Size, bullet->m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::ChraTexture], *directX);
+			DrawTest(bullet[a].m_PosX, bullet[a].m_PosY, bullet->m_DrawSize, bullet->m_DrawSize, bullet->m_PosTu, bullet->m_PosTv, bullet->m_PosTu_Size, bullet->m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		}
 	}
 
@@ -153,7 +153,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData, VariableNumber* var)
 	{
 		if (star[a].DrawFlag == true)
 		{
-			DrawTest(star[a].m_PosX, star[a].m_PosY, star->m_DrawSize, star->m_DrawSize, star->m_PosTu, star->m_PosTv, star->m_PosTu_Size, star->m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::ChraTexture], *directX);
+			DrawTest(star[a].m_PosX, star[a].m_PosY, star->m_DrawSize, star->m_DrawSize, star->m_PosTu, star->m_PosTv, star->m_PosTu_Size, star->m_PosTv_Size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		}
 	}
 }
@@ -164,7 +164,7 @@ void InitGameScene(DirectX* directX)
 {
 	LoadTexture("Texture/main_back.png", &GameTextureData.m_pTexture[GameTextureList::BackTexture], 0, directX);
 	LoadTexture("Texture/map_chip2.png", &GameTextureData.m_pTexture[GameTextureList::MapChipTexture], 0, directX);
-	LoadTexture("Texture/character.png", &GameTextureData.m_pTexture[GameTextureList::ChraTexture], 0, directX);
+	LoadTexture("Texture/character.png", &GameTextureData.m_pTexture[GameTextureList::CharTexture], 0, directX);
 	LoadTexture("Texture/beam_Side.png", &GameTextureData.m_pTexture[GameTextureList::BeamSideTextutre], 0, directX);
 	LoadTexture("Texture/beam_Ver.png", &GameTextureData.m_pTexture[GameTextureList::BeamVerticalityTexture], 0, directX);
 
@@ -177,15 +177,15 @@ void UpdateGameScene(Count* count, VariableNumber* var)
 {
 	FrameCount(count, &keyState);
 
-	InptKeystate(count, &keyState, bullet);
+	InputKeyState(count, &keyState, bullet);
 
-	ChraMove(count, &keyState, &mainChar);
+	MoveCharacter(count, &keyState, &mainCara);
 
-	CharTextureChange(count, &mainChar, bullet);
+	CharTextureChange(count, &mainCara, bullet);
 
-	HitJudge(&mainChar);
+	HitJudge(&mainCara);
 
-	SetBeam_first(count, var, MapChipList, &beamSide, &beamVerticality, 1);
+	SetBeam_first(count, MapChipList, &beamSide, &beamVerticality, 1,&beam);
 
 	DrawMeteorite(count, var, MapChipList, meteorite);
 
@@ -195,15 +195,15 @@ void UpdateGameScene(Count* count, VariableNumber* var)
 
 	DrawEnemy(count, var, MapChipList, e_green, e_white);
 
-	ShotMove(&keyState, bullet, &mainChar);
+	ShotMove(&keyState,bullet,&mainCara);
 
-	ShotHitJudge(bullet, &keyState, &mainChar);
+	ShotHitJudge(bullet, &keyState, &mainCara);
 
-	StarDraw(star, count);
+	DrawStar(star, count);
 
-	HitBulletStar(&mainChar, star, count, &keyState);
+	HitCharMeteorite(meteorite, &mainCara, count, &keyState);
 
-	HitCharMeteorite(meteorite, &mainChar, count, &keyState);
+	HitBulletStar(&mainCara,star,count,&keyState);
 
 
 	if (GetKeyStatus(DIK_RETURN))

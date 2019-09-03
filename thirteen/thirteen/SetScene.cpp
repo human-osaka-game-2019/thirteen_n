@@ -1,15 +1,15 @@
 ﻿#include<stdio.h>
 #include"Scene.h"
-#include"class.h"
+#include"SetScene.h"
 #include"DrawTexture.h"
 #include"Device.h"
-#include"SetScene.h"
+
 
 void DrawSetScene(DirectX* directX, Count* count, VariableNumber* var);
 void InitSetScene(DirectX* directX);
 void ResetSetScene(Count* count, VariableNumber* var);
 void UpdateSetScene();
-SceneId FinisSetScene();
+SceneId FinishSetScene();
 
 VariableNumber var;
 static bool KeyFlag = false;
@@ -31,7 +31,7 @@ SceneId SetSceneMain(DirectX* directX, Count* count, VariableNumber* var)
 		// 終了
 	case SceneStep::EndStep:
 		ResetSetScene(count, var);
-		return FinisSetScene();
+		return FinishSetScene();
 		break;
 	}
 	return SceneId::SetScene;
@@ -40,8 +40,6 @@ SceneId SetSceneMain(DirectX* directX, Count* count, VariableNumber* var)
 // 描画設定等
 void DrawSetScene(DirectX* directX, Count* count, VariableNumber* var)
 {
-	//DrawTest(1092, 816, 274, 86, size.normal_s_tu2, size.normal_s_tv, size.normal_e_tu2, size.normal_e_tv, &SetTextureData.m_pTexture[SetTextureList::levelselectTexture], *point);
-
 }
 void ResetSetScene(Count* count, VariableNumber* var)
 {
@@ -49,8 +47,6 @@ void ResetSetScene(Count* count, VariableNumber* var)
 
 void InitSetScene(DirectX* directXt)
 {
-	// LoadTexture("Texture/bg1.png", &SetTextureData.m_pTexture[SetTextureList::BackTexture], 0, point);
-
 	ChangeSceneStep(SceneStep::MainStep);
 }
 
@@ -66,7 +62,7 @@ void UpdateSetScene()
 }
 
 // 次に飛ぶシーン先の設定
-SceneId FinisSetScene()
+SceneId FinishSetScene()
 {
 
 	for (int a = 0; a < SetTextureList::MaxSetTexture; a++)

@@ -1,4 +1,4 @@
-﻿#include "class.h" 
+﻿#include"Engine.h"
 
 //DirectX* directX;
 HRESULT InitDinput(HWND*, DirectX*);

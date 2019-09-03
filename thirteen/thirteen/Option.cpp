@@ -1,6 +1,6 @@
 ﻿#include<stdio.h>
 #include"Scene.h"
-#include"class.h"
+#include"Option.h"
 #include"DrawTexture.h"
 #include"Device.h"
 
@@ -34,14 +34,11 @@ SceneId OptionSceneMain(DirectX* directX)
 // 描画設定等
 void DrawOptionScene(DirectX* directX)
 {
-	//DrawTest(1045, 643, 179, 179, 0.25, 0, 0.5, 1, &OptionTextureData.m_pTexture[OptionTextureList::SabOptionTexture], *point);
 }
 
 // テクスチャ読み込み
 void InitOptionScene(DirectX* directX)
 {
-	//LoadTexture("Texture/OptionChar.png", &OptionTextureData.m_pTexture[OptionTextureList::SabOptionTexture], 0, point);
-
 	ChangeSceneStep(SceneStep::MainStep);
 }
 

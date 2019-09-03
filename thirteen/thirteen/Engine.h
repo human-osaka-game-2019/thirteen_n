@@ -1,7 +1,22 @@
 ﻿#ifndef ENGINE_H
 #define ENGINE_H
 
-#include "class.h"
+#include<windows.h>
+#include<d3dx9.h>
+#include<tchar.h>
+#include<dinput.h>
+
+class DirectX
+{
+public:
+
+	LPDIRECT3D9 pDirect3d;
+	LPDIRECT3DDEVICE9 pDevice;
+	LPDIRECTINPUT8 pDinput;
+	LPDIRECTINPUTDEVICE8 pkey;
+
+
+};
 
 //Pointa Point;
 

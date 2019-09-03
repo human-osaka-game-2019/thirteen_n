@@ -1,6 +1,5 @@
 ﻿#include<stdio.h>
 #include"Scene.h"
-#include"class.h"
 #include"DrawTexture.h"
 #include"Device.h"
 #include"ResultScene.h"
@@ -15,20 +14,6 @@ void FlameCountState(Count* count, ResultTextureSize* rts);
 
 TEXTUREDATA ResultTextureData;
 ResultTextureSize rts;
-
-void Count::AllReset()
-{
-	Frame = 0;
-	Frame2 = 0;
-	Frame3 = 0;
-	Frame4 = 0;
-	Frame5 = 0;
-	Frame6 = 0;
-	Frame7 = 0;
-	Frame8 = 0;
-	Frame9 = 0;
-	Frame10 = 0;
-}
 
 SceneId ResultSceneMain(DirectX* directX, Count* count)
 {
@@ -83,7 +68,7 @@ void DrawResultScene(DirectX* directX, Count* count)
 
 void InitResultScene(DirectX* directX)
 {
-	LoadTexture("Texture/ResultSceneBack.png", &ResultTextureData.m_pTexture[ResultTextureList::MainResultTexture], 0, directX);
+	LoadTexture("Texture/ResultSceneBack.png",  &ResultTextureData.m_pTexture[ResultTextureList::MainResultTexture], 0, directX);
 	LoadTexture("Texture/ResultSceneBack2.png", &ResultTextureData.m_pTexture[ResultTextureList::MainResultTexture2], 0, directX);
 	LoadTexture("Texture/ResultSceneBack3.png", &ResultTextureData.m_pTexture[ResultTextureList::MainResultTexture3], 0, directX);
 	LoadTexture("Texture/ResultSceneBack4.png", &ResultTextureData.m_pTexture[ResultTextureList::MainResultTexture4], 0, directX);
@@ -118,41 +103,41 @@ SceneId FinisResultScene()
 
 void FlameCountState(Count* count, ResultTextureSize* rts)
 {
-	if (count->Frame == 10)
+	if (count->Frame0 == 10)
 	{
 		rts->FlameCount = 1;
 	}
 	else
-		if (count->Frame == 20)
+		if (count->Frame0 == 20)
 		{
 			rts->FlameCount = 2;
 		}
 
 		else
-			if (count->Frame == 30)
+			if (count->Frame0 == 30)
 			{
 				rts->FlameCount = 3;
 			}
 			else
-				if (count->Frame == 40)
+				if (count->Frame0 == 40)
 				{
 					rts->FlameCount = 4;
 				}
 				else
-					if (count->Frame == 50)
+					if (count->Frame0 == 50)
 					{
 						rts->FlameCount = 5;
 					}
 					else
-						if (count->Frame == 60)
+						if (count->Frame0 == 60)
 						{
 							rts->FlameCount = 6;
 						}
 
 
-	if (count->Frame == 60)
+	if (count->Frame0 == 60)
 	{
-		count->Frame = 0;
+		count->Frame0 = 0;
 	}
 
 }

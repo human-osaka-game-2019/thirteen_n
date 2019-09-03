@@ -5,4 +5,9 @@ SceneId OptionSceneMain(DirectX* directX);
 
 void DrawOptionScene(DirectX* directX);
 
+enum OptionTextureList
+{
+	MaxOptionTexture,
+};
+
 #endif

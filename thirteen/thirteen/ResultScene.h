@@ -13,10 +13,22 @@ public:
 	float m_PosX = 0;
 	float m_PosY = 0;
 	float m_HightSize = 960;
-	float m_WithSize = 1280;
+	float m_widthSize = 1280;
 	float m_Main_s_tu = 0;
 	float m_Main_e_tu = 1;
 	float m_Main_s_tv = 0;
 	float m_Main_e_tv = 1;
 };
+
+enum ResultTextureList
+{
+	MainResultTexture,
+	MainResultTexture2,
+	MainResultTexture3,
+	MainResultTexture4,
+	MainResultTexture5,
+	MainResultTexture6,
+	MaxResultTexture,
+};
+
 #endif 

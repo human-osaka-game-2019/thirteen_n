@@ -144,7 +144,7 @@
   <ItemGroup>
     <ClCompile Include="drawTexture.cpp" />
     <ClCompile Include="Device.cpp" />
-    <ClCompile Include="MainCara.cpp" />
+    <ClCompile Include="MainCaracter.cpp" />
     <ClCompile Include="Meteorite.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ResultScene.cpp" />
@@ -174,10 +174,8 @@
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="SetScene.h" />
     <ClInclude Include="TitleScene.h" />
-    <ClInclude Include="class.h" />
     <ClInclude Include="InputKey.h" />
     <ClInclude Include="Star.h" />
-    <ClInclude Include="Header19.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Header20.h" />
     <ClInclude Include="Header21.h" />
@@ -185,7 +183,7 @@
     <ClInclude Include="window.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Meteorite.h" />
-    <ClInclude Include="MainCara.h" />
+    <ClInclude Include="MainCaracter.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Beam.h" />

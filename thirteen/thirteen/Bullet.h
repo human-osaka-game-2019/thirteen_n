@@ -1,17 +1,25 @@
 ﻿#ifndef BULLET_H
 #define BULLET_H
 
-#include"class.h"
-#include"Engine.h"
-#include"Device.h"
-#include"GameScene.h"
+class Bullet
+{
+public:
+	bool ShotFlag = false;
+	float m_PosX;
+	float m_PosY;
+	float m_DrawSize = 40;
+	float m_PosTu = (float)0 / 1024;
+	float m_PosTu_Size = (float)40 / 1024;
+	float m_PosTv = (float)0 / 512;
+	float m_PosTv_Size = (float)40 / 512;
 
-void HitBulletStar(MainChar* mainChar, Star star[12], Count* count, KeyState* keyState);
+	float BulletCount = 0;
 
-void Shot(Bullet bullet[5], KeyState* keyState);
+};
 
-void ShotMove(KeyState* keyState, Bullet bullet[5], MainChar* mainChar);
-
-void ShotHitJudge(Bullet bullet[5], KeyState* keyState, MainChar* mainChar);
+//void ShotMove(KeyState* keyState, Bullet bullet[5], MainCaracter* MainCara);
+//
+//void ShotHitJudge(Bullet bullet[5], KeyState* keyState, MainCara* MainCara);
 
 #endif // !
+

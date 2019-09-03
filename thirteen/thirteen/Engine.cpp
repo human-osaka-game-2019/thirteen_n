@@ -1,5 +1,4 @@
-﻿#include "class.h"
-#include "window.h"
+﻿#include "window.h"
 #include "Device.h"
 #include "Engine.h"
 

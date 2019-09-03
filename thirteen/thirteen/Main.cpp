@@ -2,7 +2,6 @@
 #include "window.h"
 #include "Engine.h"
 #include "Scene.h"
-#include "class.h"
 
 
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,

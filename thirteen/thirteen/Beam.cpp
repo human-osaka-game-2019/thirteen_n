@@ -1,7 +1,10 @@
-﻿#include"class.h"
-#include"Engine.h"
+﻿#include"Engine.h"
 #include"Device.h"
 #include"GameScene.h"
+
+#include"Beam.h"
+
+
 #include <random>
 #include <iostream>
 
@@ -25,21 +28,21 @@ void SetBeams(Count* count, VariableNumber* var, int MapChipList[20][28], BeamSi
 {
 	std::mt19937 mt{ std::random_device{}() };
 
-	for (int WithDrawCount = 0; WithDrawCount < WithDarwNumber; WithDrawCount++)
+	for (int WidthDrawCount = 0; WidthDrawCount < WithDarwNumber; WidthDrawCount++)
 	{
-		std::uniform_int_distribution<int> r_with(1, 25); // 1 28
-		int with = r_with(mt);
+		std::uniform_int_distribution<int> r_width(1, 25); // 1 28
+		int width = r_width(mt);
 
 		for (int a = 0; a < 20; a++)
 		{
 			for (int c = 0; c < 3; c++)
 			{
-				MapChipList[a][with + c] = 2;
+				MapChipList[a][width + c] = 2;
 
 			}
 
 		}
-		beamVerticality->m_PosX = with * 40 + 80;
+		beamVerticality->m_PosX = width * 40 + 80;
 
 	}
 
@@ -64,21 +67,21 @@ void SetBeams(Count* count, VariableNumber* var, int MapChipList[20][28], BeamSi
 }
 
 // ビーム(予兆)の描画設定(一本の時のみ)
-void SetBeam_first(Count* count, VariableNumber* var, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, int BeamNnmber)
+void SetBeam_first(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, int BeamNnmber,Beam * beam)
 {
-	if (count->Frame3 == (60 * 8))
+	if (count->draw_beam_indication == (60 * 8))
 	{
 		std::mt19937 mt{ std::random_device{}() };
 
 		std::uniform_int_distribution<int> swich(1, 2);
-		std::uniform_int_distribution<int> r_with(1, 25); // 1 28
+		std::uniform_int_distribution<int> r_Width(1, 25); // 1 28
 		std::uniform_int_distribution<int> r_hight(1, 17); // 1 20
 
-		var->temp = swich(mt);
-		int with = r_with(mt);
+		beam->beam_direction = swich(mt);
+		int width = r_Width(mt);
 		int hight = r_hight(mt);
 
-		switch (var->temp)
+		switch (beam->beam_direction)
 		{
 		case 0:
 			break;
@@ -88,12 +91,12 @@ void SetBeam_first(Count* count, VariableNumber* var, int MapChipList[20][28], B
 			{
 				for (int c = 0; c < 3; c++)
 				{
-					MapChipList[a][with + c] = 2;
+					MapChipList[a][width + c] = 2;
 
 				}
 
 			}
-			beamVerticality->m_PosX = with * 40 + 80;
+			beamVerticality->m_PosX = width * 40 + 80;
 			break;
 
 		case 2: // hight
@@ -109,16 +112,16 @@ void SetBeam_first(Count* count, VariableNumber* var, int MapChipList[20][28], B
 
 			break;
 		}
-		var->BeamState = 1;
-		count->Frame2 = 0;
-		count->Frame3 = 0;
+		beam->draw_beam_state = 1;
+		count->draw_beam = 0;
+		count->draw_beam_indication= 0;
 
 	}
 
 
-	if (var->BeamState == 1)
+	if (beam->draw_beam_state == 1)
 	{
-		if (count->Frame2 == (60 * 2))
+		if (count->draw_beam == (60 * 2))
 		{
 
 			for (int a = 0; a < 20; a++)
@@ -137,14 +140,14 @@ void SetBeam_first(Count* count, VariableNumber* var, int MapChipList[20][28], B
 	/////////////////////////////////////////////////////////////////////// 描画関連 /////////////////////////////////////////////////////////////////
 
 
-	if (count->Frame2 == 120)
+	if (count->draw_beam == 120)
 	{
-		if (var->temp == 1)
+		if (beam->beam_direction == 1)
 		{
 			beamVerticality->BeamVerticalityeFlag = true;
 		}
 		else
-			if (var->temp == 2)
+			if (beam->beam_direction == 2)
 			{
 				beamSide->BeamSideFlag = true;
 
@@ -153,58 +156,58 @@ void SetBeam_first(Count* count, VariableNumber* var, int MapChipList[20][28], B
 
 	if ((beamVerticality->BeamVerticalityeFlag == true) || (beamSide->BeamSideFlag == true))
 	{
-		if (count->Frame2 % 12 == 0)
+		if (count->draw_beam % 12 == 0)
 		{
-			if (count->Frame2 == 126)// 二個目
+			if (count->draw_beam == 126)// 二個目
 			{
 				beamSide->InputSidePosTv(240, 360);
 				beamVerticality->InputVerticalityPosTv(240, 360);
 
 			}
 			else
-				if (count->Frame2 == 132)// 三個目
+				if (count->draw_beam == 132)// 三個目
 				{
 					beamSide->InputSidePosTv(360, 480);
 					beamVerticality->InputVerticalityPosTv(360, 480);
 				}
 				else
-					if (count->Frame2 == 138) // 四個目
+					if (count->draw_beam == 138) // 四個目
 					{
 						beamSide->InputSidePosTv(480, 600);
 						beamVerticality->InputVerticalityPosTv(480, 600);
 					}
 					else
-						if (count->Frame2 == 144)// 五個目
+						if (count->draw_beam == 144)// 五個目
 						{
 							beamSide->InputSidePosTv(600, 720);
 							beamVerticality->InputVerticalityPosTv(600, 720);
 						}
 						else
-							if (count->Frame2 == 216)// 六個目
+							if (count->draw_beam == 216)// 六個目
 							{
 								beamSide->InputSidePosTv(480, 600);
 								beamVerticality->InputVerticalityPosTv(480, 600);
 							}
 							else
-								if (count->Frame2 == 222)// 七個目
+								if (count->draw_beam == 222)// 七個目
 								{
 									beamSide->InputSidePosTv(360, 480);
 									beamVerticality->InputVerticalityPosTv(360, 480);
 								}
 								else
-									if (count->Frame2 == 228)// 八個目
+									if (count->draw_beam == 228)// 八個目
 									{
 										beamSide->InputSidePosTv(240, 360);
 										beamVerticality->InputVerticalityPosTv(240, 360);
 									}
 									else
-										if (count->Frame2 == 234)// 九個目
+										if (count->draw_beam == 234)// 九個目
 										{
 											beamSide->InputSidePosTv(120, 240);
 											beamVerticality->InputVerticalityPosTv(120, 240);
 										}
 										else
-											if (count->Frame2 == 228)// 十個目
+											if (count->draw_beam == 228)// 十個目
 											{
 												beamSide->InputSidePosTv(0, 120);
 												beamVerticality->InputVerticalityPosTv(0, 120);
@@ -212,9 +215,9 @@ void SetBeam_first(Count* count, VariableNumber* var, int MapChipList[20][28], B
 		}
 	}
 
-	if (count->Frame2 == 240)
+	if (count->draw_beam == 240)
 	{
-		var->BeamState = 0;
+		beam->draw_beam_state = 0;
 		beamSide->BeamSideFlag = false;
 		beamVerticality->BeamVerticalityeFlag = false;
 	}
