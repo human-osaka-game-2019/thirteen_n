@@ -91,6 +91,9 @@
     <ClCompile Include="MainCaracter.cpp">
       <Filter>GameSystem</Filter>
     </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header20.h">
@@ -152,6 +155,9 @@
     </ClInclude>
     <ClInclude Include="MainCaracter.h">
       <Filter>GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
