@@ -19,18 +19,18 @@ class BeamSide
 {
 public:
 	bool BeamSideFlag = false;
-	float m_PosX;
-	float m_PosY;
-	float m_DrawSizeWidth = 1280;
-	float m_DrawSizeHight = 120;
-	float m_PosTu = 0 / 2048;
-	float m_PosTu_Size = 1120 / 2048;
+	float m_pos_x;
+	float m_pos_y;
+	float m_draw_size_width = 1280;
+	float m_draw_size_hight = 120;
+	float m_pos_tu = 0 / 2048;
+	float m_pos_tu_size = 1120 / 2048;
 
-	float m_PosTv = (float)120 / 1024;
-	float m_PosTv_Size = (float)240 / 1024;
+	float m_pos_tv = (float)120 / 1024;
+	float m_pos_tv_size = (float)240 / 1024;
 	void InputSidePosTv(float Tv, float TvSize);
 
-	float m_Add_Tv_Size = (float)120 / 1024;
+	float m_add_tv_size = (float)120 / 1024;
 };
 
 // 縦方向に描画されるビームに関する情報を持つクラス
@@ -38,18 +38,18 @@ class BeamVerticality
 {
 public:
 	bool BeamVerticalityeFlag = false;
-	float m_PosX;
-	float m_PosY;
-	float m_DrawSizeWidth = 120;
-	float m_DrawSizeHight = 960;
+	float m_pos_x;
+	float m_pos_y;
+	float m_draw_size_width = 120;
+	float m_draw_size_hight = 960;
 
-	float m_PosTu = (float)120 / 1024;
-	float m_PosTu_Size = (float)240 / 1024;
+	float m_pos_tu = (float)120 / 1024;
+	float m_pos_tu_size = (float)240 / 1024;
 	void InputVerticalityPosTv(float Tv, float TvSize);
 
-	float m_Add_Tu_Size = (float)120 / 1024;
-	float m_PosTv = 0;
-	float m_PosTv_Size = 1;
+	float m_add_tu_size = (float)120 / 1024;
+	float m_pos_tv = 0;
+	float m_pos_tv_size = 1;
 };
 
 

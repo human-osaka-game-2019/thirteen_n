@@ -26,8 +26,8 @@ void DrawStar(Star star[12], Count* count)
 				int width = Width(mt);
 				int height = Height(mt);
 
-				star[a].m_PosX = width * 40 + 80;
-				star[a].m_PosY = height * 40 + 80;
+				star[a].m_pos_x = width * 40 + 80;
+				star[a].m_pos_y = height * 40 + 80;
 
 				star[a].DrawFlag = true;
 			}
@@ -47,16 +47,16 @@ void HitBulletStar(MainCharacter* mainCara, Star star[12], Count* count, KeyStat
 	for (int a = 0; a < 12; a++)
 	{
 
-		if ((mainCara->m_PosX + 40 > star[a].m_PosX /*玉の右のあたり判定*/) && (mainCara->m_PosX < star[a].m_PosX + 40)/*玉の左のあたり判定*/)
+		if ((mainCara->m_pos_x+ 40 > star[a].m_pos_x /*弾の右のあたり判定*/) && (mainCara->m_pos_x < star[a].m_pos_x + 40)/*弾の左のあたり判定*/)
 		{
 
-			if ((mainCara->m_PosY < star[a].m_PosY + 40)/*玉が下から当たった時ののあたり判定*/ && (mainCara->m_PosY + 40 > star[a].m_PosY/*玉が上から当たった時のあたり判定*/))
+			if ((mainCara->m_pos_y < star[a].m_pos_y + 40)/*弾が下から当たった時ののあたり判定*/ && (mainCara->m_pos_y + 40 > star[a].m_pos_y/*弾が上から当たった時のあたり判定*/))
 			{
 				count->StarCount = count->StarCount + 1;
 				star[a].DrawFlag = false;
 
-				star[a].m_PosX = 0;
-				star[a].m_PosY = 0;
+				star[a].m_pos_x = 0;
+				star[a].m_pos_y = 0;
 
 			}
 		}

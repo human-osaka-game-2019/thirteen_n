@@ -12,8 +12,8 @@
 
 void MainCharacter::InputTv(int Tu, int Tu_Size)
 {
-	m_PosTu = (float)Tu / 1024;
-	m_PosTu_Size = (float)Tu_Size / 1024;
+	m_pos_tu= (float)Tu / 1024;
+	m_pos_tu_size = (float)Tu_Size / 1024;
 }
 
 // 10フレーム経たないと動かない(合計10フレーム,1フレーム X座標 +- 4 )
@@ -27,16 +27,16 @@ void MoveCharacter(Count* count, KeyState* keyState, MainCharacter* mainCara)
 		case 0:
 			break;
 		case 1:
-			mainCara->m_PosY = mainCara->m_PosY + 4;
+			mainCara->m_pos_y = mainCara->m_pos_y + 4;
 			break;
 		case 2:
-			mainCara->m_PosY = mainCara->m_PosY - 4;
+			mainCara->m_pos_y = mainCara->m_pos_y - 4;
 			break;
 		case 3:
-			mainCara->m_PosX = mainCara->m_PosX - 4;
+			mainCara->m_pos_x= mainCara->m_pos_x - 4;
 			break;
 		case 4:
-			mainCara->m_PosX = mainCara->m_PosX + 4;
+			mainCara->m_pos_x = mainCara->m_pos_x + 4;
 			break;
 		}
 	}
@@ -99,24 +99,24 @@ void FrameCount(Count* count, KeyState* keyState)
 void HitJudge(MainCharacter* mainCara)
 {
 
-	if (mainCara->m_PosX < 80)
+	if (mainCara->m_pos_x < 80)
 	{
-		mainCara->m_PosX = mainCara->m_PosX + 4;
+		mainCara->m_pos_x = mainCara->m_pos_x + 4;
 	}
 	else
-		if (mainCara->m_PosX > 1160)
+		if (mainCara->m_pos_x > 1160)
 		{
-			mainCara->m_PosX = mainCara->m_PosX - 4;
+			mainCara->m_pos_x = mainCara->m_pos_x - 4;
 		}
 		else
-			if (mainCara->m_PosY < 80)
+			if (mainCara->m_pos_y < 80)
 			{
-				mainCara->m_PosY = mainCara->m_PosY + 4;
+				mainCara->m_pos_y = mainCara->m_pos_y + 4;
 			}
 			else
-				if (mainCara->m_PosY > 840)
+				if (mainCara->m_pos_y > 840)
 				{
-					mainCara->m_PosY = mainCara->m_PosY - 4;
+					mainCara->m_pos_y = mainCara->m_pos_y - 4;
 				}
 
 }

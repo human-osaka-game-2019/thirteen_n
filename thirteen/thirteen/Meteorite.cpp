@@ -26,8 +26,8 @@ void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[
 
 		// MapChipList[LeftUp_Hight(mt)][LeftUp_width(mt)] = 3;
 		MapChipList[b][a] = 3;
-		meteorite[0].m_PosX = (a) * 40 + 80;
-		meteorite[0].m_PosY = (b) * 40 + 80;
+		meteorite[0].m_pos_x= (a) * 40 + 80;
+		meteorite[0].m_pos_y = (b) * 40 + 80;
 		// 左上	
 		std::uniform_int_distribution<int> RightUp_width(14, 27);
 		std::uniform_int_distribution<int> RightUp_Hight(0, 9);
@@ -37,8 +37,8 @@ void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[
 
 		// MapChipList[RightUp_width(mt)][RightUp_Hight(mt)] = 3;
 		MapChipList[d][c] = 3;
-		meteorite[1].m_PosX = (c) * 40 + 80;
-		meteorite[1].m_PosY = (d) * 40 + 80;
+		meteorite[1].m_pos_x = (c) * 40 + 80;
+		meteorite[1].m_pos_y = (d) * 40 + 80;
 		// 右下
 		std::uniform_int_distribution<int> LeftDown_width(0, 13);
 		std::uniform_int_distribution<int> LeftDown_Hight(10, 19);
@@ -48,8 +48,8 @@ void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[
 
 		// MapChipList[LeftDown_width(mt)][LeftDown_Hight(mt)] = 3;
 		MapChipList[f][e] = 3;
-		meteorite[2].m_PosX = (e) * 40 + 80;
-		meteorite[2].m_PosY = (f) * 40 + 80;
+		meteorite[2].m_pos_x = (e) * 40 + 80;
+		meteorite[2].m_pos_y = (f) * 40 + 80;
 		// 左下
 		std::uniform_int_distribution<int> RightDown_width(14, 27);
 		std::uniform_int_distribution<int> RightDown_Hight(10, 19);
@@ -59,8 +59,8 @@ void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[
 
 		// MapChipList[RightDown_width(mt)][RightDown_Hight(mt)] = 3;
 		MapChipList[h][g] = 3;
-		meteorite[3].m_PosX = (g) * 40 + 80;
-		meteorite[3].m_PosY = (h) * 40 + 80;
+		meteorite[3].m_pos_x = (g) * 40 + 80;
+		meteorite[3].m_pos_y = (h) * 40 + 80;
 
 		meteorite->MeteoriteDrawState = 0;
 		meteorite->MeteoriteState = 1;
@@ -107,8 +107,8 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 
 		// MapChipList[LeftUp_Hight(mt)][LeftUp_width(mt)] = 3;
 		MapChipList[LeftUpHight][LeftUpwidth] = 3;
-		meteorite[4].m_PosX = (LeftUpwidth) * 40 + 80;
-		meteorite[4].m_PosY = (LeftUpHight) * 40 + 80;
+		meteorite[4].m_pos_x = (LeftUpwidth) * 40 + 80;
+		meteorite[4].m_pos_y = (LeftUpHight) * 40 + 80;
 		// 左上	
 		std::uniform_int_distribution<int> RightUp_width(14, 27);
 		std::uniform_int_distribution<int> RightUp_Hight(0, 9);
@@ -118,8 +118,8 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 
 		// MapChipList[RightUp_width(mt)][RightUp_Hight(mt)] = 3;
 		MapChipList[d][c] = 3;
-		meteorite[5].m_PosX = (c) * 40 + 80;
-		meteorite[5].m_PosY = (d) * 40 + 80;
+		meteorite[5].m_pos_x = (c) * 40 + 80;
+		meteorite[5].m_pos_y = (d) * 40 + 80;
 		// 右下
 		std::uniform_int_distribution<int> LeftDown_width(0, 13);
 		std::uniform_int_distribution<int> LeftDown_Hight(10, 19);
@@ -129,8 +129,8 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 
 		// MapChipList[LeftDown_width(mt)][LeftDown_Hight(mt)] = 3;
 		MapChipList[f][e] = 3;
-		meteorite[6].m_PosX = (e) * 40 + 80;
-		meteorite[6].m_PosY = (f) * 40 + 80;
+		meteorite[6].m_pos_x = (e) * 40 + 80;
+		meteorite[6].m_pos_y = (f) * 40 + 80;
 		// 左下
 		std::uniform_int_distribution<int> RightDown_width(14, 27);
 		std::uniform_int_distribution<int> RightDown_Hight(10, 19);
@@ -140,8 +140,8 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 
 		// MapChipList[RightDown_width(mt)][RightDown_Hight(mt)] = 3;
 		MapChipList[h][g] = 3;
-		meteorite[7].m_PosX = (g) * 40 + 80;
-		meteorite[7].m_PosY = (h) * 40 + 80;
+		meteorite[7].m_pos_x = (g) * 40 + 80;
+		meteorite[7].m_pos_y = (h) * 40 + 80;
 
 		meteorite->MeteoriteDrawStateTwo = 0;
 		meteorite->MeteoriteState = 1;
@@ -174,9 +174,9 @@ void HitCharMeteorite(Meteorite meteorite[], MainCharacter* mainCara, Count* cou
 {
 	for (int a = 0; a < 8; a++)
 	{
-		if (((mainCara->m_PosX + 40 > meteorite[a].m_PosX /*自キャラの右のあたり判定*/) && (mainCara->m_PosX < meteorite[a].m_PosX + 40)/*自キャラの左のあたり判定*/))
+		if (((mainCara->m_pos_x + 40 > meteorite[a].m_pos_x /*自キャラの右のあたり判定*/) && (mainCara->m_pos_x < meteorite[a].m_pos_x + 40)/*自キャラの左のあたり判定*/))
 		{
-			if ((mainCara->m_PosY < meteorite[a].m_PosY + 40)/*自キャラが下から当たった時ののあたり判定*/ && (mainCara->m_PosY + 40 > meteorite[a].m_PosY/*自キャラが上から当たった時のあたり判定*/))
+			if ((mainCara->m_pos_y < meteorite[a].m_pos_y + 40)/*自キャラが下から当たった時ののあたり判定*/ && (mainCara->m_pos_y + 40 > meteorite[a].m_pos_y/*自キャラが上から当たった時のあたり判定*/))
 			{
 
 				switch (keyState->Move)
@@ -185,19 +185,19 @@ void HitCharMeteorite(Meteorite meteorite[], MainCharacter* mainCara, Count* cou
 					break;
 				case 1:
 					// down
-					mainCara->m_PosY = mainCara->m_PosY - 4;
+					mainCara->m_pos_y = mainCara->m_pos_y - 4;
 					break;
 				case 2:
 					// up
-					mainCara->m_PosY = mainCara->m_PosY + 4;
+					mainCara->m_pos_y = mainCara->m_pos_y + 4;
 					break;
 				case 3:
 					// lkeft
-					mainCara->m_PosX = mainCara->m_PosX + 4;
+					mainCara->m_pos_x = mainCara->m_pos_x + 4;
 					break;
 				case 4:
 					// right
-					mainCara->m_PosX = mainCara->m_PosX - 4;
+					mainCara->m_pos_x = mainCara->m_pos_x - 4;
 					break;
 				}
 

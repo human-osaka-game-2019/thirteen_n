@@ -16,13 +16,13 @@ class Enemy_Green
 {
 public:
 
-	float m_PosX;
-	float m_PosY;
+	float m_pos_x;
+	float m_pos_y;
 	float m_DrawSize = 40;
-	float m_PosTu = (float)0 / 1024;
-	float m_PosTu_Size = (float)40 / 1024;
-	float m_PosTv = (float)40 / 512;
-	float m_PosTv_Size = (float)80 / 512;
+	float m_pos_tu = (float)0 / 1024;
+	float m_pos_tu_size = (float)40 / 1024;
+	float m_pos_tv = (float)40 / 512;
+	float m_pos_tv_size = (float)80 / 512;
 
 };
 
@@ -30,13 +30,13 @@ class Enemy_White
 {
 public:
 
-	float m_PosX;
-	float m_PosY;
+	float m_pos_x;
+	float m_pos_y;
 	float m_DrawSize = 40;
-	float m_PosTu = (float)40 / 1024;
-	float m_PosTu_Size = (float)80 / 1024;
-	float m_PosTv = (float)40 / 512;
-	float m_PosTv_Size = (float)80 / 512;
+	float m_pos_tu = (float)40 / 1024;
+	float m_pos_tu_size = (float)80 / 1024;
+	float m_pos_tv = (float)40 / 512;
+	float m_pos_tv_size = (float)80 / 512;
 
 };
 

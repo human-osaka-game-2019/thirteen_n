@@ -10,13 +10,13 @@
 class Meteorite
 {
 public:
-	float m_PosX;
-	float m_PosY;
+	float m_pos_x;
+	float m_pos_y;
 	float m_DrawSize = 40;
-	float m_PosTu = (float)80 / 1024;
+	float m_pos_tu = (float)80 / 1024;
 	float m_Tu_Size = (float)120 / 1024;
-	float m_Postv = (float)40 / 512;
-	float m_Tv_Size = (float)80 / 512;
+	float m_pos_tv = (float)40 / 512;
+	float m_tv_size = (float)80 / 512;
 
 	int MeteoriteState;
 	int MeteoriteDrawState;

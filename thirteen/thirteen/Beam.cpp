@@ -4,7 +4,6 @@
 
 #include"Beam.h"
 
-
 #include <random>
 #include <iostream>
 
@@ -12,23 +11,23 @@
 // ビーム描画位置入力関数(横)
 void BeamSide::InputSidePosTv(float Tv, float TvSize)
 {
-	m_PosTv = Tv / 1024;
-	m_PosTv_Size = TvSize / 1024;
+	m_pos_tv = Tv / 1024;
+	m_pos_tv_size = TvSize / 1024;
 }
 
 // ビーム描画位置入力関数(縦)
 void BeamVerticality::InputVerticalityPosTv(float Tv, float TvSize)
 {
-	m_PosTu = Tv / 1024;
-	m_PosTu_Size = TvSize / 1024;
+	m_pos_tu = Tv / 1024;
+	m_pos_tu_size = TvSize / 1024;
 }
 
 // ビーム描画(複数)
-void SetBeams(Count* count  , int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, int WithDarwNumber, int HeightDrawNumber)
+void SetBeams(Count* count  , int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, int WidthDarwNumber, int HeightDrawNumber)
 {
 	std::mt19937 mt{ std::random_device{}() };
 
-	for (int WidthDrawCount = 0; WidthDrawCount < WithDarwNumber; WidthDrawCount++)
+	for (int WidthDrawCount = 0; WidthDrawCount < WidthDarwNumber; WidthDrawCount++)
 	{
 		std::uniform_int_distribution<int> r_width(1, 25); // 1 28
 		int width = r_width(mt);
@@ -42,7 +41,7 @@ void SetBeams(Count* count  , int MapChipList[20][28], BeamSide* beamSide, BeamV
 			}
 
 		}
-		beamVerticality->m_PosX = width * 40 + 80;
+		beamVerticality->m_pos_x = width * 40 + 80;
 
 	}
 
@@ -59,7 +58,7 @@ void SetBeams(Count* count  , int MapChipList[20][28], BeamSide* beamSide, BeamV
 			}
 		}
 
-		beamSide->m_PosY = hight * 40 + 80;
+		beamSide->m_pos_y = hight * 40 + 80;
 
 		break;
 	}
@@ -85,7 +84,7 @@ void SetBeam_first(Count* count, int MapChipList[20][28], BeamSide* beamSide, Be
 		{
 		case 0:
 			break;
-		case 1: // with
+		case 1: //widht
 
 			for (int a = 0; a < 20; a++)
 			{
@@ -96,7 +95,7 @@ void SetBeam_first(Count* count, int MapChipList[20][28], BeamSide* beamSide, Be
 				}
 
 			}
-			beamVerticality->m_PosX = width * 40 + 80;
+			beamVerticality->m_pos_x = width * 40 + 80;
 			break;
 
 		case 2: // hight
@@ -108,7 +107,7 @@ void SetBeam_first(Count* count, int MapChipList[20][28], BeamSide* beamSide, Be
 					MapChipList[hight + b][a] = 2;
 				}
 			}
-			beamSide->m_PosY = hight * 40 + 80;
+			beamSide->m_pos_y = hight * 40 + 80;
 
 			break;
 		}

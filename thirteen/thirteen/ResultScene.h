@@ -10,8 +10,8 @@ class ResultTextureSize
 {
 public:
 	int FlameCount = 0;
-	float m_PosX = 0;
-	float m_PosY = 0;
+	float m_pos_x = 0;
+	float m_pos_y = 0;
 	float m_HightSize = 960;
 	float m_widthSize = 1280;
 	float m_Main_s_tu = 0;

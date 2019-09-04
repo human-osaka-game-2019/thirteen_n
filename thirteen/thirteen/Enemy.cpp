@@ -23,29 +23,29 @@ void DrawEnemy(Count* count  , int MapChipList[20][28], Enemy_Green e_green[], E
 		std::uniform_int_distribution<int> LeftHight(0, 19);
 		int left_height = LeftHight(mt);
 		MapChipList[left_height][0] = 5;
-		e_green[0].m_PosX = 80;
-		e_green[0].m_PosY = (left_height) * 40 + 80;
+		e_green[0].m_pos_x = 80;
+		e_green[0].m_pos_y = (left_height) * 40 + 80;
 
 		// 右壁
 		std::uniform_int_distribution<int> RightHight(0, 19);
 		int right_hight = RightHight(mt);
 		MapChipList[right_hight][27] = 5;
-		e_green[1].m_PosX = 1160;
-		e_green[1].m_PosY = (right_hight) * 40 + 80;
+		e_green[1].m_pos_x = 1160;
+		e_green[1].m_pos_y = (right_hight) * 40 + 80;
 
 		// 上壁
 		std::uniform_int_distribution<int> Upwidth(0, 27);
 		int up_width = Upwidth(mt);
 		MapChipList[0][up_width] = 4;
-		e_white[0].m_PosX = (up_width) * 40 + 80;
-		e_white[0].m_PosY = 80;
+		e_white[0].m_pos_x = (up_width) * 40 + 80;
+		e_white[0].m_pos_y = 80;
 
 		// 下壁
 		std::uniform_int_distribution<int> Downwidth(0, 27);
 		int dorw_width = Downwidth(mt);
 		MapChipList[19][dorw_width] = 4;
-		e_white[1].m_PosX = (dorw_width) * 40 + 80;
-		e_white[1].m_PosY = 840;
+		e_white[1].m_pos_x = (dorw_width) * 40 + 80;
+		e_white[1].m_pos_y = 840;
 
 		enemy->EnemyState = 1;
 		count->draw_enemy = 0;
@@ -83,26 +83,26 @@ void EnemyMove(Count* count  , Enemy_Green e_green[], Enemy_White e_white[],Enem
 {
 	if (enemy->EnemyDrawState == 1)
 	{
-		e_green[0].m_PosX = e_green[0].m_PosX + 4;
-		e_green[1].m_PosX = e_green[1].m_PosX - 4;
-		e_white[0].m_PosY = e_white[0].m_PosY + 2;
-		e_white[1].m_PosY = e_white[1].m_PosY - 2;
+		e_green[0].m_pos_x = e_green[0].m_pos_x + 4;
+		e_green[1].m_pos_x = e_green[1].m_pos_x - 4;
+		e_white[0].m_pos_y = e_white[0].m_pos_y + 2;
+		e_white[1].m_pos_y = e_white[1].m_pos_y - 2;
 	}
-	if (e_green[0].m_PosX == 1160)
+	if (e_green[0].m_pos_x == 1160)
 	{
-		e_green[0].m_PosX = 2000;
-		e_green[1].m_PosY = 2000;
-		e_green[0].m_PosX = 2000;
-		e_green[1].m_PosY = 2000;
+		e_green[0].m_pos_x= 2000;
+		e_green[1].m_pos_y = 2000;
+		e_green[0].m_pos_x = 2000;
+		e_green[1].m_pos_y = 2000;
 
 
 	}
-	if (e_white[0].m_PosY == 840)
+	if (e_white[0].m_pos_y == 840)
 	{
-		e_white[0].m_PosX = 2000;
-		e_white[1].m_PosY = 2000;
-		e_white[0].m_PosX = 2000;
-		e_white[1].m_PosY = 2000;
+		e_white[0].m_pos_x = 2000;
+		e_white[1].m_pos_y = 2000;
+		e_white[0].m_pos_x = 2000;
+		e_white[1].m_pos_y = 2000;
 
 		enemy->EnemyDrawState = 0;
 	}

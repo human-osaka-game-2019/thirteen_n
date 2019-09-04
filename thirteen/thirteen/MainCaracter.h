@@ -7,13 +7,13 @@
 class MainCharacter
 {
 public:
-	float m_PosX = 80;
-	float m_PosY = 80;
+	float m_pos_x= 80;
+	float m_pos_y= 80;
 	float DrawSize = 40;
-	float m_PosTu = (float)40 / 1024;
-	float m_PosTu_Size = (float)80 / 1024;
-	float m_PosTv = (float)0 / 512;
-	float m_PosTv_Size = (float)40 / 512;
+	float m_pos_tu = (float)40 / 1024;
+	float m_pos_tu_size = (float)80 / 1024;
+	float m_pos_tv = (float)0 / 512;
+	float m_pos_tv_size = (float)40 / 512;
 
 	float Add_TvSize;
 	void InputTv(int Tv, int Tv_Size);

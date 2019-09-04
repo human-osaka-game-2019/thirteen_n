@@ -38,15 +38,15 @@ void ShotMove(KeyState* keyState, Bullet bullet[5], MainCharacter* mainCara)
 
 	if (bullet[0].ShotFlag == false)
 	{
-		if (((int)mainCara->m_PosX % 40 == 0) && ((int)mainCara->m_PosY % 40 == 0))
+		if (((int)mainCara->m_pos_x % 40 == 0) && ((int)mainCara->m_pos_y % 40 == 0))
 		{
-			bullet[0].m_PosX = mainCara->m_PosX;
-			bullet[0].m_PosY = mainCara->m_PosY;
+			bullet[0].m_pos_x = mainCara->m_pos_x;
+			bullet[0].m_pos_y = mainCara->m_pos_y;
 		}
 		else
 		{
-			bullet[0].m_PosX = (int)((int)mainCara->m_PosX / 40) * 40;
-			bullet[0].m_PosY = (int)((int)mainCara->m_PosY / 40) * 40;
+			bullet[0].m_pos_x = (int)((int)mainCara->m_pos_x / 40) * 40;
+			bullet[0].m_pos_y = (int)((int)mainCara->m_pos_y / 40) * 40;
 		}
 
 	}
@@ -58,16 +58,16 @@ void ShotMove(KeyState* keyState, Bullet bullet[5], MainCharacter* mainCara)
 		case 0:
 			break;
 		case 1:
-			bullet[0].m_PosY = bullet[0].m_PosY + 5;
+			bullet[0].m_pos_y = bullet[0].m_pos_y + 5;
 			break;
 		case 2:
-			bullet[0].m_PosY = bullet[0].m_PosY - 5;
+			bullet[0].m_pos_y = bullet[0].m_pos_y - 5;
 			break;
 		case 3:
-			bullet[0].m_PosX = bullet[0].m_PosX - 5;
+			bullet[0].m_pos_x = bullet[0].m_pos_x - 5;
 			break;
 		case 4:
-			bullet[0].m_PosX = bullet[0].m_PosX + 5;
+			bullet[0].m_pos_x = bullet[0].m_pos_x + 5;
 			break;
 		}
 	}
@@ -77,35 +77,35 @@ void ShotMove(KeyState* keyState, Bullet bullet[5], MainCharacter* mainCara)
 // 弾丸のあたり判定
 void ShotHitJudge(Bullet bullet[5], KeyState* keyState, MainCharacter* mainCara)
 {
-	if (bullet[0].m_PosX < 80)
+	if (bullet[0].m_pos_x < 80)
 	{
 		bullet[0].ShotFlag = false;
 		keyState->Shot = 0;
-		bullet[0].m_PosX = mainCara->m_PosX;
-		bullet[0].m_PosY = mainCara->m_PosY;
+		bullet[0].m_pos_x = mainCara->m_pos_x;
+		bullet[0].m_pos_y = mainCara->m_pos_y;
 	}
 	else
-		if (bullet->m_PosX > 1160)
+		if (bullet->m_pos_x > 1160)
 		{
 			bullet[0].ShotFlag = false;
 			keyState->Shot = 0;
-			bullet[0].m_PosX = mainCara->m_PosX;
-			bullet[0].m_PosY = mainCara->m_PosY;
+			bullet[0].m_pos_x = mainCara->m_pos_x;
+			bullet[0].m_pos_y = mainCara->m_pos_y;
 		}
 		else
-			if (bullet->m_PosY < 80)
+			if (bullet->m_pos_y < 80)
 			{
 				bullet[0].ShotFlag = false;
 				keyState->Shot = 0;
-				bullet[0].m_PosX = mainCara->m_PosX;
-				bullet[0].m_PosY = mainCara->m_PosY;
+				bullet[0].m_pos_x = mainCara->m_pos_x;
+				bullet[0].m_pos_y = mainCara->m_pos_y;
 			}
 			else
-				if (bullet->m_PosY > 840)
+				if (bullet->m_pos_y > 840)
 				{
 					bullet[0].ShotFlag = false;
 					keyState->Shot = 0;
-					bullet[0].m_PosX = mainCara->m_PosX;
-					bullet[0].m_PosY = mainCara->m_PosY;
+					bullet[0].m_pos_x = mainCara->m_pos_x;
+					bullet[0].m_pos_y = mainCara->m_pos_y;
 				}
 }
