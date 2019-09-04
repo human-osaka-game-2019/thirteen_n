@@ -84,6 +84,7 @@ Enemy_Green e_green[2];
 Enemy_White e_white[2];
 MainCharacter mainCara;
 KeyState keyState;
+KeyState ShotkeyState[5];
 Star star[12];
 Beam beam;
 Enemy enemy;
@@ -177,7 +178,7 @@ void UpdateGameScene(Count* count)
 {
 	FrameCount(count, &keyState);
 
-	InputKeyState(count, &keyState, bullet);
+	InputKeyState(count, &keyState,ShotkeyState, bullet);
 
 	MoveCharacter(count, &keyState, &mainCara);
 
@@ -195,9 +196,9 @@ void UpdateGameScene(Count* count)
 
 	DrawEnemy(count , MapChipList, e_green, e_white,&enemy);
 
-	ShotMove(&keyState,bullet,&mainCara);
+	ShotMove(ShotkeyState,bullet,&mainCara);
 
-	ShotHitJudge(bullet, &keyState, &mainCara);
+	ShotHitJudge(bullet, ShotkeyState, &mainCara,count);
 
 	DrawStar(star, count);
 

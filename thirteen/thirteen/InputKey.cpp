@@ -15,7 +15,7 @@ Enemy_White e_white[2];
 */
 
 // キーの入力情報設定
-void InputKeyState(Count* count, KeyState* keyState, Bullet bullet[5])
+void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], Bullet bullet[5])
 {
 	if (keyState->m_move == 0)
 	{
@@ -41,53 +41,66 @@ void InputKeyState(Count* count, KeyState* keyState, Bullet bullet[5])
 			}
 	}
 
-	if (keyState->m_shot == 0)
+	if (count->re_shot_count > 10)
 	{
-		if (GetKeyStatus(DIK_DOWN))
-		{
-			keyState->m_shot = 1;
-			bullet[0].ShotFlag = true;
-
-			if (count->BulletCount < 4)
-			{
-				count->BulletCount = count->BulletCount + 1;
-			}
-
-		}
-		else
-			if (GetKeyStatus(DIK_UP))
-			{
-				keyState->m_shot = 2;
-				bullet[0].ShotFlag = true;
-
-				if (count->BulletCount < 4)
-				{
-					count->BulletCount = count->BulletCount + 1;
-				}
-			}
-		if (GetKeyStatus(DIK_LEFT))
-		{
-			keyState->m_shot = 3;
-			bullet[0].ShotFlag = true;
-
-			if (count->BulletCount < 4)
-			{
-				count->BulletCount = count->BulletCount + 1;
-			}
-		}
-		else
-			if (GetKeyStatus(DIK_RIGHT))
-			{
-				keyState->m_shot = 4;
-				bullet[0].ShotFlag = true;
-
-				if (count->BulletCount < 4)
-				{
-					count->BulletCount = count->BulletCount + 1;
-				}
-			}
+		count->re_shot_count = 0;
 	}
 
+	if (count->re_shot_count == 0)
+	{
+		if (ShotkeyState[count->shotcount].m_shot == 0)
+		{
+			if (GetKeyStatus(DIK_DOWN))
+			{
+				ShotkeyState[count->shotcount].m_shot = 1;
+				bullet[count->shotcount].ShotFlag = true;
+
+				if (count->BulletCount < 4)
+				{
+					count->BulletCount = count->BulletCount + 1;
+					count->shotcount += 1;
+				}
+
+			}
+			else
+				if (GetKeyStatus(DIK_UP))
+				{
+					ShotkeyState[count->shotcount].m_shot = 2;
+					bullet[count->shotcount].ShotFlag = true;
+
+					if (count->BulletCount < 4)
+					{
+						count->BulletCount = count->BulletCount + 1;
+						count->shotcount += 1;
+					}
+				}
+			if (GetKeyStatus(DIK_LEFT))
+			{
+				ShotkeyState[count->shotcount].m_shot = 3;
+				bullet[count->shotcount].ShotFlag = true;
+
+				if (count->BulletCount < 4)
+				{
+					count->BulletCount = count->BulletCount + 1;
+					count->shotcount += 1;
+				}
+			}
+			else
+				if (GetKeyStatus(DIK_RIGHT))
+				{
+					ShotkeyState[count->shotcount].m_shot = 4;
+					bullet[count->shotcount].ShotFlag = true;
+
+					if (count->BulletCount < 4)
+					{
+						count->BulletCount = count->BulletCount + 1;
+						count->shotcount += 1;
+					}
+				}
+		}
+	}
+
+	
 	if (GetKeyStatus(DIK_R))
 	{
 		bullet->BulletCount = 0;

@@ -15,6 +15,6 @@ public:
 	int m_shot;
 };
 
-void InputKeyState(Count* count, KeyState* keyState, Bullet bullet[5]);
+void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], Bullet bullet[5]);
 
 #endif // !

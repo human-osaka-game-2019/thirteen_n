@@ -29,8 +29,8 @@ void FrameCount(Count* count, KeyState* keyState);
 
 void HitJudge(MainCharacter* mainCara);
 
-void ShotMove(KeyState* keyState, Bullet bullet[5], MainCharacter* mainCara);
+void ShotMove(KeyState keyState[5], Bullet bullet[5], MainCharacter* mainCara);
 
-void ShotHitJudge(Bullet bullet[5], KeyState* keyState, MainCharacter* mainCara);
+void ShotHitJudge(Bullet bullet[5], KeyState keyState[5], MainCharacter* mainCara, Count* count);
 
 #endif // !
