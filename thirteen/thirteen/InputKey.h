@@ -11,8 +11,8 @@
 class KeyState
 {
 public:
-	int Move;
-	int Shot;
+	int m_move;
+	int m_shot;
 };
 
 void InputKeyState(Count* count, KeyState* keyState, Bullet bullet[5]);

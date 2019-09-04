@@ -179,7 +179,7 @@ void HitCharMeteorite(Meteorite meteorite[], MainCharacter* mainCara, Count* cou
 			if ((mainCara->m_pos_y < meteorite[a].m_pos_y + 40)/*自キャラが下から当たった時ののあたり判定*/ && (mainCara->m_pos_y + 40 > meteorite[a].m_pos_y/*自キャラが上から当たった時のあたり判定*/))
 			{
 
-				switch (keyState->Move)
+				switch (keyState->m_move)
 				{
 				case 0:
 					break;

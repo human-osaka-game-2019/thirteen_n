@@ -100,11 +100,11 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 	if (enemy.EnemyDrawState == 1)
 	{
 		// 敵1 緑敵
-		DrawTest(e_green[0].m_pos_x, e_green[0].m_pos_y, e_green[0].m_DrawSize, e_green[0].m_DrawSize, e_green[0].m_pos_tu, e_green[0].m_pos_tv, e_green[0].m_pos_tu_size, e_green[0].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
-		DrawTest(e_green[1].m_pos_x, e_green[1].m_pos_y, e_green[1].m_DrawSize, e_green[1].m_DrawSize, e_green[1].m_pos_tu, e_green[1].m_pos_tv, e_green[1].m_pos_tu_size, e_green[1].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+		DrawTest(e_green[0].m_pos_x, e_green[0].m_pos_y, e_green[0].m_draw_size, e_green[0].m_draw_size, e_green[0].m_pos_tu, e_green[0].m_pos_tv, e_green[0].m_pos_tu_size, e_green[0].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+		DrawTest(e_green[1].m_pos_x, e_green[1].m_pos_y, e_green[1].m_draw_size, e_green[1].m_draw_size, e_green[1].m_pos_tu, e_green[1].m_pos_tv, e_green[1].m_pos_tu_size, e_green[1].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		// 敵2 紫敵
-		DrawTest(e_white[0].m_pos_x, e_white[0].m_pos_y, e_white[0].m_DrawSize, e_white[0].m_DrawSize, e_white[0].m_pos_tu, e_white[0].m_pos_tv, e_white[0].m_pos_tu_size, e_white[0].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
-		DrawTest(e_white[1].m_pos_x, e_white[1].m_pos_y, e_white[1].m_DrawSize, e_white[1].m_DrawSize, e_white[1].m_pos_tu, e_white[1].m_pos_tv, e_white[1].m_pos_tu_size, e_white[1].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+		DrawTest(e_white[0].m_pos_x, e_white[0].m_pos_y, e_white[0].m_draw_size, e_white[0].m_draw_size, e_white[0].m_pos_tu, e_white[0].m_pos_tv, e_white[0].m_pos_tu_size, e_white[0].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+		DrawTest(e_white[1].m_pos_x, e_white[1].m_pos_y, e_white[1].m_draw_size, e_white[1].m_draw_size, e_white[1].m_pos_tu, e_white[1].m_pos_tv, e_white[1].m_pos_tu_size, e_white[1].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 	}
 
 	// メテオ(第一弾)
@@ -112,7 +112,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 	{
 		for (int a = 0; a < 4; a++)
 		{
-			DrawTest(meteorite[a].m_pos_x, meteorite[a].m_pos_y, meteorite[a].m_DrawSize, meteorite[a].m_DrawSize, meteorite[a].m_pos_tu, meteorite[a].m_pos_tv, meteorite[a].m_Tu_Size, meteorite[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+			DrawTest(meteorite[a].m_pos_x, meteorite[a].m_pos_y, meteorite[a].m_draw_size, meteorite[a].m_draw_size, meteorite[a].m_pos_tu, meteorite[a].m_pos_tv, meteorite[a].m_Tu_Size, meteorite[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		}
 
 	}
@@ -122,7 +122,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 	{
 		for (int a = 4; a < 8; a++)
 		{
-			DrawTest(meteorite[a].m_pos_x, meteorite[a].m_pos_y, meteorite[a].m_DrawSize, meteorite[a].m_DrawSize, meteorite[a].m_pos_tu, meteorite[a].m_pos_tv, meteorite[a].m_Tu_Size, meteorite[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+			DrawTest(meteorite[a].m_pos_x, meteorite[a].m_pos_y, meteorite[a].m_draw_size, meteorite[a].m_draw_size, meteorite[a].m_pos_tu, meteorite[a].m_pos_tv, meteorite[a].m_Tu_Size, meteorite[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		}
 
 	}
@@ -153,7 +153,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 	{
 		if (star[a].DrawFlag == true)
 		{
-			DrawTest(star[a].m_pos_x, star[a].m_pos_y, star->m_DrawSize, star->m_DrawSize, star->m_pos_tu, star->m_pos_tv, star->m_pos_tu_size, star->m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+			DrawTest(star[a].m_pos_x, star[a].m_pos_y, star->m_draw_size, star->m_draw_size, star->m_pos_tu, star->m_pos_tv, star->m_pos_tu_size, star->m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		}
 	}
 }

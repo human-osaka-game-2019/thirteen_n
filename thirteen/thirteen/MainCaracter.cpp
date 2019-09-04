@@ -22,21 +22,21 @@ void MoveCharacter(Count* count, KeyState* keyState, MainCharacter* mainCara)
 {
 	if (count->re_input_move_key < 10)
 	{
-		switch (keyState->Move)
+		switch (keyState->m_move)
 		{
 		case 0:
 			break;
 		case 1:
-			mainCara->m_pos_y = mainCara->m_pos_y + 4;
+			mainCara->m_pos_y = mainCara->m_pos_y + mainCara->m_move_speed;
 			break;
 		case 2:
-			mainCara->m_pos_y = mainCara->m_pos_y - 4;
+			mainCara->m_pos_y = mainCara->m_pos_y - mainCara->m_move_speed;
 			break;
 		case 3:
-			mainCara->m_pos_x= mainCara->m_pos_x - 4;
+			mainCara->m_pos_x= mainCara->m_pos_x - mainCara->m_move_speed;
 			break;
 		case 4:
-			mainCara->m_pos_x = mainCara->m_pos_x + 4;
+			mainCara->m_pos_x = mainCara->m_pos_x + mainCara->m_move_speed;
 			break;
 		}
 	}
@@ -91,7 +91,7 @@ void FrameCount(Count* count, KeyState* keyState)
 	if (count->re_input_move_key > 10)
 	{
 		count->re_input_move_key = 0;
-		keyState->Move = 0;
+		keyState->m_move = 0;
 	}
 }
 
@@ -101,22 +101,22 @@ void HitJudge(MainCharacter* mainCara)
 
 	if (mainCara->m_pos_x < 80)
 	{
-		mainCara->m_pos_x = mainCara->m_pos_x + 4;
+		mainCara->m_pos_x = mainCara->m_pos_x + mainCara->m_move_speed;
 	}
 	else
 		if (mainCara->m_pos_x > 1160)
 		{
-			mainCara->m_pos_x = mainCara->m_pos_x - 4;
+			mainCara->m_pos_x = mainCara->m_pos_x - mainCara->m_move_speed;
 		}
 		else
 			if (mainCara->m_pos_y < 80)
 			{
-				mainCara->m_pos_y = mainCara->m_pos_y + 4;
+				mainCara->m_pos_y = mainCara->m_pos_y + mainCara->m_move_speed;
 			}
 			else
 				if (mainCara->m_pos_y > 840)
 				{
-					mainCara->m_pos_y = mainCara->m_pos_y - 4;
+					mainCara->m_pos_y = mainCara->m_pos_y - mainCara->m_move_speed;
 				}
 
 }

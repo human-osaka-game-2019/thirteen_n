@@ -15,6 +15,8 @@ public:
 	float m_pos_tv = (float)0 / 512;
 	float m_pos_tv_size = (float)40 / 512;
 
+	float m_move_speed = 4;
+
 	float Add_TvSize;
 	void InputTv(int Tv, int Tv_Size);
 };

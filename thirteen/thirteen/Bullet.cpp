@@ -9,7 +9,7 @@
 /*
 void Shot(Bullet bullet[5], KeyState* keyState)
 {
-	switch (keyState->Shot)
+	switch (keyState->m_shot)
 	{
 	case 0:
 		break;
@@ -53,7 +53,7 @@ void ShotMove(KeyState* keyState, Bullet bullet[5], MainCharacter* mainCara)
 
 	if (bullet[0].ShotFlag == true)
 	{
-		switch (keyState->Shot)
+		switch (keyState->m_shot)
 		{
 		case 0:
 			break;
@@ -80,7 +80,7 @@ void ShotHitJudge(Bullet bullet[5], KeyState* keyState, MainCharacter* mainCara)
 	if (bullet[0].m_pos_x < 80)
 	{
 		bullet[0].ShotFlag = false;
-		keyState->Shot = 0;
+		keyState->m_shot = 0;
 		bullet[0].m_pos_x = mainCara->m_pos_x;
 		bullet[0].m_pos_y = mainCara->m_pos_y;
 	}
@@ -88,7 +88,7 @@ void ShotHitJudge(Bullet bullet[5], KeyState* keyState, MainCharacter* mainCara)
 		if (bullet->m_pos_x > 1160)
 		{
 			bullet[0].ShotFlag = false;
-			keyState->Shot = 0;
+			keyState->m_shot = 0;
 			bullet[0].m_pos_x = mainCara->m_pos_x;
 			bullet[0].m_pos_y = mainCara->m_pos_y;
 		}
@@ -96,7 +96,7 @@ void ShotHitJudge(Bullet bullet[5], KeyState* keyState, MainCharacter* mainCara)
 			if (bullet->m_pos_y < 80)
 			{
 				bullet[0].ShotFlag = false;
-				keyState->Shot = 0;
+				keyState->m_shot = 0;
 				bullet[0].m_pos_x = mainCara->m_pos_x;
 				bullet[0].m_pos_y = mainCara->m_pos_y;
 			}
@@ -104,7 +104,7 @@ void ShotHitJudge(Bullet bullet[5], KeyState* keyState, MainCharacter* mainCara)
 				if (bullet->m_pos_y > 840)
 				{
 					bullet[0].ShotFlag = false;
-					keyState->Shot = 0;
+					keyState->m_shot = 0;
 					bullet[0].m_pos_x = mainCara->m_pos_x;
 					bullet[0].m_pos_y = mainCara->m_pos_y;
 				}

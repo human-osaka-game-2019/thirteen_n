@@ -17,35 +17,35 @@ Enemy_White e_white[2];
 // キーの入力情報設定
 void InputKeyState(Count* count, KeyState* keyState, Bullet bullet[5])
 {
-	if (keyState->Move == 0)
+	if (keyState->m_move == 0)
 	{
 		count->re_input_move_key = 0;
 
 		if (GetKeyStatus(DIK_S))
 		{
-			keyState->Move = 1;
+			keyState->m_move = 1;
 		}
 		else
 			if (GetKeyStatus(DIK_W))
 			{
-				keyState->Move = 2;
+				keyState->m_move = 2;
 			}
 		if (GetKeyStatus(DIK_A))
 		{
-			keyState->Move = 3;
+			keyState->m_move = 3;
 		}
 		else
 			if (GetKeyStatus(DIK_D))
 			{
-				keyState->Move = 4;
+				keyState->m_move = 4;
 			}
 	}
 
-	if (keyState->Shot == 0)
+	if (keyState->m_shot == 0)
 	{
 		if (GetKeyStatus(DIK_DOWN))
 		{
-			keyState->Shot = 1;
+			keyState->m_shot = 1;
 			bullet[0].ShotFlag = true;
 
 			if (count->BulletCount < 4)
@@ -57,7 +57,7 @@ void InputKeyState(Count* count, KeyState* keyState, Bullet bullet[5])
 		else
 			if (GetKeyStatus(DIK_UP))
 			{
-				keyState->Shot = 2;
+				keyState->m_shot = 2;
 				bullet[0].ShotFlag = true;
 
 				if (count->BulletCount < 4)
@@ -67,7 +67,7 @@ void InputKeyState(Count* count, KeyState* keyState, Bullet bullet[5])
 			}
 		if (GetKeyStatus(DIK_LEFT))
 		{
-			keyState->Shot = 3;
+			keyState->m_shot = 3;
 			bullet[0].ShotFlag = true;
 
 			if (count->BulletCount < 4)
@@ -78,7 +78,7 @@ void InputKeyState(Count* count, KeyState* keyState, Bullet bullet[5])
 		else
 			if (GetKeyStatus(DIK_RIGHT))
 			{
-				keyState->Shot = 4;
+				keyState->m_shot = 4;
 				bullet[0].ShotFlag = true;
 
 				if (count->BulletCount < 4)

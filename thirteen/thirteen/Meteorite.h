@@ -12,7 +12,7 @@ class Meteorite
 public:
 	float m_pos_x;
 	float m_pos_y;
-	float m_DrawSize = 40;
+	float m_draw_size = 40;
 	float m_pos_tu = (float)80 / 1024;
 	float m_Tu_Size = (float)120 / 1024;
 	float m_pos_tv = (float)40 / 512;
