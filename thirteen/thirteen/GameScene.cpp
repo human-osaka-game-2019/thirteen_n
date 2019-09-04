@@ -100,12 +100,20 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 
 	if (enemy.EnemyDrawState == 1)
 	{
-		// 敵1 緑敵
-		DrawTest(e_green[0].m_pos_x, e_green[0].m_pos_y, e_green[0].m_draw_size, e_green[0].m_draw_size, e_green[0].m_pos_tu, e_green[0].m_pos_tv, e_green[0].m_pos_tu_size, e_green[0].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
-		DrawTest(e_green[1].m_pos_x, e_green[1].m_pos_y, e_green[1].m_draw_size, e_green[1].m_draw_size, e_green[1].m_pos_tu, e_green[1].m_pos_tv, e_green[1].m_pos_tu_size, e_green[1].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
-		// 敵2 紫敵
-		DrawTest(e_white[0].m_pos_x, e_white[0].m_pos_y, e_white[0].m_draw_size, e_white[0].m_draw_size, e_white[0].m_pos_tu, e_white[0].m_pos_tv, e_white[0].m_pos_tu_size, e_white[0].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
-		DrawTest(e_white[1].m_pos_x, e_white[1].m_pos_y, e_white[1].m_draw_size, e_white[1].m_draw_size, e_white[1].m_pos_tu, e_white[1].m_pos_tv, e_white[1].m_pos_tu_size, e_white[1].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+		for (int a = 0; a < 2; a++)
+		{
+			if (e_green[a].m_draw_flag == 1)
+			{
+				// 敵1 緑敵
+				DrawTest(e_green[a].m_pos_x, e_green[a].m_pos_y, e_green[a].m_draw_size, e_green[a].m_draw_size, e_green[a].m_pos_tu, e_green[a].m_pos_tv, e_green[a].m_pos_tu_size, e_green[a].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+			}
+			if (e_white[a].m_draw_flag == 1)
+			{
+				// 敵2 紫敵
+				DrawTest(e_white[a].m_pos_x, e_white[a].m_pos_y, e_white[a].m_draw_size, e_white[a].m_draw_size, e_white[a].m_pos_tu, e_white[a].m_pos_tv, e_white[a].m_pos_tu_size, e_white[a].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+
+			}
+		}
 	}
 
 	// メテオ(第一弾)
@@ -206,6 +214,7 @@ void UpdateGameScene(Count* count)
 
 	HitBulletStar(&mainCara,star,count,&keyState);
 
+	HitBulletEnemy(bullet, count, e_green, e_white, ShotkeyState);
 
 	if (GetKeyStatus(DIK_RETURN))
 	{

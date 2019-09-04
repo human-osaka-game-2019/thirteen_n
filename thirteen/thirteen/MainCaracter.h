@@ -3,6 +3,7 @@
 
 #include"Engine.h"
 #include"Device.h"
+#include"Enemy.h"
 
 class MainCharacter
 {
@@ -32,5 +33,7 @@ void HitJudge(MainCharacter* mainCara);
 void ShotMove(KeyState keyState[5], Bullet bullet[5], MainCharacter* mainCara);
 
 void ShotHitJudge(Bullet bullet[5], KeyState keyState[5], MainCharacter* mainCara, Count* count);
+
+void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[]);
 
 #endif // !
