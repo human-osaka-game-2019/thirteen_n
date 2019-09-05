@@ -1,6 +1,7 @@
 ﻿#include"Engine.h"
 #include"Device.h"
 #include"GameScene.h"
+#include<SoundsManager.h>
 
 #include"InputKey.h"
 #include"MainCaracter.h"
@@ -9,12 +10,17 @@
 #include <random>
 #include <iostream>
 
+extern SoundLib::SoundsManager m_soundsManager;
+
 // 隕石の描画(一段階目)
 void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[])
 {
 	// if(GetKeyStatus(DIK_M))
 	if (count->Frame0 == (60 * 12))
 	{
+		m_soundsManager.AddFile("Sound/MeteorLanding.wav", "MeteorLand");
+		m_soundsManager.SetVolume("MeteorLand", 20);
+		
 		std::mt19937 mt{ std::random_device{}() };
 
 		// 右上
@@ -66,6 +72,7 @@ void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[
 		meteorite->MeteoriteState = 1;
 		count->draw_meteorite_two_indication = 0;
 		count->draw_meteorite_indication = 0;
+
 	}
 
 	if (meteorite->MeteoriteState == 1)
@@ -84,6 +91,10 @@ void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[
 				}
 				meteorite->MeteoriteState = 0;
 				meteorite->MeteoriteDrawState = 1;
+
+				m_soundsManager.Start("MeteorLand", TRUE);
+
+				m_soundsManager.Stop(_T("MeteorLand"));
 			}
 		}
 	}
@@ -96,6 +107,10 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 	// if(GetKeyStatus(DIK_M))
 	if (count->draw_meteorite_two_indication == (60 * 12))
 	{
+
+		m_soundsManager.AddFile("Sound/MeteorLanding.wav", "MeteorLand");
+		m_soundsManager.SetVolume("MeteorLand", 20);
+
 		std::mt19937 mt{ std::random_device{}() };
 
 		// 右上
@@ -147,6 +162,7 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 		meteorite->MeteoriteState = 1;
 		count->draw_meteorite_two = 0;
 		count->Frame0 = 0;
+
 	}
 
 	if (meteorite->MeteoriteState == 1)
@@ -165,6 +181,10 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 				}
 				meteorite->MeteoriteState = 0;
 				meteorite->MeteoriteDrawStateTwo = 1;
+
+				m_soundsManager.Start("MeteorLand", TRUE);
+
+				m_soundsManager.Stop(_T("MeteorLand"));
 			}
 		}
 	}

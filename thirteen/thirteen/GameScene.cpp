@@ -7,6 +7,7 @@
 #include"Scene.h"
 #include"DrawTexture.h"
 #include"Device.h"
+#include<SoundsManager.h>
 #include"GameScene.h"
 
 #include"InputKey.h"
@@ -16,6 +17,8 @@
 #include"Beam.h"
 #include"Bullet.h"
 #include"Star.h"
+
+extern SoundLib::SoundsManager m_soundsManager;
 
 extern int g_SceneStep;
 void DrawGameScene(DirectX* directX, MapChipData MapData);
@@ -121,7 +124,10 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 	{
 		for (int a = 0; a < 4; a++)
 		{
+
 			DrawTest(meteorite[a].m_pos_x, meteorite[a].m_pos_y, meteorite[a].m_draw_size, meteorite[a].m_draw_size, meteorite[a].m_pos_tu, meteorite[a].m_pos_tv, meteorite[a].m_Tu_Size, meteorite[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+			
+		
 		}
 
 	}
@@ -139,10 +145,15 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 	// ソゲキッ
 	for (int a = 0; a < 5; a++)
 	{
+	
 		if (bullet[a].ShotFlag == true)
 		{
+
 			DrawTest(bullet[a].m_pos_x, bullet[a].m_pos_y, bullet->m_draw_size, bullet->m_draw_size, bullet->m_pos_tu, bullet->m_pos_tv, bullet->m_pos_tu_size, bullet->m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+	
 		}
+
+
 	}
 
 	// ビーム横描画

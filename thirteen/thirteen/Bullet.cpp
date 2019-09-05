@@ -10,11 +10,13 @@
 // 弾丸の移動描画
 void ShotMove(KeyState keyState[5], Bullet bullet[5], MainCharacter* mainCara)
 {
+
 	for (int a = 0; a < 5; a++)
 	{
 	
 		if (bullet[a].ShotFlag == false)
 		{
+
 			if (((int)mainCara->m_pos_x % 40 == 0) && ((int)mainCara->m_pos_y % 40 == 0))
 			{
 				bullet[a].m_pos_x = mainCara->m_pos_x;
@@ -33,6 +35,7 @@ void ShotMove(KeyState keyState[5], Bullet bullet[5], MainCharacter* mainCara)
 	{
 		if (bullet[b].ShotFlag == true)
 		{
+
 			switch (keyState[b].m_shot)
 			{
 			case 0:
@@ -48,8 +51,10 @@ void ShotMove(KeyState keyState[5], Bullet bullet[5], MainCharacter* mainCara)
 				break;
 			case 4:
 				bullet[b].m_pos_x = bullet[b].m_pos_x + 5;
-			break;
+				break;
 			}
+
+		
 		}
 	}
 }
