@@ -58,7 +58,7 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 				if (count->BulletCount < 4)
 				{
 					count->BulletCount = count->BulletCount + 1;
-					count->shotcount += 1;
+					// count->shotcount += 1;
 				}
 
 			}
@@ -71,7 +71,7 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 					if (count->BulletCount < 4)
 					{
 						count->BulletCount = count->BulletCount + 1;
-						count->shotcount += 1;
+						//count->shotcount += 1;
 					}
 				}
 			if (GetKeyStatus(DIK_LEFT))
@@ -82,7 +82,7 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 				if (count->BulletCount < 4)
 				{
 					count->BulletCount = count->BulletCount + 1;
-					count->shotcount += 1;
+				//	count->shotcount += 1;
 				}
 			}
 			else
@@ -94,16 +94,12 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 					if (count->BulletCount < 4)
 					{
 						count->BulletCount = count->BulletCount + 1;
-						count->shotcount += 1;
+						//count->shotcount += 1;
 					}
 				}
 		}
 	}
 
-	
-	if (GetKeyStatus(DIK_R))
-	{
-		bullet->BulletCount = 0;
-	}
+
 
 }

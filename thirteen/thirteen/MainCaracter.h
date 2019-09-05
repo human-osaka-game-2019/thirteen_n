@@ -4,6 +4,7 @@
 #include"Engine.h"
 #include"Device.h"
 #include"Enemy.h"
+#include"InputKey.h"
 
 class MainCharacter
 {

@@ -58,6 +58,15 @@ public:
 	int DrawStarCount = 0;
 	void DrawStarCountReset() { DrawStarCount = 0; }
 
+	int StarMotion = 0;
+	void StarMotionCountReset() { StarMotion = 0; }
+
+	int EnemyMotion = 0;
+	void EnemyMotionReset() { EnemyMotion = 0; }
+
+	int MeteoMotion = 0;
+	void MeteoMotionReset() { MeteoMotion = 0; }
+
 	int BeamCount = 6;
 
 	float StarCount = 0;// 取った星の数
@@ -70,6 +79,13 @@ public:
 	void AllReset();
 };
 
+class MeteoMotion
+{
+public:
+	int FramCount = 0;
+	void FramCountAdd();
+	void FramCountReset() { FramCount = 0; }
+};
 
 /**
 * @brief 現在のシーンIDを戻り値で取得する

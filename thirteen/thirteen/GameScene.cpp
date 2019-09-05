@@ -58,27 +58,7 @@ int MapChipList[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH]
 
 };
 
-
-SceneId GameSceneMain(DirectX* directX, Count* count)
-{
-	switch (GetCurrentSceneStep())
-	{
-		// 初期化
-	case SceneStep::InitStep:
-		count->AllReset();
-		InitGameScene(directX);
-		break;
-		// 本編
-	case SceneStep::MainStep:
-		UpdateGameScene(count);
-		break;
-		// 終了
-	case SceneStep::EndStep:
-		return FinisGameScene();
-	}
-	return SceneId::GameScene;
-}
-
+MeteoMotion meteoMotion[8];
 BeamSide beamSide;
 BeamVerticality  beamVerticality;
 Bullet bullet[5];
@@ -91,6 +71,32 @@ KeyState ShotkeyState[5];
 Star star[12];
 Beam beam;
 Enemy enemy;
+
+SceneId GameSceneMain(DirectX* directX, Count* count)
+{
+	switch (GetCurrentSceneStep())
+	{
+		// 初期化
+	case SceneStep::InitStep:
+		count->AllReset();
+		InitGameScene(directX);
+		break;
+		// 本編
+	case SceneStep::MainStep:
+		for (int a = 0; a < 8; a++)
+		{
+			meteoMotion[a].FramCountAdd();
+		}
+		UpdateGameScene(count);
+		break;
+		// 終了
+	case SceneStep::EndStep:
+		return FinisGameScene();
+	}
+	return SceneId::GameScene;
+}
+
+
 
 void DrawGameScene(DirectX* directX, MapChipData MapData)
 {
@@ -120,27 +126,27 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 	}
 
 	// メテオ(第一弾)
-	if (meteorite->MeteoriteDrawState == 1)
-	{
-		for (int a = 0; a < 4; a++)
-		{
 
+	for (int a = 0; a < 4; a++)
+	{
+		if (meteorite[a].MeteoriteDrawState == 1)
+		{
 			DrawTest(meteorite[a].m_pos_x, meteorite[a].m_pos_y, meteorite[a].m_draw_size, meteorite[a].m_draw_size, meteorite[a].m_pos_tu, meteorite[a].m_pos_tv, meteorite[a].m_Tu_Size, meteorite[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
-			
-		
 		}
 
 	}
+
 
 	// メテオ(第二弾)
-	if (meteorite->MeteoriteDrawStateTwo == 1)
+	
+	for (int a = 4; a < 8; a++)
 	{
-		for (int a = 4; a < 8; a++)
+		if (meteorite[a].MeteoriteDrawStateTwo == 1)
 		{
 			DrawTest(meteorite[a].m_pos_x, meteorite[a].m_pos_y, meteorite[a].m_draw_size, meteorite[a].m_draw_size, meteorite[a].m_pos_tu, meteorite[a].m_pos_tv, meteorite[a].m_Tu_Size, meteorite[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		}
-
 	}
+	
 
 	// ソゲキッ
 	for (int a = 0; a < 5; a++)
@@ -184,7 +190,7 @@ void InitGameScene(DirectX* directX)
 {
 	LoadTexture("Texture/main_back.png", &GameTextureData.m_pTexture[GameTextureList::BackTexture], 0, directX);
 	LoadTexture("Texture/map_chip2.png", &GameTextureData.m_pTexture[GameTextureList::MapChipTexture], 0, directX);
-	LoadTexture("Texture/character.png", &GameTextureData.m_pTexture[GameTextureList::CharTexture], 0, directX);
+	LoadTexture("Texture/charactar.png", &GameTextureData.m_pTexture[GameTextureList::CharTexture], 0, directX);
 	LoadTexture("Texture/beam_Side.png", &GameTextureData.m_pTexture[GameTextureList::BeamSideTextutre], 0, directX);
 	LoadTexture("Texture/beam_Ver.png", &GameTextureData.m_pTexture[GameTextureList::BeamVerticalityTexture], 0, directX);
 
@@ -226,6 +232,12 @@ void UpdateGameScene(Count* count)
 	HitBulletStar(&mainCara,star,count,&keyState);
 
 	HitBulletEnemy(bullet, count, e_green, e_white, ShotkeyState);
+
+	StarMotion(count,star);
+
+	HiBulletMeteorite(meteorite,bullet,count, meteoMotion,ShotkeyState);
+
+	DrawBreakMeteorite(meteorite,meteoMotion);
 
 	if (GetKeyStatus(DIK_RETURN))
 	{

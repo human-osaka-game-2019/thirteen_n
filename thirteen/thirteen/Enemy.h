@@ -22,8 +22,8 @@ public:
 	float m_draw_size = 40;
 	float m_pos_tu = (float)0 / 1024;
 	float m_pos_tu_size = (float)40 / 1024;
-	float m_pos_tv = (float)40 / 512;
-	float m_pos_tv_size = (float)80 / 512;
+	float m_pos_tv = (float)80 / 512;
+	float m_pos_tv_size = (float)120 / 512;
 
 	int m_draw_flag = 0;
 
@@ -36,10 +36,10 @@ public:
 	float m_pos_x;
 	float m_pos_y;
 	float m_draw_size = 40;
-	float m_pos_tu = (float)40 / 1024;
-	float m_pos_tu_size = (float)80 / 1024;
-	float m_pos_tv = (float)40 / 512;
-	float m_pos_tv_size = (float)80 / 512;
+	float m_pos_tu = (float)0 / 1024;
+	float m_pos_tu_size = (float)40 / 1024;
+	float m_pos_tv = (float)120 / 512;
+	float m_pos_tv_size = (float)160 / 512;
 
 	int m_draw_flag = 0;
 

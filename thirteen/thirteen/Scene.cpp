@@ -10,12 +10,18 @@
 #include "Option.h"
 #include "GameScene.h"
 #include "ResultScene.h"
+#include"Meteorite.h"
 
 //Pointa point;
 
 void FrameCount(Count* count);
 static SceneId g_CurrentSceneId = SceneId::TitleScene;		// 動作中シーンID
 static SceneStep g_CurrentSceneStep = SceneStep::InitStep;	// 動作中シーンのステップ
+
+void MeteoMotion::FramCountAdd()
+{
+	FramCount += 1;
+}
 
 SceneId GetCurrentSceneId()
 {
@@ -45,6 +51,7 @@ void Count::AllReset()
 	draw_meteorite_two = 0;
 	draw_main_caracter= 0;
 	re_shot_count = 0;
+	StarMotion = 0;
 }
 
 
@@ -142,4 +149,5 @@ void FrameCount(Count* count)
 	count->draw_main_caracter = count->draw_main_caracter + 1;
 	count->DrawStarCount = count->DrawStarCount + 1;
 	count->re_shot_count += 1;
+	count->StarMotion += 1;
 }

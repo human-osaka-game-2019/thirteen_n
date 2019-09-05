@@ -9,6 +9,12 @@
 #include <random>
 #include <iostream>
 
+void Star::InputTuSize(int Tu, int TuSize)
+{
+	m_pos_tu = (float)Tu / 1024;
+	m_pos_tu_size = (float)TuSize / 1024;
+}
+
 // 星の描画
 void DrawStar(Star star[12], Count* count)
 {
@@ -63,3 +69,31 @@ void HitBulletStar(MainCharacter* mainCara, Star star[12], Count* count, KeyStat
 	}
 }
 
+void StarMotion(Count* count, Star star[])
+{
+	for (int a = 0; a < 4; a++)
+	{
+		if (count->StarMotion == 15)
+		{
+			star[a].InputTuSize(880,920);
+		}else
+			if (count->StarMotion == 30)
+			{
+				star[a].InputTuSize(920, 960);
+			}else
+				if (count->StarMotion == 45)
+				{
+					star[a].InputTuSize(960, 1000);
+				}else
+					if (count->StarMotion == 60)
+					{
+						star[a].InputTuSize(840, 880);
+					}
+	} 
+
+	if (count->StarMotion >= 60)
+	{
+		count->StarMotion = 0;
+	}
+
+}
