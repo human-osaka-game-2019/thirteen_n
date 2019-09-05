@@ -3,6 +3,9 @@
 #include"TitleScene.h"
 #include"DrawTexture.h"
 #include"Device.h"
+#include<SoundsManager.h>
+
+extern SoundLib::SoundsManager m_soundsManager;
 
 void DrawTitleScene(DirectX* directX, Count* count);
 void InitTitleScene(DirectX* directX, Count* count);
@@ -39,6 +42,8 @@ void DrawTitleScene(DirectX* directX, Count* count)
 {
 	DrawEx(0, 0, 1280, 960, &TitleTextureData.m_pTexture[TitleTextureList::MainTitleTexture], *directX);
 	DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture], *directX);
+
+	
 }
 
 // 描画設定等
@@ -50,6 +55,13 @@ void InitTitleScene(DirectX* directX, Count* count)
 
 	count->Frame0 = 0;
 
+	m_soundsManager.AddFile("Sound/BGM.mp3", "GameBGM");
+
+	m_soundsManager.SetVolume("GameBGM", 100);
+
+	m_soundsManager.Start("GameBGM", TRUE);
+
+	   
 	ChangeSceneStep(SceneStep::MainStep);
 
 }

@@ -2,14 +2,13 @@
 
 using namespace SoundLib;
 
-const TCHAR* filePath = _T("Sound/MenuPick.wav");
-
+const TCHAR* filePath = _T("Sound/");
 
 bool SoundPlay::SoundState()
 {
-	m_soundsManager.AddFile("Sound/MenuPick.wav", _T("SE")); // Or BGM
+	m_soundsManager.AddFile("thirteen/Sound/BGM.mp3", _T("BGM")); // Or BGM
 
-	m_soundsManager.Start(_T("SE"), true); // Or BGM
+	m_soundsManager.Start(_T("BGM"), true); // Or BGM
 
 	m_soundsManager.Stop(_T("bgm")); // Or BGM
 

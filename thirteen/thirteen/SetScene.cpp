@@ -49,6 +49,7 @@ void InitSetScene(DirectX* directXt)
 	ChangeSceneStep(SceneStep::MainStep);
 }
 
+
 // 次のシーンに行くための条件記入
 void UpdateSetScene()
 {
