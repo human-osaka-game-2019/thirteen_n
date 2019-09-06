@@ -2,6 +2,7 @@
 #include"Device.h"
 #include"Enemy.h"
 #include"Scene.h"
+#include <SoundsManager.h>
 
 #include"Enemy.h"
 #include"Bullet.h"
@@ -9,6 +10,8 @@
 
 #include <random>
 #include <iostream>
+
+extern SoundLib::SoundsManager m_soundsManager;
 
 // 敵の描画
 void DrawEnemy(Count* count  , int MapChipList[20][28], Enemy_Green e_green[], Enemy_White e_white[],Enemy * enemy)
@@ -136,6 +139,9 @@ void EnemyMove(Count* count  , Enemy_Green e_green[], Enemy_White e_white[],Enem
 // 敵と弾丸のあたり判定
 void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[])
 {
+	m_soundsManager.AddFile("Sound/AlienDestroy.wav", "AlienDead");
+	m_soundsManager.SetVolume("AlienDead", 15);
+
 	// 敵の数　緑＊２　白＊２
 	for (int a = 0; a < 2; a++)
 	{
@@ -158,9 +164,16 @@ void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_
 						{
 							count->BulletCount = 0;
 							count->shotcount = 0;
+
 						}
+
+						m_soundsManager.Start("AlienDead");
+
 					}
+
+
 				}
+
 
 				if ((bullet[b].m_pos_x+ 40 > e_white[a].m_pos_x /*弾の右のあたり判定*/) && (bullet[b].m_pos_x < e_white[a].m_pos_x + 40)/*弾の左のあたり判定*/)
 				{
@@ -176,11 +189,20 @@ void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_
 						{
 							count->BulletCount = 0;
 							count->shotcount = 0;
+
 						}
+
+						m_soundsManager.Start("AlienDead");
+
 					}
+
 				}
+
 			}
+
 		}
 	}
+
+	
 }
 

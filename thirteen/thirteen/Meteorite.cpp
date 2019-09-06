@@ -26,7 +26,7 @@ void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[
 	if (count->Frame0 == (60 * 12))
 	{
 		m_soundsManager.AddFile("Sound/MeteorLanding.wav", "MeteorLand");
-		m_soundsManager.SetVolume("MeteorLand", 20);
+		m_soundsManager.SetVolume("MeteorLand", 18);
 		
 		std::mt19937 mt{ std::random_device{}() };
 
@@ -121,7 +121,7 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 	{
 
 		m_soundsManager.AddFile("Sound/MeteorLanding.wav", "MeteorLand");
-		m_soundsManager.SetVolume("MeteorLand", 20);
+		m_soundsManager.SetVolume("MeteorLand", 18);
 
 		std::mt19937 mt{ std::random_device{}() };
 
@@ -244,6 +244,7 @@ void HitCharMeteorite(Meteorite meteorite[], MainCharacter* mainCara, Count* cou
 
 void HiBulletMeteorite(Meteorite meteorite[],Bullet bullet[], Count* count, MeteoMotion  meteoMotion[], KeyState keyState[])
 {
+
 	// for (int a = 0; a < 5; a++)
 	if (keyState[0].m_shot > 0)
 	{
@@ -287,6 +288,10 @@ void HiBulletMeteorite(Meteorite meteorite[],Bullet bullet[], Count* count, Mete
 
 void DrawBreakMeteorite(Meteorite meteorite[], MeteoMotion  meteoMotion[])
 {
+
+	m_soundsManager.AddFile("Sound/MeteorDestroy.wav", "MeteorDestroy");
+	m_soundsManager.SetVolume("MeteorDestroy", 40);
+
 	for (int a = 0; a < 8; a++)
 	{
 
@@ -324,12 +329,20 @@ void DrawBreakMeteorite(Meteorite meteorite[], MeteoMotion  meteoMotion[])
 								}
 									if (a >= 4 && a < 8)
 									{
+
 										meteorite[a].MeteoriteDrawStateTwo = 0;
 										meteorite[a].m_pos_x = 0;
 										meteorite[a].m_pos_y = 0;
+
 									}
 							}
+
+		m_soundsManager.Start("MeteorDestroy");
+
 		}
 
+		
+
 	}
+
 }

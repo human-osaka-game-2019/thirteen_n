@@ -1,6 +1,7 @@
 ﻿#include"Engine.h"
 #include"Device.h"
 #include"GameScene.h"
+#include <SoundsManager.h>
 
 #include"InputKey.h"
 #include"MainCaracter.h"
@@ -8,6 +9,8 @@
 
 #include <random>
 #include <iostream>
+
+extern SoundLib::SoundsManager m_soundsManager;
 
 void Star::InputTuSize(int Tu, int TuSize)
 {
@@ -50,6 +53,9 @@ void DrawStar(Star star[12], Count* count)
 void HitBulletStar(MainCharacter* mainCara, Star star[12], Count* count, KeyState* keyState)
 {
 
+	m_soundsManager.AddFile("Sound/GetStar.wav", "GetStar");
+	m_soundsManager.SetVolume("GetStar", 15);
+
 	for (int a = 0; a < 12; a++)
 	{
 
@@ -64,9 +70,14 @@ void HitBulletStar(MainCharacter* mainCara, Star star[12], Count* count, KeyStat
 				star[a].m_pos_x = 0;
 				star[a].m_pos_y = 0;
 
+				m_soundsManager.Start("GetStar");
+
 			}
+
 		}
+
 	}
+
 }
 
 void StarMotion(Count* count, Star star[])
