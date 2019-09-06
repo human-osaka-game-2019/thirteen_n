@@ -105,9 +105,8 @@ void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[
 					meteorite[a].MeteoriteDrawState = 1;
 				}
 
-				m_soundsManager.Start("MeteorLand", TRUE);
+				m_soundsManager.Start("MeteorLand");
 
-				m_soundsManager.Stop(_T("MeteorLand"));
 			}
 		}
 	}
@@ -200,9 +199,7 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 				{
 					meteorite[a].MeteoriteDrawStateTwo = 1;
 				}
-				m_soundsManager.Start("MeteorLand", TRUE);
-
-				m_soundsManager.Stop(_T("MeteorLand"));
+				m_soundsManager.Start("MeteorLand");
 			}
 		}
 	}

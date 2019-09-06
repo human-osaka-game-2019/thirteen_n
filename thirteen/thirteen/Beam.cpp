@@ -1,12 +1,16 @@
 ﻿#include"Engine.h"
 #include"Device.h"
 #include"GameScene.h"
+#include<SoundsManager.h>
 
 #include"Beam.h"
 
 
 #include <random>
 #include <iostream>
+
+
+extern SoundLib::SoundsManager m_soundsManager;
 
 
 // ビーム描画位置入力関数(横)
@@ -26,6 +30,7 @@ void BeamVerticality::InputVerticalityPosTv(float Tv, float TvSize)
 // ビーム描画(複数)
 void SetBeams(Count* count  , int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, int WidthDarwNumber, int HeightDrawNumber)
 {
+
 	std::mt19937 mt{ std::random_device{}() };
 
 	for (int WidthDrawCount = 0; WidthDrawCount < WidthDarwNumber; WidthDrawCount++)
@@ -142,17 +147,19 @@ void SetBeam_first(Count* count, int MapChipList[20][28], BeamSide* beamSide, Be
 
 	if (count->draw_beam == 120)
 	{
+
 		if (beam->beam_direction == 1)
 		{
 			beamVerticality->BeamVerticalityeFlag = true;
 		}
-		else
-			if (beam->beam_direction == 2)
-			{
-				beamSide->BeamSideFlag = true;
-
-			}
+		else if (beam->beam_direction == 2)
+		{
+			beamSide->BeamSideFlag = true;
+		}
+		
 	}
+
+	
 
 	if ((beamVerticality->BeamVerticalityeFlag == true) || (beamSide->BeamSideFlag == true))
 	{

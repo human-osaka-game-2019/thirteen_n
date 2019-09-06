@@ -1,11 +1,13 @@
 ﻿#include"Engine.h"
 #include"Device.h"
 #include"GameScene.h"
+#include <SoundsManager.h>
 
 #include"Bullet.h"
 #include"InputKey.h"
 #include"MainCaracter.h"
 
+extern SoundLib::SoundsManager m_soundsManager;
 
 // 弾丸の移動描画
 void ShotMove(KeyState keyState[5], Bullet bullet[5], MainCharacter* mainCara)

@@ -154,9 +154,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 		if (bullet[a].ShotFlag == true)
 		{
 			DrawTest(bullet[a].m_pos_x, bullet[a].m_pos_y, bullet->m_draw_size, bullet[a].m_draw_size, bullet->m_pos_tu, bullet->m_pos_tv, bullet->m_pos_tu_size, bullet->m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
-	
 		}
-
 
 	}
 
@@ -172,13 +170,19 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 	// ビーム横描画
 	if (beamSide.BeamSideFlag == true)
 	{
+
 		DrawTest(beamSide.m_pos_x, /**/beamSide.m_pos_y, beamSide.m_draw_size_width, beamSide.m_draw_size_hight, beamSide.m_pos_tu, beamSide.m_pos_tv, beamSide.m_pos_tu_size, beamSide.m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::BeamSideTextutre], *directX);
+		m_soundsManager.Start("LaserBeam");
+
 	}
 
 	// ビーム縦描画
 	if (beamVerticality.BeamVerticalityeFlag == true)
 	{
+
 		DrawTest(/**/beamVerticality.m_pos_x, beamVerticality.m_pos_y, beamVerticality.m_draw_size_width, beamVerticality.m_draw_size_hight, beamVerticality.m_pos_tu, beamVerticality.m_pos_tv, beamVerticality.m_pos_tu_size, beamVerticality.m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::BeamVerticalityTexture], *directX);
+		m_soundsManager.Start("LaserBeam");
+
 	}
 
 
@@ -193,6 +197,12 @@ void InitGameScene(DirectX* directX)
 	LoadTexture("Texture/charactar.png", &GameTextureData.m_pTexture[GameTextureList::CharTexture], 0, directX);
 	LoadTexture("Texture/beam_Side.png", &GameTextureData.m_pTexture[GameTextureList::BeamSideTextutre], 0, directX);
 	LoadTexture("Texture/beam_Ver.png", &GameTextureData.m_pTexture[GameTextureList::BeamVerticalityTexture], 0, directX);
+
+	m_soundsManager.AddFile("Sound/Beam.wav", "LaserBeam");
+	m_soundsManager.SetVolume("LaserBeam", 15);
+	m_soundsManager.AddFile("Sound/Bullet.wav", "Bullet");
+	m_soundsManager.SetVolume("Bullet", 15);
+
 
 	ChangeSceneStep(SceneStep::MainStep);
 }
