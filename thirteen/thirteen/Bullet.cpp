@@ -62,7 +62,7 @@ void ShotMove(KeyState keyState[5], Bullet bullet[5], MainCharacter* mainCara)
 // 弾丸のあたり判定
 void ShotHitJudge(Bullet bullet[5], KeyState keyState[5], MainCharacter* mainCara,Count *count)
 {
-	for (int a = 0; a < 5; a++)
+	for (int a = 0; a < 12; a++)
 	{
 
 		if (bullet[a].m_pos_x < 80)
@@ -71,7 +71,6 @@ void ShotHitJudge(Bullet bullet[5], KeyState keyState[5], MainCharacter* mainCar
 			keyState[a].m_shot = 0;
 			bullet[a].m_pos_x = mainCara->m_pos_x;
 			bullet[a].m_pos_y = mainCara->m_pos_y;
-			// count->shotcount -= 1;
 		}
 		else
 			if (bullet[a].m_pos_x > 1160)
@@ -80,7 +79,6 @@ void ShotHitJudge(Bullet bullet[5], KeyState keyState[5], MainCharacter* mainCar
 				keyState[a].m_shot = 0;
 				bullet[a].m_pos_x = mainCara->m_pos_x;
 				bullet[a].m_pos_y = mainCara->m_pos_y;
-				// count->shotcount -= 1;
 			}
 			else
 				if (bullet[a].m_pos_y < 80)
@@ -89,7 +87,6 @@ void ShotHitJudge(Bullet bullet[5], KeyState keyState[5], MainCharacter* mainCar
 					keyState[a].m_shot = 0;
 					bullet[a].m_pos_x = mainCara->m_pos_x;
 					bullet[a].m_pos_y = mainCara->m_pos_y;
-					// count->shotcount -= 1;
 				}
 				else
 					if (bullet[a].m_pos_y > 840)
@@ -98,7 +95,6 @@ void ShotHitJudge(Bullet bullet[5], KeyState keyState[5], MainCharacter* mainCar
 						keyState[a].m_shot = 0;
 						bullet[a].m_pos_x = mainCara->m_pos_x;
 						bullet[a].m_pos_y = mainCara->m_pos_y;
-						// count->shotcount -= 1;
 					}
 	}
 }

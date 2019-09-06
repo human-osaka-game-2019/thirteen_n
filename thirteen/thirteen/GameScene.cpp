@@ -61,13 +61,13 @@ int MapChipList[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH]
 MeteoMotion meteoMotion[8];
 BeamSide beamSide;
 BeamVerticality  beamVerticality;
-Bullet bullet[5];
+Bullet bullet[12];
 Meteorite meteorite[8];
 Enemy_Green e_green[2];
 Enemy_White e_white[2];
 MainCharacter mainCara;
 KeyState keyState;
-KeyState ShotkeyState[5];
+KeyState ShotkeyState[12];
 Star star[12];
 Beam beam;
 Enemy enemy;
@@ -149,17 +149,24 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 	
 
 	// ソゲキッ
-	for (int a = 0; a < 5; a++)
+	for (int a = 0; a < 12; a++)
 	{
-	
 		if (bullet[a].ShotFlag == true)
 		{
-
-			DrawTest(bullet[a].m_pos_x, bullet[a].m_pos_y, bullet->m_draw_size, bullet->m_draw_size, bullet->m_pos_tu, bullet->m_pos_tv, bullet->m_pos_tu_size, bullet->m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+			DrawTest(bullet[a].m_pos_x, bullet[a].m_pos_y, bullet->m_draw_size, bullet[a].m_draw_size, bullet->m_pos_tu, bullet->m_pos_tv, bullet->m_pos_tu_size, bullet->m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 	
 		}
 
 
+	}
+
+	// 星の描画(基本4つ、最大12)
+	for (int a = 0; a < 12; a++)
+	{
+		if (star[a].DrawFlag == true)
+		{
+			DrawTest(star[a].m_pos_x, star[a].m_pos_y, star->m_draw_size, star->m_draw_size, star->m_pos_tu, star->m_pos_tv, star->m_pos_tu_size, star->m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
+		}
 	}
 
 	// ビーム横描画
@@ -174,14 +181,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData)
 		DrawTest(/**/beamVerticality.m_pos_x, beamVerticality.m_pos_y, beamVerticality.m_draw_size_width, beamVerticality.m_draw_size_hight, beamVerticality.m_pos_tu, beamVerticality.m_pos_tv, beamVerticality.m_pos_tu_size, beamVerticality.m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::BeamVerticalityTexture], *directX);
 	}
 
-	// 星の描画(基本4つ、最大12)
-	for (int a = 0; a < 12; a++)
-	{
-		if (star[a].DrawFlag == true)
-		{
-			DrawTest(star[a].m_pos_x, star[a].m_pos_y, star->m_draw_size, star->m_draw_size, star->m_pos_tu, star->m_pos_tv, star->m_pos_tu_size, star->m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
-		}
-	}
+
 }
 
 

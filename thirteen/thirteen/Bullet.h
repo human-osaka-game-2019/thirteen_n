@@ -12,9 +12,9 @@ public:
 	float m_pos_tu_size = (float)40 / 1024;
 	float m_pos_tv = (float)0 / 512;
 	float m_pos_tv_size = (float)40 / 512;
-
+	
 	float BulletCount = 0;
-
+	float ReShot = 0;
 };
 
 //void ShotMove(KeyState* keyState, Bullet bullet[5], MainCaracter* MainCara);

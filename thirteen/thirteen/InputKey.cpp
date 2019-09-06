@@ -44,59 +44,54 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 	if (count->re_shot_count > 10)
 	{
 		count->re_shot_count = 0;
+		bullet->ReShot = 0;
 	}
 
 	if (count->re_shot_count == 0)
 	{
-		if (ShotkeyState[count->shotcount].m_shot == 0)
-		{
-			if (GetKeyStatus(DIK_DOWN))
+		for(int a = 0; a < 12; a ++)
+		{ 
+			if (ShotkeyState[a].m_shot == 0)
 			{
-				ShotkeyState[count->shotcount].m_shot = 1;
-				bullet[count->shotcount].ShotFlag = true;
-
-				if (count->BulletCount < 4)
-				{
-					count->BulletCount = count->BulletCount + 1;
-					// count->shotcount += 1;
-				}
-
-			}
-			else
-				if (GetKeyStatus(DIK_UP))
-				{
-					ShotkeyState[count->shotcount].m_shot = 2;
-					bullet[count->shotcount].ShotFlag = true;
-
+				if(bullet->ReShot == 0)
+				{ 
 					if (count->BulletCount < 4)
 					{
-						count->BulletCount = count->BulletCount + 1;
-						//count->shotcount += 1;
-					}
-				}
-			if (GetKeyStatus(DIK_LEFT))
-			{
-				ShotkeyState[count->shotcount].m_shot = 3;
-				bullet[count->shotcount].ShotFlag = true;
 
-				if (count->BulletCount < 4)
-				{
-					count->BulletCount = count->BulletCount + 1;
-				//	count->shotcount += 1;
+						if (GetKeyStatus(DIK_DOWN))
+						{
+							bullet->ReShot == 1;
+							ShotkeyState[a].m_shot = 1;
+							bullet[a].ShotFlag = true;
+							count->BulletCount += 1;
+						}
+						else
+							if (GetKeyStatus(DIK_UP))
+							{
+								bullet->ReShot = 1;
+								ShotkeyState[a].m_shot = 2;
+								bullet[a].ShotFlag = true;
+								count->BulletCount += 1;
+							}
+
+						if (GetKeyStatus(DIK_LEFT))
+						{
+							bullet->ReShot = 1;
+							ShotkeyState[a].m_shot = 3;
+							bullet[a].ShotFlag = true;
+							count->BulletCount += 1;
+						}
+						else
+							if (GetKeyStatus(DIK_RIGHT))
+							{
+								bullet->ReShot = 1;
+								ShotkeyState[a].m_shot = 4;
+								bullet[a].ShotFlag = true;
+								count->BulletCount += 1;
+							}
+					}
 				}
 			}
-			else
-				if (GetKeyStatus(DIK_RIGHT))
-				{
-					ShotkeyState[count->shotcount].m_shot = 4;
-					bullet[count->shotcount].ShotFlag = true;
-
-					if (count->BulletCount < 4)
-					{
-						count->BulletCount = count->BulletCount + 1;
-						//count->shotcount += 1;
-					}
-				}
 		}
 	}
 
