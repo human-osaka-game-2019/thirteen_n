@@ -245,6 +245,8 @@ void UpdateGameScene(Count* count)
 
 	DrawEnemy(count , MapChipList, e_green, e_white,&enemy);
 
+	EnemyMotion(count, e_green, e_white, &enemy);
+
 	ShotMove(ShotkeyState,bullet,&mainCara);
 
 	ShotHitJudge(bullet, ShotkeyState, &mainCara,count);

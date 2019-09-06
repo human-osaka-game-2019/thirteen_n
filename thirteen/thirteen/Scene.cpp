@@ -150,4 +150,6 @@ void FrameCount(Count* count)
 	count->re_shot_count += 1;
 	count->StarMotion += 1;
 	count->TitleScene += 1;
+	count->EnemyGreenMotion += 1;
+	count->EnemyWhiteMotion += 1;
 }

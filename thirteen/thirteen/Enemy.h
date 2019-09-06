@@ -22,6 +22,8 @@ public:
 	float m_draw_size = 40;
 	float m_pos_tu = (float)0 / 1024;
 	float m_pos_tu_size = (float)40 / 1024;
+	void InputTu(float tu, float tuSize);
+
 	float m_pos_tv = (float)80 / 512;
 	float m_pos_tv_size = (float)120 / 512;
 
@@ -38,6 +40,8 @@ public:
 	float m_draw_size = 40;
 	float m_pos_tu = (float)0 / 1024;
 	float m_pos_tu_size = (float)40 / 1024;
+	void InputTu(float tu, float tuSize);
+
 	float m_pos_tv = (float)120 / 512;
 	float m_pos_tv_size = (float)160 / 512;
 
@@ -49,6 +53,6 @@ void DrawEnemy(Count* count  , int MapChipList[20][28], Enemy_Green e_green[], E
 
 void EnemyMove(Count* count  , Enemy_Green e_green[], Enemy_White e_white[], Enemy* enemy);
 
-
+void EnemyMotion(Count* count, Enemy_Green e_green[], Enemy_White e_white[], Enemy* enemy);
 
 #endif // !

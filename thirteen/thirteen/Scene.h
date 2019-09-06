@@ -60,9 +60,11 @@ public:
 
 	int StarMotion = 0;
 	void StarMotionCountReset() { StarMotion = 0; }
+	
+	int EnemyGreenMotion = 0;
+	void EnemyMotionReset() { EnemyGreenMotion = 0; }
 
-	int EnemyMotion = 0;
-	void EnemyMotionReset() { EnemyMotion = 0; }
+	int EnemyWhiteMotion = 0;
 
 	int MeteoMotion = 0;
 	void MeteoMotionReset() { MeteoMotion = 0; }

@@ -13,6 +13,19 @@
 
 extern SoundLib::SoundsManager m_soundsManager;
 
+void Enemy_Green::InputTu(float tu, float tuSize) 
+{
+
+	m_pos_tu = (float)tu / 1024;
+	m_pos_tu_size = (float)(tu + tuSize) / 1024;
+};
+
+void Enemy_White::InputTu(float tu, float tuSize)
+{
+	m_pos_tu = (float)tu / 1024;
+	m_pos_tu_size = (float)(tu + tuSize) / 1024;
+}
+
 // 敵の描画
 void DrawEnemy(Count* count  , int MapChipList[20][28], Enemy_Green e_green[], Enemy_White e_white[],Enemy * enemy)
 {
@@ -83,6 +96,8 @@ void DrawEnemy(Count* count  , int MapChipList[20][28], Enemy_Green e_green[], E
 				enemy->EnemyState = 0;
 			}
 			enemy->EnemyDrawState = 1;
+			count->EnemyGreenMotion = 0;
+			count->EnemyWhiteMotion = 0;
 		}
 	}
 }
@@ -131,6 +146,68 @@ void EnemyMove(Count* count  , Enemy_Green e_green[], Enemy_White e_white[],Enem
 		if (e_green[0].m_draw_flag == 2 && e_green[1].m_draw_flag == 2)
 		{
 			enemy->EnemyDrawState = 0;
+
+		}
+	}
+}
+
+void EnemyMotion(Count* count, Enemy_Green e_green[], Enemy_White e_white[], Enemy* enemy)
+{
+	if (enemy->EnemyDrawState == 1)
+	{
+		for (int a = 0; a < 2; a++)
+		{
+			switch (count->EnemyGreenMotion)
+			{
+			case 10:
+				e_green[a].InputTu(40, 40);
+				break;
+			case 20: 
+				e_green[a].InputTu(80, 40);
+				break;
+			case 30:
+				e_green[a].InputTu(120, 40);
+				break;
+			case 40:
+				e_green[a].InputTu(160, 40);
+				break;
+			case 50:
+				e_green[a].InputTu(200, 40);
+				break;
+			case 60:
+				e_green[a].InputTu(240, 40);
+				break;
+			case 70:
+				e_green[a].InputTu(280, 40);
+				break;
+			case 80:
+				e_green[a].InputTu(0, 40);
+				count->EnemyGreenMotion = 0;
+				break;
+			}
+
+			switch (count->EnemyWhiteMotion)
+			{
+			case 10:
+				e_white[a].InputTu(40, 40);
+				break;
+			case 20:
+				e_white[a].InputTu(80, 40);
+				break;
+			case 30:
+				e_white[a].InputTu(120, 40);
+				break;
+			case 40:
+				e_white[a].InputTu(160, 40);
+				break;
+			case 50:
+				e_white[a].InputTu(200, 40);
+				break;
+			case 60:
+				e_white[a].InputTu(0, 40);
+				count->EnemyWhiteMotion = 0;
+				break;
+			}
 
 		}
 	}
