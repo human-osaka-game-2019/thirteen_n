@@ -61,6 +61,6 @@ SceneId FinisOptionScene()
 		OptionTextureData.m_pTexture[a] = nullptr;
 	}
 	// 次のシーンの遷移先IDを返す
-	return SceneId::SetScene;
+	return SceneId::ResultSceneTwo;
 }
 

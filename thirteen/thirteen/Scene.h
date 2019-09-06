@@ -15,7 +15,7 @@ enum SceneStep
 enum SceneId
 {
 	TitleScene,			//!< タイトルシーン
-	SetScene,			//!< 難易度設定シーン
+	ResultSceneTwo,			//!< 難易度設定シーン
 	OptionScene,        //!< ヘルプ(遊戯説明画面)シーン
 	GameScene,			//!< ゲーム本編シーン
 	ResultScene,		//!< リザルトシーン

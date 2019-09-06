@@ -6,7 +6,7 @@
 
 #include "Scene.h"
 #include "TitleScene.h"
-#include "SetScene.h"
+#include "ResultSceneTwo.h"
 #include "Option.h"
 #include "GameScene.h"
 #include "ResultScene.h"
@@ -72,8 +72,8 @@ void UpdateScene(DirectX* directX, MapChipData MapData  , Count* count)
 			result_id = TitleSceneMain(directX, count);
 			break;
 			// 難易度設定シーン
-		case SceneId::SetScene:
-			result_id = SetSceneMain(directX, count );
+		case SceneId::ResultSceneTwo:
+			result_id = ResultSceneTwoMain(directX, count );
 			break;
 			// 設定、ヘルプシーン
 		case SceneId::OptionScene:
@@ -115,8 +115,8 @@ void DrawScene(DirectX* directX, MapChipData MapData, Count* count  )
 		case SceneId::TitleScene:
 			DrawTitleScene(directX, count);
 			break;
-		case SceneId::SetScene:
-			DrawSetScene(directX, count );
+		case SceneId::ResultSceneTwo:
+			DrawResultSceneTwo(directX, count );
 			break;
 		case SceneId::OptionScene:
 			DrawOptionScene(directX);

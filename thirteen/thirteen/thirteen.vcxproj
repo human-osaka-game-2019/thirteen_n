@@ -154,7 +154,7 @@
     <ClCompile Include="Meteorite.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ResultScene.cpp" />
-    <ClCompile Include="SetScene.cpp" />
+    <ClCompile Include="ResultSceneTwo.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="InputKey.cpp" />
@@ -179,7 +179,7 @@
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Option.h" />
     <ClInclude Include="ResultScene.h" />
-    <ClInclude Include="SetScene.h" />
+    <ClInclude Include="ResultSceneTwo.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="InputKey.h" />

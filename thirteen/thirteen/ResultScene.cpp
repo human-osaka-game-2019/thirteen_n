@@ -98,7 +98,7 @@ SceneId FinisResultScene()
 		ResultTextureData.m_pTexture[a] = nullptr;
 	}
 	// 次のシーンの遷移先IDを返す
-	return SceneId::TitleScene;
+	return SceneId::ResultSceneTwo;
 }
 
 void FlameCountState(Count* count, ResultTextureSize* rts)

@@ -89,6 +89,6 @@ SceneId FinisTitleScene()
 	}
 
 	// 次のシーンの遷移先IDを返す
-	return SceneId::SetScene;
+	return SceneId::GameScene;
 }
 
