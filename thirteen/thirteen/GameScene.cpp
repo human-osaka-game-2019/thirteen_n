@@ -200,9 +200,7 @@ void InitGameScene(DirectX* directX)
 
 	m_soundsManager.AddFile("Sound/Beam.wav", "LaserBeam");
 	m_soundsManager.SetVolume("LaserBeam", 15);
-	m_soundsManager.AddFile("Sound/Bullet.wav", "Bullet");
-	m_soundsManager.SetVolume("Bullet", 15);
-
+	
 
 	ChangeSceneStep(SceneStep::MainStep);
 }

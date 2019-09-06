@@ -1,11 +1,14 @@
 ﻿#include"Engine.h"
 #include"Device.h"
+#include <SoundsManager.h>
 
 #include"Bullet.h"
 #include"InputKey.h"
 
 #include <random>
 #include <iostream>
+
+extern SoundLib::SoundsManager m_soundsManager;
 
 /*
 Bullet bullet[5];
@@ -17,6 +20,11 @@ Enemy_White e_white[2];
 // キーの入力情報設定
 void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], Bullet bullet[5])
 {
+
+	m_soundsManager.AddFile("Sound/Bullet.wav", "Bullet");
+	m_soundsManager.SetVolume("Bullet", 15);
+
+
 	if (keyState->m_move == 0)
 	{
 		count->re_input_move_key = 0;
@@ -64,6 +72,8 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 							ShotkeyState[a].m_shot = 1;
 							bullet[a].ShotFlag = true;
 							count->BulletCount += 1;
+							m_soundsManager.Start("Bullet");
+							m_soundsManager.Stop("Bullet");
 						}
 						else
 							if (GetKeyStatus(DIK_UP))
@@ -72,6 +82,8 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 								ShotkeyState[a].m_shot = 2;
 								bullet[a].ShotFlag = true;
 								count->BulletCount += 1;
+								m_soundsManager.Start("Bullet");
+								m_soundsManager.Stop("Bullet");
 							}
 
 						if (GetKeyStatus(DIK_LEFT))
@@ -80,6 +92,8 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 							ShotkeyState[a].m_shot = 3;
 							bullet[a].ShotFlag = true;
 							count->BulletCount += 1;
+							m_soundsManager.Start("Bullet");
+							m_soundsManager.Stop("Bullet");
 						}
 						else
 							if (GetKeyStatus(DIK_RIGHT))
@@ -88,6 +102,8 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 								ShotkeyState[a].m_shot = 4;
 								bullet[a].ShotFlag = true;
 								count->BulletCount += 1;
+								m_soundsManager.Start("Bullet");
+								m_soundsManager.Stop("Bullet");
 							}
 					}
 				}
