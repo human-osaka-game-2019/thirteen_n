@@ -12,7 +12,7 @@ LRESULT CALLBACK wndProc(HWND hInst, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (iMsg)
 	{
-	case WM_DESTROY:
+	case WM_CLOSE:
 		PostQuitMessage(0);
 		break;
 	case WM_KEYDOWN:
@@ -64,7 +64,7 @@ HWND Make_Wnd(HINSTANCE hInst, int width, int height)
 	//////////////////////////// ウィンドウ生成 //////////////////////////
 
 	RegisterClassEx(&wndclass);
-	HWND hInsT = CreateWindow(szAppName, szAppName, WS_OVERLAPPEDWINDOW, 0, 0, width, height, NULL, NULL, hInst, NULL);
+	HWND hInsT = CreateWindow(szAppName, szAppName, (WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME) | WS_VISIBLE, 0, 0, width, height, NULL, NULL, hInst, NULL);
 
 	RECT rx; //ウィンドウ領域
 	RECT cx; //クライアント領域
@@ -136,7 +136,7 @@ HWND OutputWindow(HWND* hWnd, HINSTANCE* hInstance, const TCHAR* API_NAME, FLOAT
 	// ウィンドウハンドルにcreatewindow関数で作った情報を代入
 	RegisterClass(&Wndclass);
 
-	*hWnd = CreateWindow(API_NAME, API_NAME, WS_OVERLAPPEDWINDOW, 0, 0, *wnd_width, *wnd_height, NULL, NULL, *hInstance, NULL);
+	*hWnd = CreateWindow(API_NAME, API_NAME, (WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME) | WS_VISIBLE, 0, 0, *wnd_width, *wnd_height, NULL, NULL, *hInstance, NULL);
 
 	RECT rx; //ウィンドウ領域
 	RECT cx; //クライアント領域

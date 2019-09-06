@@ -60,8 +60,6 @@ void UpdateScene(DirectX* directX, MapChipData MapData  , Count* count)
 	int current_scene_id = SceneId::TitleScene;
 
 
-	while (true)
-	{
 		UpdateInput(directX);
 		SceneId result_id = g_CurrentSceneId;
 
@@ -99,7 +97,7 @@ void UpdateScene(DirectX* directX, MapChipData MapData  , Count* count)
 			g_CurrentSceneId = result_id;
 			ChangeSceneStep(SceneStep::InitStep);
 		}
-	}
+	
 }
 
 void DrawScene(DirectX* directX, MapChipData MapData, Count* count  )

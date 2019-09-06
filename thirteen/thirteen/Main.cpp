@@ -31,27 +31,30 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
 
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
-			if (msg.message == WM_QUIT)
+			if (msg.message != WM_QUIT)
 			{
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
-				break;
 			}
 			else
 			{
-				time = timeGetTime();
-				if (time - prevtime < 1000 / 60)
-				{
-
-				}
-
-				UpdateScene(&directX, MapData, &count);
+				break;
 			}
-			prevtime = time;
 		}
-		timeEndPeriod(1);
+		else
+		{
+			time = timeGetTime();
+			if (time - prevtime < 1000 / 60)
+			{
+
+			}
+
+			UpdateScene(&directX, MapData, &count);
+		}
+		prevtime = time;
 	}
 
+	timeEndPeriod(1);
 	// エンジン終了
 	EndEngine(directX);
 

@@ -10,7 +10,7 @@ HWND* InitEngine(int width, int height, HINSTANCE hInst, DirectX* directX)
 	//	window生成
 	//HWND wind_handle = Make_WndFull(hInst,width,height);
 	HWND hWnd = NULL;
-	static CHAR szAppName[] = "Pac_Man";
+	static CHAR szAppName[] = "Thirteen";
 	FLOAT wnd_width = width;
 	FLOAT wnd_height = height;
 	OutputWindow(&hWnd, &hInst, szAppName, &wnd_width, &wnd_height);
