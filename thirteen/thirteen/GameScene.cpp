@@ -241,6 +241,8 @@ void UpdateGameScene(Count* count)
 
 	DrawMeteoriteTwo(count , MapChipList, meteorite);
 
+	MeteoriteMotion(count,meteorite);
+
 	EnemyMove(count , e_green, e_white,&enemy);
 
 	DrawEnemy(count , MapChipList, e_green, e_white,&enemy);

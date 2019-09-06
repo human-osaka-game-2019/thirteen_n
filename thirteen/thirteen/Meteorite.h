@@ -17,9 +17,11 @@ public:
 	float m_draw_size = 40;
 	float m_pos_tu = (float)0 / 1024;
 	float m_Tu_Size = (float)40 / 1024;
+	void InputTu(int Tu, int TuSize);
+
 	float m_pos_tv = (float)40 / 512;
 	float m_tv_size = (float)80 / 512;
-	void InputTu(int Tu, int TuSize);
+
 
 	int MeteoriteState;
 	int MeteoriteDrawState;
@@ -38,6 +40,6 @@ void HiBulletMeteorite(Meteorite meteorite[], Bullet bullet[], Count* count, Met
 
 void DrawBreakMeteorite(Meteorite meteorite[], MeteoMotion  meteoMotion[]);
 
-
+void MeteoriteMotion(Count* count, Meteorite meteorite[]);
 
 #endif // !

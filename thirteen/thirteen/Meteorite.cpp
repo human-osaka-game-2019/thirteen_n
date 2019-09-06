@@ -16,7 +16,7 @@ extern SoundLib::SoundsManager m_soundsManager;
 void Meteorite::InputTu(int Tu, int TuSize)
 {
 	m_pos_tu = (float)Tu / 1024;
-	m_Tu_Size = (float)TuSize / 1024;
+	m_Tu_Size = (float)(TuSize + Tu) / 1024;
 }
 
 // 隕石の描画(一段階目)
@@ -202,6 +202,68 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 				m_soundsManager.Start("MeteorLand");
 			}
 		}
+	}
+}
+
+void MeteoriteMotion(Count* count, Meteorite meteorite[])
+{
+	for (int a = 0; a < 4; a++)
+	{
+
+		if (meteorite[a].MeteoriteDrawState == 1)
+		{
+			switch (count->draw_meteorite_indication)
+			{
+			case 120:
+				meteorite[a].InputTu(240, 40);
+				break;
+			case 130:
+				meteorite[a].InputTu(280, 40);
+				break;
+			case 140:
+				meteorite[a].InputTu(320, 40);
+				break;
+			case 150:
+				meteorite[a].InputTu(360, 40);
+				break;
+			case 160:
+				meteorite[a].InputTu(400, 40);
+				break;
+			case 170:
+				meteorite[a].InputTu(0, 40);
+				break;
+			}
+		}
+	}
+
+	for (int b = 4; b <8 ; b ++)
+	{
+	
+		if (meteorite[b].MeteoriteDrawStateTwo == 1)
+		{
+			switch (count->draw_meteorite_two)
+			{
+			case 120:
+				meteorite[b].InputTu(240, 40);
+				break;
+			case 130:
+				meteorite[b].InputTu(280, 40);
+				break;
+			case 140:
+				meteorite[b].InputTu(320, 40);
+				break;
+			case 150:
+				meteorite[b].InputTu(360, 40);
+				break;
+			case 160:
+				meteorite[b].InputTu(400, 40);
+				break;
+			case 170:
+				meteorite[b].InputTu(0, 40);
+				break;
+			}
+		}
+		
 	}
 }
 

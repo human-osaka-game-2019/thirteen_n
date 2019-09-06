@@ -227,6 +227,7 @@ void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_
 		{
 			if (ShotkeyState[b].m_shot > 0 && (e_green[a].m_draw_flag == 1 || e_white[a].m_draw_flag == 1))
 			{
+
 				if ((bullet[b].m_pos_x + 40 > e_green[a].m_pos_x /*弾の右のあたり判定*/) && (bullet[b].m_pos_x < e_green[a].m_pos_x + 40)/*弾の左のあたり判定*/)
 				{
 
