@@ -152,4 +152,5 @@ void FrameCount(Count* count)
 	count->TitleScene += 1;
 	count->EnemyGreenMotion += 1;
 	count->EnemyWhiteMotion += 1;
+	count->DrawSmallStar += 1;
 }

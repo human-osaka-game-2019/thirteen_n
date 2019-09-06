@@ -71,6 +71,10 @@ public:
 
 	int TitleScene = 0;
 	void TitleScenereset() { TitleScene = 0; }
+
+	int DrawSmallStar = 0;
+	void SmallStarReset() { DrawSmallStar = 0; }
+
 	int BeamCount = 6;
 
 	int StarCount = 0;// 取った星の数

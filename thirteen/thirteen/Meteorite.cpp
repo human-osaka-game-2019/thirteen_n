@@ -210,7 +210,7 @@ void MeteoriteMotion(Count* count, Meteorite meteorite[])
 	for (int a = 0; a < 4; a++)
 	{
 
-		if (meteorite[a].MeteoriteDrawState == 1)
+		if (meteorite[a].MeteoriteDrawState == 1 && meteorite[a].MeteoriteBreakFlag == 0)
 		{
 			switch (count->draw_meteorite_indication)
 			{
@@ -239,7 +239,7 @@ void MeteoriteMotion(Count* count, Meteorite meteorite[])
 	for (int b = 4; b <8 ; b ++)
 	{
 	
-		if (meteorite[b].MeteoriteDrawStateTwo == 1)
+		if (meteorite[b].MeteoriteDrawStateTwo == 1 && meteorite[b].MeteoriteBreakFlag == 0)
 		{
 			switch (count->draw_meteorite_two)
 			{
@@ -320,7 +320,7 @@ void HiBulletMeteorite(Meteorite meteorite[],Bullet bullet[], Count* count, Mete
 
 					meteorite[b].MeteoriteBreakFlag = 1;
 					meteoMotion[b].FramCount = 0;
-					meteorite[b].InputTu(40, 80);
+					meteorite[b].InputTu(40, 40);
 
 				}
 			}
@@ -337,7 +337,7 @@ void HiBulletMeteorite(Meteorite meteorite[],Bullet bullet[], Count* count, Mete
 
 					meteorite[c].MeteoriteBreakFlag = 1;
 					meteoMotion[c].FramCount = 0;
-					meteorite[c].InputTu(40, 80);
+					meteorite[c].InputTu(40, 40);
 
 				}
 			}
@@ -361,22 +361,22 @@ void DrawBreakMeteorite(Meteorite meteorite[], MeteoMotion  meteoMotion[])
 		{
 			if (meteoMotion[a].FramCount == 12)
 			{
-				meteorite[a].InputTu(80, 120);
+				meteorite[a].InputTu(80, 40);
 			}
 			else
 				if (meteoMotion[a].FramCount == 24)
 				{
-					meteorite[a].InputTu(120, 160);
+					meteorite[a].InputTu(120, 40);
 				}
 				else
 					if (meteoMotion[a].FramCount == 36)
 					{
-						meteorite[a].InputTu(160, 200);
+						meteorite[a].InputTu(160, 40);
 					}
 					else
 						if (meteoMotion[a].FramCount == 48)
 						{
-							meteorite[a].InputTu(200, 240);
+							meteorite[a].InputTu(200, 40);
 						}
 						else
 							if (meteoMotion[a].FramCount == 60)
@@ -391,7 +391,6 @@ void DrawBreakMeteorite(Meteorite meteorite[], MeteoMotion  meteoMotion[])
 								}
 									if (a >= 4 && a < 8)
 									{
-
 										meteorite[a].MeteoriteDrawStateTwo = 0;
 										meteorite[a].m_pos_x = 0;
 										meteorite[a].m_pos_y = 0;
