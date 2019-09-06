@@ -21,6 +21,23 @@ public:
 
 };
 
+class Constellation
+{
+public:
+	float m_pos_x;
+	float m_pos_y;
+	float m_x_size;
+	float m_y_size;
+
+	float m_tu;
+	float m_tv;
+	float m_tu_size;
+	float m_tv_size;
+
+	void InputValue(float x, float y, float x_size, float y_size, float tu, float tv, float tu_size, float tv_size);
+
+};
+
 void DrawStar(Star star[12], Count* count);
 
 void HitBulletStar(MainCharacter* mainCara, Star star[12], Count* count, KeyState* keyState);

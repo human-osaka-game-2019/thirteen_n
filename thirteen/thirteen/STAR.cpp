@@ -108,3 +108,66 @@ void StarMotion(Count* count, Star star[])
 	}
 
 }
+
+
+void Constellation::InputValue(float x, float y, float x_size, float y_size, float tu, float tv, float tu_size, float tv_size)
+{
+	m_pos_x = x;
+	m_pos_y = y;
+	m_x_size = x_size;
+	m_y_size = y_size;
+
+	m_tu = (float)tu / 2048;
+	m_tv = (float)tv / 2048;
+	m_tu_size = (float)tu_size / 2048;
+	m_tv_size = (float)tv_size / 2048;
+}
+
+void Drawconstellation(DirectX *directX, TEXTUREDATA GameTextureData,Count *count, Constellation constellation[])
+{
+
+	switch (count->StarCount)
+	{
+	case 1:
+
+		break;
+	case 2:
+
+		break;
+	case 3:
+
+		break;
+	case 4:
+
+		break;
+	case 5:
+
+		break;
+	case 6:
+
+		break;
+	case 7:
+
+		break;
+	case 8:
+
+		break;
+	case 9:
+
+		break;
+	case 10:
+
+		break;
+	case 11:
+
+		break;
+	case 12:
+
+		break;
+	}
+
+	for (int a = 0; a < 12; a++)
+	{
+		DrawTest(constellation[a].m_pos_x, constellation[a].m_pos_y, constellation[a].m_x_size, constellation[a].m_y_size, constellation[a].m_tu, constellation[a].m_tv, constellation[a].m_tu_size, constellation[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::ConstellationTexture], *directX);
+	}
+}

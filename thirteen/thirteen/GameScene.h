@@ -11,6 +11,7 @@ void DrawGameScene(DirectX* directX, MapChipData Mapdata  );
 enum GameTextureList
 {
 	BackTexture,
+	ConstellationTexture,
 	CharTexture,
 	MapChipTexture,
 	BeamSideTextutre,

@@ -71,7 +71,7 @@ public:
 	void TitleScenereset() { TitleScene = 0; }
 	int BeamCount = 6;
 
-	float StarCount = 0;// 取った星の数
+	int StarCount = 0;// 取った星の数
 
 	float BulletCount = 0;
 
