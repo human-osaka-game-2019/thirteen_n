@@ -67,6 +67,8 @@ public:
 	int MeteoMotion = 0;
 	void MeteoMotionReset() { MeteoMotion = 0; }
 
+	int TitleScene = 0;
+	void TitleScenereset() { TitleScene = 0; }
 	int BeamCount = 6;
 
 	float StarCount = 0;// 取った星の数

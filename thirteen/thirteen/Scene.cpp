@@ -150,4 +150,5 @@ void FrameCount(Count* count)
 	count->DrawStarCount = count->DrawStarCount + 1;
 	count->re_shot_count += 1;
 	count->StarMotion += 1;
+	count->TitleScene += 1;
 }
