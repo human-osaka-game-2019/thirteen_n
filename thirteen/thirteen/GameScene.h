@@ -6,7 +6,7 @@
 
 SceneId GameSceneMain(DirectX* directX, Count* count);
 
-void DrawGameScene(DirectX* directX, MapChipData Mapdata  );
+void DrawGameScene(DirectX* directX, MapChipData Mapdata, Count* count);
 
 enum GameTextureList
 {

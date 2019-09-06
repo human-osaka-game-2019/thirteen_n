@@ -129,45 +129,63 @@ void Drawconstellation(DirectX *directX, TEXTUREDATA GameTextureData,Count *coun
 	switch (count->StarCount)
 	{
 	case 1:
-
+		constellation[0].InputValue(80, 80, 280, 267, 0, 800, 280, 1067);
+		constellation[0].DrawFlag = 1;
 		break;
 	case 2:
-
+		constellation[1].InputValue(360, 80, 280, 267, 280, 800, 560, 1067);
+		constellation[1].DrawFlag = 1;
 		break;
 	case 3:
-
+		constellation[2].InputValue(640, 80, 280, 267, 560, 800, 840, 1067);
+		constellation[2].DrawFlag = 1;
 		break;
 	case 4:
-
+		constellation[3].InputValue(920, 80, 280, 267, 840, 800, 1120, 1067);
+		constellation[3].DrawFlag = 1;
 		break;
 	case 5:
-
+		constellation[4].InputValue(920, 347, 280, 266, 840, 1067, 1120, 1333);
+		constellation[4].DrawFlag = 1;
 		break;
 	case 6:
-
+		constellation[5].InputValue(920, 613, 280, 267, 840, 1333, 1120, 1600);
+		constellation[5].DrawFlag = 1;
 		break;
 	case 7:
-
+		constellation[6].InputValue(640, 613, 280, 267, 560, 1333, 840, 1600);
+		constellation[6].DrawFlag = 1;
 		break;
 	case 8:
-
+		constellation[7].InputValue(360, 613, 280, 267, 280, 1333, 560, 1600);
+		constellation[7].DrawFlag = 1;
 		break;
 	case 9:
-
+		constellation[8].InputValue(80, 613, 280, 267, 280, 1333, 0, 1600);
+		constellation[8].DrawFlag = 1;
 		break;
 	case 10:
-
+		constellation[9].InputValue(80, 347, 280, 266, 0, 1067, 280, 1333);
+		constellation[9].DrawFlag = 1;
 		break;
 	case 11:
-
+		constellation[10].InputValue(360, 347, 280, 266, 280, 1067, 560, 1333);
+		constellation[10].DrawFlag = 1;
 		break;
 	case 12:
-
+		constellation[11].InputValue(640, 347, 280, 266, 560, 1067, 840, 1333);
+		constellation[11].DrawFlag = 1;
 		break;
 	}
 
-	for (int a = 0; a < 12; a++)
-	{
-		DrawTest(constellation[a].m_pos_x, constellation[a].m_pos_y, constellation[a].m_x_size, constellation[a].m_y_size, constellation[a].m_tu, constellation[a].m_tv, constellation[a].m_tu_size, constellation[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::ConstellationTexture], *directX);
-	}
+	
+		for (int a = 0; a < 12; a++)
+		{
+			if (constellation[a].DrawFlag == 1)
+			{
+
+				DrawTest(constellation[a].m_pos_x, constellation[a].m_pos_y, constellation[a].m_x_size, constellation[a].m_y_size, constellation[a].m_tu, constellation[a].m_tv, constellation[a].m_tu_size, constellation[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::ConstellationTexture], *directX);
+			}
+		}
+	
 }

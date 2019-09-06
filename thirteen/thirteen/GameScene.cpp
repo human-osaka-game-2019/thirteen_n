@@ -71,6 +71,7 @@ KeyState ShotkeyState[12];
 Star star[12];
 Beam beam;
 Enemy enemy;
+Constellation constellation[12];
 
 SceneId GameSceneMain(DirectX* directX, Count* count)
 {
@@ -98,10 +99,13 @@ SceneId GameSceneMain(DirectX* directX, Count* count)
 
 
 
-void DrawGameScene(DirectX* directX, MapChipData MapData)
+void DrawGameScene(DirectX* directX, MapChipData MapData,Count* count)
 {
 	// 背景
 	DrawTest(0, 0, 1280, 960, 0, 0, 1, 1, &GameTextureData.m_pTexture[GameTextureList::BackTexture], *directX);
+
+	Drawconstellation(directX, GameTextureData, count, constellation);
+
 	// マップチップ
 	DrawMapChip(directX, MapData, &GameTextureData.m_pTexture[GameTextureList::MapChipTexture], MapChipList);
 	// 自キャラ 操作キャラ
@@ -197,6 +201,7 @@ void InitGameScene(DirectX* directX)
 	LoadTexture("Texture/charactar.png", &GameTextureData.m_pTexture[GameTextureList::CharTexture], 0, directX);
 	LoadTexture("Texture/beam_Side.png", &GameTextureData.m_pTexture[GameTextureList::BeamSideTextutre], 0, directX);
 	LoadTexture("Texture/beam_Ver.png", &GameTextureData.m_pTexture[GameTextureList::BeamVerticalityTexture], 0, directX);
+	LoadTexture("Texture/MainGameback1.png", &GameTextureData.m_pTexture[GameTextureList::ConstellationTexture], 0, directX);
 
 	m_soundsManager.AddFile("Sound/Beam.wav", "LaserBeam");
 	m_soundsManager.SetVolume("LaserBeam", 15);
@@ -247,7 +252,7 @@ void UpdateGameScene(Count* count)
 
 	DrawBreakMeteorite(meteorite,meteoMotion);
 
-	if (GetKeyStatus(DIK_RETURN))
+	if (count->StarCount >= 12)
 	{
 
 		ChangeSceneStep(SceneStep::EndStep);

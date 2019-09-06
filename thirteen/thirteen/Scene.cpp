@@ -120,7 +120,7 @@ void DrawScene(DirectX* directX, MapChipData MapData, Count* count  )
 			DrawOptionScene(directX);
 			break;
 		case SceneId::GameScene:
-			DrawGameScene(directX, MapData );
+			DrawGameScene(directX, MapData ,count);
 			break;
 		case SceneId::ResultScene:
 			DrawResultScene(directX, count);

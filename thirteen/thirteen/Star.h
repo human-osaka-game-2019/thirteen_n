@@ -34,6 +34,8 @@ public:
 	float m_tu_size;
 	float m_tv_size;
 
+	int DrawFlag = 0;
+
 	void InputValue(float x, float y, float x_size, float y_size, float tu, float tv, float tu_size, float tv_size);
 
 };
@@ -43,4 +45,7 @@ void DrawStar(Star star[12], Count* count);
 void HitBulletStar(MainCharacter* mainCara, Star star[12], Count* count, KeyState* keyState);
 
 void StarMotion(Count* count, Star star[]);
+
+void Drawconstellation(DirectX* directX, TEXTUREDATA GameTextureData, Count* count, Constellation constellation[]);
+
 #endif // !
