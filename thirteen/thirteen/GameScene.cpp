@@ -59,8 +59,8 @@ int MapChipList[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH]
 };
 
 MeteoMotion meteoMotion[8];
-BeamSide beamSide;
-BeamVerticality  beamVerticality;
+BeamSide beamSide[3];
+BeamVerticality  beamVerticality[3];
 Bullet bullet[12];
 Meteorite meteorite[8];
 Enemy_Green e_green[2];
@@ -104,7 +104,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData,Count* count)
 	// 背景
 	DrawTest(0, 0, 1280, 960, 0, 0, 1, 1, &GameTextureData.m_pTexture[GameTextureList::BackTexture], *directX);
 
-	Drawconstellation(directX, GameTextureData, count, constellation);
+	Drawconstellation(directX, GameTextureData, count, constellation,&beam);
 
 	// マップチップ
 	DrawMapChip(directX, MapData, &GameTextureData.m_pTexture[GameTextureList::MapChipTexture], MapChipList);
@@ -172,24 +172,26 @@ void DrawGameScene(DirectX* directX, MapChipData MapData,Count* count)
 	}
 
 	// ビーム横描画
-	if (beamSide.BeamSideFlag == true)
+	for (int a = 0; a < 3; a++)
 	{
 
-		DrawTest(beamSide.m_pos_x, /**/beamSide.m_pos_y, beamSide.m_draw_size_width, beamSide.m_draw_size_hight, beamSide.m_pos_tu, beamSide.m_pos_tv, beamSide.m_pos_tu_size, beamSide.m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::BeamSideTextutre], *directX);
-		m_soundsManager.Start("LaserBeam");
+		if (  beamSide[a].BeamSideFlag == true)
+		{
+			DrawTest(  beamSide[a].m_pos_x, /**/   beamSide[a].m_pos_y,   beamSide[a].m_draw_size_width,   beamSide[a].m_draw_size_hight,   beamSide[a].m_pos_tu,   beamSide[a].m_pos_tv,   beamSide[a].m_pos_tu_size,   beamSide[a].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::BeamSideTextutre], *directX);
+			m_soundsManager.Start("LaserBeam");
+
+		}
+
+		// ビーム縦描画
+		if ( beamVerticality[a].BeamVerticalityeFlag == true)
+		{
+
+			DrawTest(/**/ beamVerticality[a].m_pos_x,  beamVerticality[a].m_pos_y,  beamVerticality[a].m_draw_size_width,  beamVerticality[a].m_draw_size_hight,  beamVerticality[a].m_pos_tu,  beamVerticality[a].m_pos_tv,  beamVerticality[a].m_pos_tu_size,  beamVerticality[a].m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::BeamVerticalityTexture], *directX);
+			m_soundsManager.Start("LaserBeam");
+
+		}
 
 	}
-
-	// ビーム縦描画
-	if (beamVerticality.BeamVerticalityeFlag == true)
-	{
-
-		DrawTest(/**/beamVerticality.m_pos_x, beamVerticality.m_pos_y, beamVerticality.m_draw_size_width, beamVerticality.m_draw_size_hight, beamVerticality.m_pos_tu, beamVerticality.m_pos_tv, beamVerticality.m_pos_tu_size, beamVerticality.m_pos_tv_size, &GameTextureData.m_pTexture[GameTextureList::BeamVerticalityTexture], *directX);
-		m_soundsManager.Start("LaserBeam");
-
-	}
-
-
 }
 
 
@@ -206,6 +208,7 @@ void InitGameScene(DirectX* directX)
 	m_soundsManager.AddFile("Sound/Beam.wav", "LaserBeam");
 	m_soundsManager.SetVolume("LaserBeam", 15);
 	
+
 
 	ChangeSceneStep(SceneStep::MainStep);
 }
@@ -224,7 +227,15 @@ void UpdateGameScene(Count* count)
 
 	HitJudge(&mainCara);
 
-	SetBeam_first(count, MapChipList, &beamSide, &beamVerticality, 1,&beam);
+	SetBeam_first(count, MapChipList, beamSide, beamVerticality, 1,&beam);
+
+	SetBeam_two(count,MapChipList, beamSide,beamVerticality,&beam);
+
+	SetBeam_four(count, MapChipList, beamSide, beamVerticality, &beam);
+
+	SetBeam_six(count, MapChipList, beamSide, beamVerticality, &beam);
+
+	BeamMotio(count, beamSide, beamVerticality,&beam);
 
 	DrawMeteorite(count, MapChipList, meteorite);
 

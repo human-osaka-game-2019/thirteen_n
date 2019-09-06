@@ -6,6 +6,7 @@
 #include"InputKey.h"
 #include"MainCaracter.h"
 #include"Star.h"
+#include"Beam.h"
 
 #include <random>
 #include <iostream>
@@ -123,7 +124,7 @@ void Constellation::InputValue(float x, float y, float x_size, float y_size, flo
 	m_tv_size = (float)tv_size / 2048;
 }
 
-void Drawconstellation(DirectX *directX, TEXTUREDATA GameTextureData,Count *count, Constellation constellation[])
+void Drawconstellation(DirectX *directX, TEXTUREDATA GameTextureData,Count *count, Constellation constellation[],Beam* beam)
 {
 
 	switch (count->StarCount)
@@ -139,6 +140,8 @@ void Drawconstellation(DirectX *directX, TEXTUREDATA GameTextureData,Count *coun
 	case 3:
 		constellation[2].InputValue(640, 80, 280, 267, 560, 800, 840, 1067);
 		constellation[2].DrawFlag = 1;
+
+		beam->GameLevel = 1;
 		break;
 	case 4:
 		constellation[3].InputValue(920, 80, 280, 267, 840, 800, 1120, 1067);
@@ -151,6 +154,8 @@ void Drawconstellation(DirectX *directX, TEXTUREDATA GameTextureData,Count *coun
 	case 6:
 		constellation[5].InputValue(920, 613, 280, 267, 840, 1333, 1120, 1600);
 		constellation[5].DrawFlag = 1;
+
+		beam->GameLevel = 2;
 		break;
 	case 7:
 		constellation[6].InputValue(640, 613, 280, 267, 560, 1333, 840, 1600);
@@ -163,6 +168,8 @@ void Drawconstellation(DirectX *directX, TEXTUREDATA GameTextureData,Count *coun
 	case 9:
 		constellation[8].InputValue(80, 613, 280, 267, 280, 1333, 0, 1600);
 		constellation[8].DrawFlag = 1;
+
+		beam->GameLevel = 3;
 		break;
 	case 10:
 		constellation[9].InputValue(80, 347, 280, 266, 0, 1067, 280, 1333);

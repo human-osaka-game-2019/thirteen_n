@@ -52,6 +52,7 @@ void Count::AllReset()
 	draw_main_caracter= 0;
 	re_shot_count = 0;
 	StarMotion = 0;
+	DrawStarCount = 0;
 }
 
 

@@ -4,6 +4,7 @@
 #include"Engine.h"
 #include"Device.h"
 #include"GameScene.h"
+#include"Beam.h"
 
 
 class Star
@@ -46,6 +47,6 @@ void HitBulletStar(MainCharacter* mainCara, Star star[12], Count* count, KeyStat
 
 void StarMotion(Count* count, Star star[]);
 
-void Drawconstellation(DirectX* directX, TEXTUREDATA GameTextureData, Count* count, Constellation constellation[]);
+void Drawconstellation(DirectX* directX, TEXTUREDATA GameTextureData, Count* count, Constellation constellation[], Beam* beam);
 
 #endif // !

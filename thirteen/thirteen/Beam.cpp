@@ -27,105 +27,156 @@ void BeamVerticality::InputVerticalityPosTv(float Tv, float TvSize)
 	m_pos_tu_size = TvSize / 1024;
 }
 
-// ビーム描画(複数)
-void SetBeams(Count* count  , int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, int WidthDarwNumber, int HeightDrawNumber)
+// ビーム描画(3*3)
+void SetBeam_six(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, Beam* beam)
 {
-
-	std::mt19937 mt{ std::random_device{}() };
-
-	for (int WidthDrawCount = 0; WidthDrawCount < WidthDarwNumber; WidthDrawCount++)
+	if (beam->GameLevel == 3)
 	{
-		std::uniform_int_distribution<int> r_width(1, 25); // 1 28
-		int width = r_width(mt);
-
-		for (int a = 0; a < 20; a++)
+		if (count->draw_beam_indication == (60 * 8))
 		{
-			for (int c = 0; c < 3; c++)
-			{
-				MapChipList[a][width + c] = 2;
+			std::mt19937 mt{ std::random_device{}() };
 
-			}
+			std::uniform_int_distribution<int> f_Width(1, 8); // 1 28
+			std::uniform_int_distribution<int> f_Hight(8, 16); // 1 20
+			std::uniform_int_distribution<int> s_Width(16, 25); // 1 28
+			std::uniform_int_distribution<int> s_Hight(1, 6); // 1 20
+			std::uniform_int_distribution<int> t_Width(6, 12); // 1 28
+			std::uniform_int_distribution<int> t_Hight(12, 17); // 1 20
 
-		}
-		beamVerticality->m_pos_x = width * 40 + 80;
+			int f_width = f_Width(mt);
+			int f_hight = f_Hight(mt);
+			int s_width = s_Width(mt);
+			int s_hight = s_Hight(mt);
+			int t_width = t_Width(mt);
+			int t_hight = t_Hight(mt);
 
-	}
-
-	for (int HeightDrawCount = 0; HeightDrawCount < HeightDrawNumber; HeightDrawCount++)
-	{
-		std::uniform_int_distribution<int> r_hight(1, 17); // 1 20
-		int hight = r_hight(mt);
-
-		for (int a = 0; a < 28; a++)
-		{
-			for (int b = 0; b < 3; b++)
-			{
-				MapChipList[hight + b][a] = 2;
-			}
-		}
-
-		beamSide->m_pos_y = hight * 40 + 80;
-
-		break;
-	}
-
-}
-
-// ビーム(予兆)の描画設定(一本の時のみ)
-void SetBeam_first(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, int BeamNnmber,Beam * beam)
-{
-	if (count->draw_beam_indication == (60 * 8))
-	{
-		std::mt19937 mt{ std::random_device{}() };
-
-		std::uniform_int_distribution<int> swich(1, 2);
-		std::uniform_int_distribution<int> r_Width(1, 25); // 1 28
-		std::uniform_int_distribution<int> r_hight(1, 17); // 1 20
-
-		beam->beam_direction = swich(mt);
-		int width = r_Width(mt);
-		int hight = r_hight(mt);
-
-		switch (beam->beam_direction)
-		{
-		case 0:
-			break;
-		case 1: //widht
 
 			for (int a = 0; a < 20; a++)
 			{
 				for (int c = 0; c < 3; c++)
 				{
-					MapChipList[a][width + c] = 2;
-
+					MapChipList[a][f_width + c] = 2;
+					MapChipList[a][s_width + c] = 2;
+					MapChipList[a][t_width + c] = 2;
 				}
 
 			}
-			beamVerticality->m_pos_x = width * 40 + 80;
-			break;
 
-		case 2: // hight
+			beamVerticality[0].m_pos_x = f_width * 40 + 80;
+			beamVerticality[1].m_pos_x = s_width * 40 + 80;
+			beamVerticality[2].m_pos_x = t_width * 40 + 80;
 
 			for (int a = 0; a < 28; a++)
 			{
 				for (int b = 0; b < 3; b++)
 				{
-					MapChipList[hight + b][a] = 2;
+					MapChipList[f_hight + b][a] = 2;
+					MapChipList[s_hight + b][a] = 2;
+					MapChipList[t_hight + b][a] = 2;
 				}
 			}
-			beamSide->m_pos_y = hight * 40 + 80;
 
-			break;
+			beamSide[0].m_pos_y = f_hight * 40 + 80;
+			beamSide[1].m_pos_y = s_hight * 40 + 80;
+			beamSide[2].m_pos_y = t_hight * 40 + 80;
+
+			count->draw_beam = 0;
+			count->draw_beam_indication = 0;
+			beam->DrawStatus = 2;
+
+
 		}
-		beam->draw_beam_state = 1;
-		count->draw_beam = 0;
-		count->draw_beam_indication= 0;
+
+
+
+		if (count->draw_beam == (60 * 2))
+		{
+			for (int a = 0; a < 20; a++)
+			{
+				for (int b = 0; b < 28; b++)
+				{
+					if (MapChipList[a][b] == 2)
+					{
+						MapChipList[a][b] = 1;
+					}
+				}
+			}
+		}
+
+
+
+		/////////////////////////////////////////////////////////////////////// 描画関連 /////////////////////////////////////////////////////////////////
+
+
+		if (count->draw_beam == 120)
+		{
+			for (int a = 0; a < 3; a++)
+			{
+				beamVerticality[a].BeamVerticalityeFlag = true;
+				beamSide[a].BeamSideFlag = true;
+			}
+			
+			beam->DrawStatus = 0;
+		}
 
 	}
+}
 
-
-	if (beam->draw_beam_state == 1)
+// ビーム描画(2*2)
+void SetBeam_four(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, Beam* beam)
+{
+	if (beam->GameLevel == 2)
 	{
+		if (count->draw_beam_indication == (60 * 8))
+		{
+			std::mt19937 mt{ std::random_device{}() };
+
+			std::uniform_int_distribution<int> f_Width(1, 12); // 1 28
+			std::uniform_int_distribution<int> f_Hight(1, 8); // 1 20
+			std::uniform_int_distribution<int> s_Width(13, 25); // 1 28
+			std::uniform_int_distribution<int> s_Hight(9, 17); // 1 20
+
+			int f_width = f_Width(mt);
+			int f_hight = f_Hight(mt);
+			int s_width = s_Width(mt);
+			int s_hight = s_Hight(mt);
+
+
+			for (int a = 0; a < 20; a++)
+			{
+				for (int c = 0; c < 3; c++)
+				{
+					MapChipList[a][f_width + c] = 2;
+					MapChipList[a][s_width + c] = 2;
+				}
+
+			}
+
+			beamVerticality[0].m_pos_x = f_width * 40 + 80;
+			beamVerticality[1].m_pos_x = s_width * 40 + 80;
+
+			for (int a = 0; a < 28; a++)
+			{
+				for (int b = 0; b < 3; b++)
+				{
+					MapChipList[f_hight + b][a] = 2;
+					MapChipList[s_hight + b][a] = 2;
+				}
+			}
+
+			beamSide[0].m_pos_y = f_hight * 40 + 80;
+			beamSide[1].m_pos_y = s_hight * 40 + 80;
+
+			beam->draw_beam_state = 2;
+			count->draw_beam = 0;
+			count->draw_beam_indication = 0;
+			beam->DrawStatus = 2;
+
+
+		}
+
+
+
 		if (count->draw_beam == (60 * 2))
 		{
 
@@ -140,102 +191,280 @@ void SetBeam_first(Count* count, int MapChipList[20][28], BeamSide* beamSide, Be
 				}
 			}
 		}
+
+
+
+		/////////////////////////////////////////////////////////////////////// 描画関連 /////////////////////////////////////////////////////////////////
+
+
+		if (count->draw_beam == 120)
+		{
+			beamVerticality[0].BeamVerticalityeFlag = true;
+			beamVerticality[1].BeamVerticalityeFlag = true;
+			beamSide[0].BeamSideFlag = true;
+			beamSide[1].BeamSideFlag = true;
+
+			beam->DrawStatus = 0;
+		}
+
+	}
+}
+
+// ビーム描画(1*1)
+void SetBeam_two(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, Beam* beam)
+{
+	if (beam->GameLevel == 1)
+	{
+		if (count->draw_beam_indication == (60 * 8))
+		{
+			std::mt19937 mt{ std::random_device{}() };
+
+			std::uniform_int_distribution<int> r_Width(1, 25); // 1 28
+			std::uniform_int_distribution<int> r_Hight(1, 17); // 1 20
+
+			int width = r_Width(mt);
+			int hight = r_Hight(mt);
+
+			for (int a = 0; a < 20; a++)
+			{
+				for (int c = 0; c < 3; c++)
+				{
+					MapChipList[a][width + c] = 2;
+
+				}
+
+			}
+
+			beamVerticality[0].m_pos_x = width * 40 + 80;
+
+
+			for (int a = 0; a < 28; a++)
+			{
+				for (int b = 0; b < 3; b++)
+				{
+					MapChipList[hight + b][a] = 2;
+				}
+			}
+
+			beamSide[0].m_pos_y = hight * 40 + 80;
+
+			beam->draw_beam_state = 1;
+			count->draw_beam = 0;
+			count->draw_beam_indication = 0;
+			beam->DrawStatus = 2;
+
+		}
+
+
+
+		if (count->draw_beam == (60 * 2))
+		{
+
+			for (int a = 0; a < 20; a++)
+			{
+				for (int b = 0; b < 28; b++)
+				{
+					if (MapChipList[a][b] == 2)
+					{
+						MapChipList[a][b] = 1;
+					}
+				}
+			}
+		}
+
+
+		/////////////////////////////////////////////////////////////////////// 描画関連 /////////////////////////////////////////////////////////////////
+
+
+		if (count->draw_beam == 120)
+		{
+			beamVerticality[0].BeamVerticalityeFlag = true;
+
+			beamSide[0].BeamSideFlag = true;
+
+			beam->DrawStatus = 0;
+		}
+
+	}
+}
+
+
+// ビーム(予兆)の描画設定(一本の時のみ)
+void SetBeam_first(Count* count, int MapChipList[20][28], BeamSide beamSide[], BeamVerticality beamVerticality[], int BeamNnmber,Beam * beam)
+{
+	if (beam->GameLevel == 0)
+	{
+		if (count->draw_beam_indication == (60 * 8))
+		{
+			std::mt19937 mt{ std::random_device{}() };
+
+			std::uniform_int_distribution<int> swich(1, 2);
+			std::uniform_int_distribution<int> r_Width(1, 25); // 1 28
+			std::uniform_int_distribution<int> r_Hight(1, 17); // 1 20
+
+			beam->beam_direction = swich(mt);
+			int width = r_Width(mt);
+			int hight = r_Hight(mt);
+
+			switch (beam->beam_direction)
+			{
+			case 0:
+				break;
+			case 1: //widht
+
+				for (int a = 0; a < 20; a++)
+				{
+					for (int c = 0; c < 3; c++)
+					{
+						MapChipList[a][width + c] = 2;
+
+					}
+
+				}
+				beamVerticality[0].m_pos_x = width * 40 + 80;
+				break;
+
+			case 2: // hight
+
+				for (int a = 0; a < 28; a++)
+				{
+					for (int b = 0; b < 3; b++)
+					{
+						MapChipList[hight + b][a] = 2;
+					}
+				}
+				beamSide[0].m_pos_y = hight * 40 + 80;
+
+				break;
+			}
+			beam->draw_beam_state = 1;
+			count->draw_beam = 0;
+			count->draw_beam_indication = 0;
+			beam->DrawStatus = 1;
+
+		}
+
+
+
+		if (count->draw_beam == (60 * 2))
+		{
+
+			for (int a = 0; a < 20; a++)
+			{
+				for (int b = 0; b < 28; b++)
+				{
+					if (MapChipList[a][b] == 2)
+					{
+						MapChipList[a][b] = 1;
+					}
+				}
+			}
+		}
+
+
+		/////////////////////////////////////////////////////////////////////// 描画関連 /////////////////////////////////////////////////////////////////
+
+
+
+		if (count->draw_beam == 120)
+		{
+
+			if (beam->beam_direction == 1)
+			{
+				beamVerticality[0].BeamVerticalityeFlag = true;
+				beam->DrawStatus = 0;
+			}
+			else if (beam->beam_direction == 2)
+			{
+				beamSide[0].BeamSideFlag = true;
+				beam->DrawStatus = 0;
+			}
+
+		}
+
 	}
 
-	/////////////////////////////////////////////////////////////////////// 描画関連 /////////////////////////////////////////////////////////////////
+}
 
+// ビームのモーション設定
+void BeamMotio(Count* count, BeamSide beamSide[], BeamVerticality beamVerticality[],Beam* beam)
+{
 
-	if (count->draw_beam == 120)
+	if ((beamVerticality[0].BeamVerticalityeFlag == true) || (beamSide[0].BeamSideFlag == true))
 	{
+		for (int a = ~0; a < 3; a++)
 
-		if (beam->beam_direction == 1)
 		{
-			beamVerticality->BeamVerticalityeFlag = true;
-		}
-		else if (beam->beam_direction == 2)
-		{
-			beamSide->BeamSideFlag = true;
-		}
-		
-	}
 
-	
 
-	if ((beamVerticality->BeamVerticalityeFlag == true) || (beamSide->BeamSideFlag == true))
-	{
-		if (count->draw_beam % 12 == 0)
-		{
 			if (count->draw_beam == 126)// 二個目
 			{
-				beamSide->InputSidePosTv(240, 360);
-				beamVerticality->InputVerticalityPosTv(240, 360);
+				beamSide[a].InputSidePosTv(240, 360);
+				beamVerticality[a].InputVerticalityPosTv(240, 360);
 
 			}
 			else
 				if (count->draw_beam == 132)// 三個目
 				{
-					beamSide->InputSidePosTv(360, 480);
-					beamVerticality->InputVerticalityPosTv(360, 480);
+					beamSide[a].InputSidePosTv(360, 480);
+					beamVerticality[a].InputVerticalityPosTv(360, 480);
 				}
 				else
 					if (count->draw_beam == 138) // 四個目
 					{
-						beamSide->InputSidePosTv(480, 600);
-						beamVerticality->InputVerticalityPosTv(480, 600);
+						beamSide[a].InputSidePosTv(480, 600);
+						beamVerticality[a].InputVerticalityPosTv(480, 600);
 					}
 					else
 						if (count->draw_beam == 144)// 五個目
 						{
-							beamSide->InputSidePosTv(600, 720);
-							beamVerticality->InputVerticalityPosTv(600, 720);
+							beamSide[a].InputSidePosTv(600, 720);
+							beamVerticality[a].InputVerticalityPosTv(600, 720);
 						}
 						else
 							if (count->draw_beam == 216)// 六個目
 							{
-								beamSide->InputSidePosTv(480, 600);
-								beamVerticality->InputVerticalityPosTv(480, 600);
+								beamSide[a].InputSidePosTv(480, 600);
+								beamVerticality[a].InputVerticalityPosTv(480, 600);
 							}
 							else
 								if (count->draw_beam == 222)// 七個目
 								{
-									beamSide->InputSidePosTv(360, 480);
-									beamVerticality->InputVerticalityPosTv(360, 480);
+									beamSide[a].InputSidePosTv(360, 480);
+									beamVerticality[a].InputVerticalityPosTv(360, 480);
 								}
 								else
 									if (count->draw_beam == 228)// 八個目
 									{
-										beamSide->InputSidePosTv(240, 360);
-										beamVerticality->InputVerticalityPosTv(240, 360);
+										beamSide[a].InputSidePosTv(240, 360);
+										beamVerticality[a].InputVerticalityPosTv(240, 360);
 									}
 									else
 										if (count->draw_beam == 234)// 九個目
 										{
-											beamSide->InputSidePosTv(120, 240);
-											beamVerticality->InputVerticalityPosTv(120, 240);
+											beamSide[a].InputSidePosTv(120, 240);
+											beamVerticality[a].InputVerticalityPosTv(120, 240);
 										}
 										else
 											if (count->draw_beam == 228)// 十個目
 											{
-												beamSide->InputSidePosTv(0, 120);
-												beamVerticality->InputVerticalityPosTv(0, 120);
+												beamSide[a].InputSidePosTv(0, 120);
+												beamVerticality[a].InputVerticalityPosTv(0, 120);
 											}
 		}
+
 	}
 
 	if (count->draw_beam == 240)
 	{
-		beam->draw_beam_state = 0;
-		beamSide->BeamSideFlag = false;
-		beamVerticality->BeamVerticalityeFlag = false;
+		for (int a = 0; a < 3; a++)
+		{
+
+			beam->draw_beam_state = 0;
+			beamSide[a].BeamSideFlag = false;
+			beamVerticality[a].BeamVerticalityeFlag = false;
+		}
 	}
-
-
-}
-
-// ビームの描画処理
-void DrawBeam()
-{
-
 
 
 }

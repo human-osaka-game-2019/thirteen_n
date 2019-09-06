@@ -12,6 +12,8 @@ class Beam
 public:
 	int beam_direction;
 	int draw_beam_state;
+	int GameLevel = 0;
+	int DrawStatus = 0;
 };
 
 // 横方向に描画されるビームに関する情報を持ったクラス
@@ -53,8 +55,14 @@ public:
 };
 
 
-void SetBeam_first(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, int beamNumbre,  Beam* beam);
+void SetBeam_first(Count* count, int MapChipList[20][28], BeamSide beamSide[], BeamVerticality beamVerticality[], int beamNumbre,  Beam* beam);
 
+void SetBeam_two(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality,Beam* beam);
 
+void BeamMotio(Count* count, BeamSide beamSide[], BeamVerticality beamVerticality[], Beam* beam);
+
+void SetBeam_four(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, Beam* beam);
+
+void SetBeam_six(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, Beam* beam);
 
 #endif // !
