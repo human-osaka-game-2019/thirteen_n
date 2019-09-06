@@ -21,7 +21,7 @@
 extern SoundLib::SoundsManager m_soundsManager;
 
 extern int g_SceneStep;
-void DrawGameScene(DirectX* directX, MapChipData MapData);
+void DrawGameScene(DirectX* directX, MapChipData MapData,Count * count);
 void InitGameScene(DirectX* directX);
 void UpdateGameScene(Count* count);
 SceneId FinisGameScene();

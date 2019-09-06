@@ -16,15 +16,15 @@ extern SoundLib::SoundsManager m_soundsManager;
 // ビーム描画位置入力関数(横)
 void BeamSide::InputSidePosTv(float Tv, float TvSize)
 {
-	m_pos_tv = Tv / 1024;
-	m_pos_tv_size = TvSize / 1024;
+	m_pos_tv = (float)Tv / 2048;
+	m_pos_tv_size = (float)TvSize / 2048;
 }
 
 // ビーム描画位置入力関数(縦)
-void BeamVerticality::InputVerticalityPosTv(float Tv, float TvSize)
+void BeamVerticality::InputVerticalityPosTu(float Tu, float TuSize)
 {
-	m_pos_tu = Tv / 1024;
-	m_pos_tu_size = TvSize / 1024;
+	m_pos_tu = Tu / 1024;
+	m_pos_tu_size = TuSize / 1024;
 }
 
 // ビーム描画(3*3)
@@ -392,65 +392,96 @@ void BeamMotio(Count* count, BeamSide beamSide[], BeamVerticality beamVerticalit
 
 	if ((beamVerticality[0].BeamVerticalityeFlag == true) || (beamSide[0].BeamSideFlag == true))
 	{
-		for (int a = ~0; a < 3; a++)
-
+		for (int a = 0; a < 3; a++)
 		{
 
-
-			if (count->draw_beam == 126)// 二個目
+			if (count->draw_beam == 125)// 二個目
 			{
-				beamSide[a].InputSidePosTv(240, 360);
-				beamVerticality[a].InputVerticalityPosTv(240, 360);
+				beamSide[a].InputSidePosTv(120, 240);
+				beamVerticality[a].InputVerticalityPosTu(240, 360);
 
 			}
 			else
-				if (count->draw_beam == 132)// 三個目
+				if (count->draw_beam == 130)// 三個目
 				{
-					beamSide[a].InputSidePosTv(360, 480);
-					beamVerticality[a].InputVerticalityPosTv(360, 480);
+					beamSide[a].InputSidePosTv(240, 360);
+					beamVerticality[a].InputVerticalityPosTu(360, 480);
 				}
 				else
-					if (count->draw_beam == 138) // 四個目
+					if (count->draw_beam == 135) // 四個目
 					{
-						beamSide[a].InputSidePosTv(480, 600);
-						beamVerticality[a].InputVerticalityPosTv(480, 600);
+						beamSide[a].InputSidePosTv(360, 480);
+						beamVerticality[a].InputVerticalityPosTu(480, 600);
 					}
 					else
-						if (count->draw_beam == 144)// 五個目
+						if (count->draw_beam == 140)// 五個目
 						{
-							beamSide[a].InputSidePosTv(600, 720);
-							beamVerticality[a].InputVerticalityPosTv(600, 720);
+							beamSide[a].InputSidePosTv(480, 600);
+							beamVerticality[a].InputVerticalityPosTu(600, 720);
 						}
 						else
-							if (count->draw_beam == 216)// 六個目
+							if (count->draw_beam == 145)// 六個目
 							{
-								beamSide[a].InputSidePosTv(480, 600);
-								beamVerticality[a].InputVerticalityPosTv(480, 600);
+								beamSide[a].InputSidePosTv(600, 720);
+								beamVerticality[a].InputVerticalityPosTu(480, 600);
 							}
 							else
-								if (count->draw_beam == 222)// 七個目
+								if (count->draw_beam == 150)// 七個目
 								{
-									beamSide[a].InputSidePosTv(360, 480);
-									beamVerticality[a].InputVerticalityPosTv(360, 480);
+									beamSide[a].InputSidePosTv(720, 840);
+									beamVerticality[a].InputVerticalityPosTu(360, 480);
 								}
 								else
-									if (count->draw_beam == 228)// 八個目
+									if (count->draw_beam == 160)// 八個目
 									{
-										beamSide[a].InputSidePosTv(240, 360);
-										beamVerticality[a].InputVerticalityPosTv(240, 360);
+										beamSide[a].InputSidePosTv(840,960);
+										beamVerticality[a].InputVerticalityPosTu(240, 360);
 									}
 									else
-										if (count->draw_beam == 234)// 九個目
+										if (count->draw_beam == 170)// 九個目
 										{
-											beamSide[a].InputSidePosTv(120, 240);
-											beamVerticality[a].InputVerticalityPosTv(120, 240);
+											beamSide[a].InputSidePosTv(960, 1080);
+											beamVerticality[a].InputVerticalityPosTu(120, 240);
 										}
 										else
-											if (count->draw_beam == 228)// 十個目
+											if (count->draw_beam == 180)// 八個目
 											{
-												beamSide[a].InputSidePosTv(0, 120);
-												beamVerticality[a].InputVerticalityPosTv(0, 120);
-											}
+												beamSide[a].InputSidePosTv(840, 960);
+												beamVerticality[a].InputVerticalityPosTu(240, 360);
+											}else
+												if (count->draw_beam == 190)// 九個目
+												{
+													beamSide[a].InputSidePosTv(960, 1080);
+													beamVerticality[a].InputVerticalityPosTu(120, 240);
+												}
+												else
+													if (count->draw_beam == 200)// 八個目
+													{
+														beamSide[a].InputSidePosTv(840, 960);
+														beamVerticality[a].InputVerticalityPosTu(240, 360);
+													}
+													else
+														if (count->draw_beam == 210)// 九個目
+														{
+															beamSide[a].InputSidePosTv(960, 1080);
+															beamVerticality[a].InputVerticalityPosTu(120, 240);
+														}
+														else
+															if (count->draw_beam == 220)// 八個目
+															{
+																beamSide[a].InputSidePosTv(840, 960);
+																beamVerticality[a].InputVerticalityPosTu(240, 360);
+															}
+										else
+											if (count->draw_beam == 230)// 十個目
+											{
+												beamSide[a].InputSidePosTv(1080, 1200);
+												beamVerticality[a].InputVerticalityPosTu(0, 120);
+											}else
+												if (count->draw_beam == 240)
+												{
+													beamSide[a].InputSidePosTv(0, 120);
+												}
 		}
 
 	}

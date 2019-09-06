@@ -41,6 +41,7 @@ void ResultTwoTextureSize::InputTu(int Tu, int TuSize)
 	m_pos_tu = (float)Tu / 2560;
 	m_tu_size = (float)TuSize / 2560;
 }
+
 // 描画設定等
 void DrawResultSceneTwo(DirectX* directX, Count* count  )
 {
@@ -58,9 +59,10 @@ void InitResultSceneTwo(DirectX* directX)
 // 次のシーンに行くための条件記入
 void UpdateResultSceneTwo(ResultTwoTextureSize *p_ResultTexTwo)
 {
-	p_ResultTexTwo->m_input_tu += 1;
-	p_ResultTexTwo->m_input_tu_size += 1;
-	ResultTexTwo.InputTu(p_ResultTexTwo->m_input_tu, p_ResultTexTwo->m_input_tu_size);
+
+	p_ResultTexTwo->m_input_tu_left += 1;
+	p_ResultTexTwo->m_input_tu_right += 1;
+	ResultTexTwo.InputTu(p_ResultTexTwo->m_input_tu_left, p_ResultTexTwo->m_input_tu_right);
 
 	if (GetKeyStatus(DIK_P))
 	{
