@@ -33,6 +33,8 @@ public:
 	void InputSidePosTv(float Tv, float TvSize);
 
 	float m_add_tv_size = (float)120 / 1024;
+
+	float MainCharacterHItFlag = 0;
 };
 
 // 縦方向に描画されるビームに関する情報を持つクラス
@@ -53,6 +55,8 @@ public:
 
 	float m_pos_tv = (float) 0 / 1024;
 	float m_pos_tv_size = (float) 960 / 1024;
+
+	float MainCharacterHItFlag = 0;
 };
 
 
@@ -65,5 +69,6 @@ void BeamMotio(Count* count, BeamSide beamSide[], BeamVerticality beamVerticalit
 void SetBeam_four(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, Beam* beam);
 
 void SetBeam_six(Count* count, int MapChipList[20][28], BeamSide* beamSide, BeamVerticality* beamVerticality, Beam* beam);
+
 
 #endif // !
