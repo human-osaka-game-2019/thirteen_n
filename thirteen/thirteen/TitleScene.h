@@ -31,12 +31,12 @@ public:
 	float m_pos_x_size = 40;
 	float m_pos_y_size = 40;
 
-	float m_pos_tu = (float) 0 / 128;
-	float m_tu_size = (float) 40 / 128;
+	float m_pos_tu = (float) 0 / 256;
+	float m_tu_size = (float) 40 / 256;
 	void InputTu(float Tu, float TuSize);
 
-	float m_pos_tv = (float)  0 / 256;
-	float m_tv_size =(float) 40 / 256;
+	float m_pos_tv = (float)  0 / 128;
+	float m_tv_size =(float) 40 / 128;
 	
 
 };
@@ -49,12 +49,12 @@ public:
 	float m_pos_x_size = 40;
 	float m_pos_y_size = 40;
 
-	float m_pos_tu = (float) 0 / 128;
-	float m_tu_size = (float) 40 / 128;
+	float m_pos_tu = (float) 0 / 256;
+	float m_tu_size = (float) 40 / 256;
 	void InputTu(float Tu, float TuSize);
 
-	float m_pos_tv   = (float)  80 / 256;
-	float m_tv_size  = (float) 120 / 256;
+	float m_pos_tv   = (float)  80 / 128;
+	float m_tv_size  = (float) 120 / 128;
 	
 
 };
@@ -67,12 +67,12 @@ public:
 	float m_pos_x_size = 40;
 	float m_pos_y_size = 40;
 
-	float m_pos_tu = (float) 0 / 128;
-	float m_tu_size = (float) 40/ 128;
+	float m_pos_tu = (float) 0 / 256;
+	float m_tu_size = (float) 40/ 256;
 	void InputTu(float Tu, float TuSize);
 
-	float m_pos_tv  = (float)  40 / 256;
-	float m_tv_size = (float) 128 / 256;
+	float m_pos_tv  = (float)  40 / 128;
+    float m_tv_size = (float) 80  / 128;
 
 };
 SceneId TitleSceneMain(DirectX* directX, Count* count);

@@ -21,19 +21,19 @@ PinkSmallStar pink_stra[3];
 
 void WhiteSmallStar::InputTu(float tu, float TuSize)
 {
-	m_pos_tu = (float)tu / 128;
-	m_tu_size = (float)(tu + TuSize) / 128;
+	m_pos_tu = (float)tu / 256;
+	m_tu_size = (float)(tu + TuSize) / 256;
 }
 void BlueSmallStar::InputTu(float tu, float TuSize)
 {
-	m_pos_tu = (float)tu / 128;
-	m_tu_size = (float)(tu + TuSize) / 128;
+	m_pos_tu = (float)tu / 256;
+	m_tu_size = (float)(tu + TuSize) / 256;
 }
 
 void PinkSmallStar::InputTu(float tu, float TuSize)
 {
-	m_pos_tu = (float)tu / 128;
-	m_tu_size = (float)(tu + TuSize) / 128;
+	m_pos_tu = (float)tu / 256;
+	m_tu_size = (float)(tu + TuSize) / 256;
 }
 
 
@@ -181,11 +181,69 @@ void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState *tds)
 		break;
 	}
 
+	for (int c = 0; c < 3; c++)
+	{
+		switch (count->DrawSmallStar)
+		{
+		case 10:
+			pink_stra[c].InputTu(40, 40);
+			break;
+		case 20:
+			pink_stra[c].InputTu(80, 40);
+			break;
+		case 30:
+			pink_stra[c].InputTu(120, 40);
+			break;
+		case 40:
+			pink_stra[c].InputTu(160, 40);
+			break;
+		case 50:
+			pink_stra[c].InputTu(0, 40);
+			break;
+		}
+	}
+	for (int b = 0; b < 5; b++)
+	{
+		switch (count->DrawSmallStar)
+		{
+		case 10:
+			blue_stra[b].InputTu(40, 40);
+			break;
+		case 20:
+			blue_stra[b].InputTu(80, 40);
+			break;
+		case 30:
+			blue_stra[b].InputTu(120, 40);
+			break;
+		case 40:
+			blue_stra[b].InputTu(160, 40);
+			break;
+		case 50:
+			blue_stra[b].InputTu(0, 40);
+			break;
+		}
+	}
+
 	for (int a = 0; a < 10; a++)
 	{
 		switch (count->DrawSmallStar)
 		{
-		
+		case 10:
+			white_stra[a].InputTu(40,40);
+			break;
+		case 20:
+			white_stra[a].InputTu(80, 40);
+			break;
+		case 30:
+			white_stra[a].InputTu(120, 40);
+			break;
+		case 40:
+			white_stra[a].InputTu(160, 40);
+			break;
+		case 50:
+			white_stra[a].InputTu(0, 40);
+			count->DrawSmallStar = 0;
+			break;
 		}
 	}
 

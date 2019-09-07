@@ -75,6 +75,8 @@ public:
 	int DrawSmallStar = 0;
 	void SmallStarReset() { DrawSmallStar = 0; }
 
+	//int 
+
 	int BeamCount = 6;
 
 	int StarCount = 0;// 取った星の数
