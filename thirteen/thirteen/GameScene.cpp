@@ -271,7 +271,7 @@ void UpdateGameScene(Count* count)
 
 	DrawBreakMeteorite(meteorite,meteoMotion);
 
-	if (count->StarCount >= 12 || mainCara.DeathFlag == 1)
+	if (count->StarCount >= 120 || mainCara.DeathFlag == 1)
 	{
 
 		ChangeSceneStep(SceneStep::EndStep);
