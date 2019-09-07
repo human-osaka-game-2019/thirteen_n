@@ -5,6 +5,7 @@
 #include"Device.h"
 #include"GameScene.h"
 #include"Bullet.h"
+#include"Scene.h"
 
 class Enemy
 {
@@ -28,7 +29,7 @@ public:
 	float m_pos_tv_size = (float)120 / 512;
 
 	int m_draw_flag = 0;
-
+	int MainCharacterHItFlag = 0;
 };
 
 class Enemy_White
@@ -46,6 +47,7 @@ public:
 	float m_pos_tv_size = (float)160 / 512;
 
 	int m_draw_flag = 0;
+	int MainCharacterHItFlag = 0;
 
 };
 
@@ -54,5 +56,6 @@ void DrawEnemy(Count* count  , int MapChipList[20][28], Enemy_Green e_green[], E
 void EnemyMove(Count* count  , Enemy_Green e_green[], Enemy_White e_white[], Enemy* enemy);
 
 void EnemyMotion(Count* count, Enemy_Green e_green[], Enemy_White e_white[], Enemy* enemy);
+
 
 #endif // !

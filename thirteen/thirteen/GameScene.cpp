@@ -265,9 +265,11 @@ void UpdateGameScene(Count* count)
 
 	HiBulletMeteorite(meteorite,bullet,count, meteoMotion,ShotkeyState);
 
+	HitBulletEnemy(&mainCara,count,e_green,e_white,ShotkeyState);
+
 	DrawBreakMeteorite(meteorite,meteoMotion);
 
-	if (count->StarCount >= 12)
+	if (count->StarCount >= 12 || mainCara.DeathFlag == 1)
 	{
 
 		ChangeSceneStep(SceneStep::EndStep);

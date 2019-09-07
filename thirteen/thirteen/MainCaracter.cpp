@@ -8,6 +8,7 @@
 #include"Bullet.h"
 #include"InputKey.h"
 #include"MainCaracter.h"
+#include"Enemy.h"
 
 
 void MainCharacter::InputTv(int Tu, int Tu_Size)

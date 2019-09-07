@@ -6,6 +6,7 @@
 
 #include"Enemy.h"
 #include"Bullet.h"
+#include"MainCaracter.h"
 #include"InputKey.h"
 
 #include <random>
@@ -119,6 +120,7 @@ void EnemyMove(Count* count  , Enemy_Green e_green[], Enemy_White e_white[],Enem
 		e_green[0].m_pos_x = 0;
 		e_green[0].m_pos_x = 0;
 		e_green[0].m_draw_flag = 2;
+		e_green[0].MainCharacterHItFlag = 0;
 
 	}
 	if (e_green[1].m_pos_x == 80)
@@ -126,20 +128,21 @@ void EnemyMove(Count* count  , Enemy_Green e_green[], Enemy_White e_white[],Enem
 		e_green[1].m_pos_y = 0;
 		e_green[1].m_pos_y = 0;
 		e_green[1].m_draw_flag = 2;
-
+		e_green[1].MainCharacterHItFlag = 0;
 	}
 	if (e_white[0].m_pos_y == 840)
 	{
 		e_white[0].m_pos_x = 0;
 		e_white[0].m_pos_x = 0;
 		e_white[0].m_draw_flag = 2;
-
+		e_white[0].MainCharacterHItFlag = 0;
 	}
 	if (e_white[1].m_pos_y == 80)
 	{
 		e_white[1].m_pos_y = 0;
 		e_white[1].m_pos_y = 0;
 		e_white[1].m_draw_flag = 2;
+		e_white[1].MainCharacterHItFlag = 0;
 	}
 	if (e_white[0].m_draw_flag == 2 && e_white[1].m_draw_flag == 2)
 	{
@@ -283,4 +286,68 @@ void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_
 
 	
 }
+
+// 操作キャラと弾丸のあたり判定
+void HitBulletEnemy(MainCharacter* mainCharacter, Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[])
+{
+	// 敵の数　緑＊２　白＊２
+	for (int a = 0; a < 2; a++)
+	{
+
+		if (e_green[a].m_draw_flag == 1 || e_white[a].m_draw_flag == 1)
+		{
+
+			if (e_green[a].MainCharacterHItFlag == 0)
+			{
+
+				if ((mainCharacter->m_pos_x + 40 > e_green[a].m_pos_x /*弾の右のあたり判定*/) && (mainCharacter->m_pos_x < e_green[a].m_pos_x + 40)/*弾の左のあたり判定*/)
+				{
+
+					if ((mainCharacter->m_pos_y < e_green[a].m_pos_y + 40)/*弾が下から当たった時ののあたり判定*/ && (mainCharacter->m_pos_y + 40 > e_green[a].m_pos_y/*弾が上から当たった時のあたり判定*/))
+					{
+						e_green[a].MainCharacterHItFlag = 1;
+
+						if(count->BulletCount < 4)
+						{
+							count->BulletCount += 1;
+						}
+						else
+						{
+							mainCharacter->DeathFlag = 1;
+						}
+
+					}
+
+
+				}
+			}
+
+			if (e_white[a].MainCharacterHItFlag == 0)
+			{
+				if ((mainCharacter->m_pos_x + 40 > e_white[a].m_pos_x /*弾の右のあたり判定*/) && (mainCharacter->m_pos_x < e_white[a].m_pos_x + 40)/*弾の左のあたり判定*/)
+				{
+
+					if ((mainCharacter->m_pos_y < e_white[a].m_pos_y + 40)/*弾が下から当たった時ののあたり判定*/ && (mainCharacter->m_pos_y + 40 > e_white[a].m_pos_y/*弾が上から当たった時のあたり判定*/))
+					{
+						e_white[a].MainCharacterHItFlag = 1;
+
+						if (count->BulletCount < 4)
+						{
+							count->BulletCount += 1;
+						}
+						else
+						{
+							mainCharacter->DeathFlag = 1;
+						}
+
+					}
+
+				}
+			}
+		}
+
+	}
+}
+
+
 

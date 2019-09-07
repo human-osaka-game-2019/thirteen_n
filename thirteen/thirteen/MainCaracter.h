@@ -3,8 +3,8 @@
 
 #include"Engine.h"
 #include"Device.h"
-#include"Enemy.h"
 #include"InputKey.h"
+#include"Enemy.h"
 
 class MainCharacter
 {
@@ -21,6 +21,8 @@ public:
 
 	float Add_TvSize;
 	void InputTv(int Tv, int Tv_Size);
+
+	int DeathFlag = 0;
 };
 
 void MoveCharacter(Count* count, KeyState* keyState, MainCharacter* mainCara);
@@ -36,5 +38,7 @@ void ShotMove(KeyState keyState[5], Bullet bullet[5], MainCharacter* mainCara);
 void ShotHitJudge(Bullet bullet[5], KeyState keyState[5], MainCharacter* mainCara, Count* count);
 
 void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[]);
+
+void HitBulletEnemy(MainCharacter* mainCharacter, Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[]);
 
 #endif // !
