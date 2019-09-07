@@ -75,7 +75,8 @@ public:
 	int DrawSmallStar = 0;
 	void SmallStarReset() { DrawSmallStar = 0; }
 
-	//int 
+	int HealTime = 0;
+	void  HealTimeReset() { HealTime = 0; }
 
 	int BeamCount = 6;
 

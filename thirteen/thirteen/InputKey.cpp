@@ -49,6 +49,20 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 			}
 	}
 
+	if (count->BulletCount <= 4 && count->BulletCount >= 1)
+	{
+		if (count->HealTime == (60 * 30))
+		{
+			count->HealTime = 0;
+			count->BulletCount -= 1;
+		}
+	}else
+		if (count->HealTime == (60 * 30))
+		{
+			count->HealTime = 0;
+		}
+
+
 	if (count->re_shot_count > 10)
 	{
 		count->re_shot_count = 0;

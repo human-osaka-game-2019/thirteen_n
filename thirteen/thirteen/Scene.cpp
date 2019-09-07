@@ -53,6 +53,7 @@ void Count::AllReset()
 	re_shot_count = 0;
 	StarMotion = 0;
 	DrawStarCount = 0;
+	HealTime = 0;
 }
 
 
@@ -153,4 +154,5 @@ void FrameCount(Count* count)
 	count->EnemyGreenMotion += 1;
 	count->EnemyWhiteMotion += 1;
 	count->DrawSmallStar += 1;
+	count->HealTime += 1;
 }
