@@ -68,12 +68,13 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 
 						if (GetKeyStatus(DIK_DOWN))
 						{
-							bullet->ReShot == 1;
+							bullet->ReShot = 1;
 							ShotkeyState[a].m_shot = 1;
 							bullet[a].ShotFlag = true;
 							count->BulletCount += 1;
 							m_soundsManager.Start("Bullet");
 							m_soundsManager.Stop("Bullet");
+							break;
 						}
 						else
 							if (GetKeyStatus(DIK_UP))
@@ -84,6 +85,7 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 								count->BulletCount += 1;
 								m_soundsManager.Start("Bullet");
 								m_soundsManager.Stop("Bullet");
+								break;
 							}
 
 						if (GetKeyStatus(DIK_LEFT))
@@ -94,6 +96,7 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 							count->BulletCount += 1;
 							m_soundsManager.Start("Bullet");
 							m_soundsManager.Stop("Bullet");
+							break;
 						}
 						else
 							if (GetKeyStatus(DIK_RIGHT))
@@ -104,6 +107,7 @@ void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], B
 								count->BulletCount += 1;
 								m_soundsManager.Start("Bullet");
 								m_soundsManager.Stop("Bullet");
+								break;
 							}
 					}
 				}

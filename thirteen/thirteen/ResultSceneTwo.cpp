@@ -64,7 +64,7 @@ void UpdateResultSceneTwo(ResultTwoTextureSize *p_ResultTexTwo)
 	p_ResultTexTwo->m_input_tu_right += 1;
 	ResultTexTwo.InputTu(p_ResultTexTwo->m_input_tu_left, p_ResultTexTwo->m_input_tu_right);
 
-	if (GetKeyStatus(DIK_P))
+	if (GetKeyStatus(DIK_RETURN))
 	{
 		ChangeSceneStep(SceneStep::EndStep);
 	}
