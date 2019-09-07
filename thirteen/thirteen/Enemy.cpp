@@ -288,7 +288,7 @@ void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_
 }
 
 // 操作キャラと弾丸のあたり判定
-void HitBulletEnemy(MainCharacter* mainCharacter, Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[])
+void HitMainCaraEnemy(MainCharacter* mainCharacter, Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[])
 {
 	// 敵の数　緑＊２　白＊２
 	for (int a = 0; a < 2; a++)

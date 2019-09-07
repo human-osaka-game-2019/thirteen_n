@@ -265,7 +265,9 @@ void UpdateGameScene(Count* count)
 
 	HiBulletMeteorite(meteorite,bullet,count, meteoMotion,ShotkeyState);
 
-	HitBulletEnemy(&mainCara,count,e_green,e_white,ShotkeyState);
+	HitMainCaraEnemy(&mainCara, count, e_green, e_white, ShotkeyState);
+
+	HitCaraBeam(&mainCara, count, beamSide, beamVerticality, ShotkeyState);
 
 	DrawBreakMeteorite(meteorite,meteoMotion);
 

@@ -4,7 +4,7 @@
 #include<SoundsManager.h>
 
 #include"Beam.h"
-
+#include"MainCaracter.h"
 
 #include <random>
 #include <iostream>
@@ -469,8 +469,81 @@ void BeamMotio(Count* count, BeamSide beamSide[], BeamVerticality beamVerticalit
 			beam->draw_beam_state = 0;
 			beamSide[a].BeamSideFlag = false;
 			beamVerticality[a].BeamVerticalityeFlag = false;
+			beamSide[a].MainCharacterHItFlag = 0;
+			beamVerticality[a].MainCharacterHItFlag = 0;
+
 		}
 	}
 
 
 }
+
+// 敵と弾丸のあたり判定
+void HitCaraBeam(MainCharacter* mainCara, Count* count, BeamSide beamSide[], BeamVerticality beamVerticality[], KeyState ShotkeyState[])
+{
+
+	for (int b = 0; b < 3; b++)
+	{
+		if (beamSide[b].BeamSideFlag == true && beamSide[b].MainCharacterHItFlag == 0)
+		{
+
+			if ((mainCara->m_pos_x + 40 > beamSide[b].m_pos_x /*弾の右のあたり判定*/) && (mainCara->m_pos_x < beamSide[b].m_pos_x + 1280)/*弾の左のあたり判定*/)
+			{
+
+				if ((mainCara->m_pos_y < beamSide[b].m_pos_y + 120)/*弾が下から当たった時ののあたり判定*/ && (mainCara->m_pos_y + 40 > beamSide[b].m_pos_y/*弾が上から当たった時のあたり判定*/))
+				{
+					beamSide[b].MainCharacterHItFlag = 1;
+
+					if (count->BulletCount < 4)
+					{
+						count->BulletCount += 1;
+					}
+					else
+					{
+						mainCara->DeathFlag = 1;
+					}
+
+				}
+
+
+			}
+
+		}
+	}
+		
+		for (int a = 0; a < 3; a++)
+		{
+			if (beamVerticality[a].BeamVerticalityeFlag == true && beamVerticality[a].MainCharacterHItFlag == 0)
+			{
+
+				if ((mainCara->m_pos_x + 40 > beamVerticality[a].m_pos_x /*弾の右のあたり判定*/) && (mainCara->m_pos_x < beamVerticality[a].m_pos_x + 120)/*弾の左のあたり判定*/)
+				{
+
+					if ((mainCara->m_pos_y < beamVerticality[a].m_pos_y + 1280)/*弾が下から当たった時ののあたり判定*/ && (mainCara->m_pos_y + 40 > beamVerticality[a].m_pos_y/*弾が上から当たった時のあたり判定*/))
+					{
+
+						beamVerticality[a].MainCharacterHItFlag = 1;
+
+						if (count->BulletCount < 4)
+						{
+							count->BulletCount += 1;
+						}
+						else
+						{
+							mainCara->DeathFlag = 1;
+						}
+
+					}
+
+				}
+			}
+		}
+
+
+	
+}
+		
+	
+
+
+

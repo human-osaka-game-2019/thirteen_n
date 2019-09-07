@@ -5,6 +5,7 @@
 #include"Device.h"
 #include"InputKey.h"
 #include"Enemy.h"
+#include"Beam.h"
 
 class MainCharacter
 {
@@ -39,6 +40,9 @@ void ShotHitJudge(Bullet bullet[5], KeyState keyState[5], MainCharacter* mainCar
 
 void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[]);
 
-void HitBulletEnemy(MainCharacter* mainCharacter, Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[]);
+void HitMainCaraEnemy(MainCharacter* mainCharacter, Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[]);
+
+
+void HitCaraBeam(MainCharacter* mainCara, Count* count, BeamSide beamSide[], BeamVerticality beamVerticality[], KeyState ShotkeyState[]);
 
 #endif // !
