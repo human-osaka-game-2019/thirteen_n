@@ -171,7 +171,7 @@
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="InputKey.cpp" />
     <ClCompile Include="STAR.cpp" />
-    <ClCompile Include="Source19.cpp" />
+    <ClCompile Include="TitleSystem.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Source20.cpp" />
     <ClCompile Include="Source21.cpp" />
@@ -197,7 +197,7 @@
     <ClInclude Include="InputKey.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="Header20.h" />
+    <ClInclude Include="TitleSystem.h" />
     <ClInclude Include="Header21.h" />
     <ClInclude Include="Header22.h" />
     <ClInclude Include="window.h" />
