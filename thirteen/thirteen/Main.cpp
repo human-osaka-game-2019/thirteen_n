@@ -11,7 +11,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
 	MapChipData MapData;
 	Count count;
 	HWND* hWnd;
-
+	FlameCount flamCount[10];
 	// MapChipData MapData;
 	if ((hWnd = InitEngine(1280, 960, hInst, &directX)) == NULL)
 	{
@@ -49,7 +49,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
 
 			}
 
-			UpdateScene(&directX, MapData, &count);
+			UpdateScene(&directX, MapData, &count,flamCount);
 		}
 		prevtime = time;
 	}

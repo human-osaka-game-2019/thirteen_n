@@ -54,10 +54,12 @@ void Count::AllReset()
 	StarMotion = 0;
 	DrawStarCount = 0;
 	HealTime = 0;
+	TitleScene = 0;
+	DrawSmallStar = 0;
 }
 
 
-void UpdateScene(DirectX* directX, MapChipData MapData  , Count* count)
+void UpdateScene(DirectX* directX, MapChipData MapData  , Count* count, FlameCount flamCount[])
 {
 	int current_scene_id = SceneId::TitleScene;
 
@@ -73,7 +75,7 @@ void UpdateScene(DirectX* directX, MapChipData MapData  , Count* count)
 			break;
 			// 難易度設定シーン
 		case SceneId::ResultSceneTwo:
-			result_id = ResultSceneTwoMain(directX, count );
+			result_id = ResultSceneTwoMain(directX, count ,flamCount);
 			break;
 			// 設定、ヘルプシーン
 		case SceneId::OptionScene:
@@ -81,7 +83,7 @@ void UpdateScene(DirectX* directX, MapChipData MapData  , Count* count)
 			break;
 			// メインゲームシーン
 		case SceneId::GameScene:
-			result_id = GameSceneMain(directX , count);
+			result_id = GameSceneMain(directX , count, flamCount);
 			break;
 			// リザルトシーン
 		case SceneId::ResultScene:

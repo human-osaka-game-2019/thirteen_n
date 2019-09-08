@@ -107,7 +107,7 @@ class MeteoriteStar
 class FlameCount
 {
 public:
-	int m_count;
+	int m_count = 0;
 };
 
 /**
@@ -128,7 +128,7 @@ SceneStep GetCurrentSceneStep();
 */
 void ChangeSceneStep(SceneStep next_step);
 
-void UpdateScene(DirectX* directX, MapChipData MapData, Count* count);
+void UpdateScene(DirectX* directX, MapChipData MapData, Count* count, FlameCount flamCount[]);
 
 void DrawScene(DirectX* directX, MapChipData MapData, Count* count);
 
