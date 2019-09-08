@@ -98,6 +98,18 @@ public:
 	void FramCountReset() { FramCount = 0; }
 };
 
+class MeteoriteStar
+{
+	int m_draw_count;
+	int DrawFlag;
+};
+
+class FlameCount
+{
+public:
+	int m_count;
+};
+
 /**
 * @brief 現在のシーンIDを戻り値で取得する
 * @return 現在のシーンID
