@@ -23,7 +23,7 @@ extern SoundLib::SoundsManager m_soundsManager;
 extern int g_SceneStep;
 void DrawGameScene(DirectX* directX, MapChipData MapData,Count * count);
 void InitGameScene(DirectX* directX);
-void UpdateGameScene(Count* count);
+void UpdateGameScene(Count* count, FlameCount flamCount[]);
 SceneId FinisGameScene();
 int* MAPR[22];
 
@@ -73,7 +73,7 @@ Beam beam;
 Enemy enemy;
 Constellation constellation[12];
 
-SceneId GameSceneMain(DirectX* directX, Count* count)
+SceneId GameSceneMain(DirectX* directX, Count* count,FlameCount flamCount[])
 {
 	switch (GetCurrentSceneStep())
 	{
@@ -88,7 +88,7 @@ SceneId GameSceneMain(DirectX* directX, Count* count)
 		{
 			meteoMotion[a].FramCountAdd();
 		}
-		UpdateGameScene(count);
+		UpdateGameScene(count, flamCount);
 		break;
 		// 終了
 	case SceneStep::EndStep:
@@ -215,8 +215,10 @@ void InitGameScene(DirectX* directX)
 
 // 次のシーンに行くための条件記入
 // ゲーム設定記入
-void UpdateGameScene(Count* count)
+void UpdateGameScene(Count* count, FlameCount flamCount[])
 {
+	flamCount[0].m_count += 1;
+
 	FrameCount(count, &keyState);
 
 	InputKeyState(count, &keyState,ShotkeyState, bullet);

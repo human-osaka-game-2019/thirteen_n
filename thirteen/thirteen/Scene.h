@@ -98,6 +98,18 @@ public:
 	void FramCountReset() { FramCount = 0; }
 };
 
+class MeteoriteStar
+{
+	int m_draw_count;
+	int DrawFlag;
+};
+
+class FlameCount
+{
+public:
+	int m_count = 0;
+};
+
 /**
 * @brief 現在のシーンIDを戻り値で取得する
 * @return 現在のシーンID
@@ -116,7 +128,7 @@ SceneStep GetCurrentSceneStep();
 */
 void ChangeSceneStep(SceneStep next_step);
 
-void UpdateScene(DirectX* directX, MapChipData MapData, Count* count);
+void UpdateScene(DirectX* directX, MapChipData MapData, Count* count, FlameCount flamCount[]);
 
 void DrawScene(DirectX* directX, MapChipData MapData, Count* count);
 

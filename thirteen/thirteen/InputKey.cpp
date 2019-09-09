@@ -17,7 +17,7 @@ Enemy_Green e_green[2];
 Enemy_White e_white[2];
 */
 
-// キーの入力情報設定
+// キーの入力情報設定(ゲームシーン用)
 void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], Bullet bullet[5])
 {
 

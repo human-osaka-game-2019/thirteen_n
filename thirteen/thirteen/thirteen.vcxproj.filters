@@ -20,13 +20,13 @@
     <Filter Include="仮置き">
       <UniqueIdentifier>{5b1140e5-beb6-4b3d-9096-038e0c24217d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TitleSystem">
+      <UniqueIdentifier>{58e4fd3d-9d3f-4620-a475-d2f821a0b18e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="drawTexture.cpp">
       <Filter>Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="Source19.cpp">
-      <Filter>仮置き</Filter>
     </ClCompile>
     <ClCompile Include="Source20.cpp">
       <Filter>仮置き</Filter>
@@ -94,11 +94,11 @@
     <ClCompile Include="ResultSceneTwo.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="TitleSystem.cpp">
+      <Filter>TitleSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header20.h">
-      <Filter>仮置き</Filter>
-    </ClInclude>
     <ClInclude Include="Header21.h">
       <Filter>仮置き</Filter>
     </ClInclude>
@@ -158,6 +158,9 @@
     </ClInclude>
     <ClInclude Include="ResultSceneTwo.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleSystem.h">
+      <Filter>TitleSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

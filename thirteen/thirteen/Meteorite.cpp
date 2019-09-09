@@ -359,44 +359,40 @@ void DrawBreakMeteorite(Meteorite meteorite[], MeteoMotion  meteoMotion[])
 
 		if (meteorite[a].MeteoriteBreakFlag == 1)
 		{
-			if (meteoMotion[a].FramCount == 12)
+			switch (meteoMotion[a].FramCount)
 			{
+			case 12:
 				meteorite[a].InputTu(80, 40);
-			}
-			else
-				if (meteoMotion[a].FramCount == 24)
-				{
-					meteorite[a].InputTu(120, 40);
-				}
-				else
-					if (meteoMotion[a].FramCount == 36)
-					{
-						meteorite[a].InputTu(160, 40);
-					}
-					else
-						if (meteoMotion[a].FramCount == 48)
-						{
-							meteorite[a].InputTu(200, 40);
-						}
-						else
-							if (meteoMotion[a].FramCount == 60)
-							{
-								meteorite[a].MeteoriteBreakFlag = 0;
-								meteorite[a].InputTu(0, 40);
-								if (a < 4)
-								{
-									meteorite[a].MeteoriteDrawState = 0;
-									meteorite[a].m_pos_x = 0;
-									meteorite[a].m_pos_y = 0;
-								}
-									if (a >= 4 && a < 8)
-									{
-										meteorite[a].MeteoriteDrawStateTwo = 0;
-										meteorite[a].m_pos_x = 0;
-										meteorite[a].m_pos_y = 0;
+				break;
+			case 24:
+				meteorite[a].InputTu(120, 40);
+				break;
+			case 36:
+				meteorite[a].InputTu(160, 40);
+				break;
+			case 48:
+				meteorite[a].InputTu(200, 40);
+				break;
+			case 60:	
+				
+				meteorite[a].MeteoriteBreakFlag = 0;
+				meteorite[a].InputTu(0, 40);
 
-									}
-							}
+				if (a < 4)
+				{
+					meteorite[a].MeteoriteDrawState = 0;
+					meteorite[a].m_pos_x = 0;
+					meteorite[a].m_pos_y = 0;
+				}
+				if (a >= 4 && a < 8)
+				{
+					meteorite[a].MeteoriteDrawStateTwo = 0;
+					meteorite[a].m_pos_x = 0;
+					meteorite[a].m_pos_y = 0;
+
+				}
+				break;
+			}
 
 		m_soundsManager.Start("MeteorDestroy");
 
