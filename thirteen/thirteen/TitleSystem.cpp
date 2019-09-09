@@ -129,3 +129,24 @@ void SelectMenu(TitleSystem* titleSystem, KeyState* keyState,SelectTexture selec
 	}
 
 }
+
+void SelectScene(SelectTexture selectTexture[], SceneSelect *sceneSelct)
+{
+	if (selectTexture[2].m_pos_tu == 0.5)
+	{
+		sceneSelct->SceneState = 3;
+	}
+	else
+		if (selectTexture[1].m_pos_tu == 0.5)
+		{
+			sceneSelct->SceneState = 2;
+
+		}
+		else
+			if (selectTexture[0].m_pos_tu == 0.5)
+			{
+				sceneSelct->SceneState = 1;
+			}
+
+
+}

@@ -14,7 +14,7 @@ void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState* tds, Flame
 SceneId FinisTitleScene();
 
 TEXTUREDATA TitleTextureData;
-
+SceneSelect sceneSelct;
 TitleDrawState tds;
 WhiteSmallStar white_stra[11];
 BlueSmallStar blue_stra[5];
@@ -269,11 +269,10 @@ void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState *tds, Flame
 	
 	SelectMenu(&titleSystem,&TitlekeyState,selectTexture,flamCount);
 
-
+	SelectScene(selectTexture,&sceneSelct);
 
 	if (GetKeyStatus(DIK_RETURN))
 	{
-
 		ChangeSceneStep(SceneStep::EndStep);
 	}
 }
@@ -283,13 +282,26 @@ SceneId FinisTitleScene()
 {
 	for (int a = 0; a < TitleTextureList::MaxTitleTexture; a++)
 	{
-
-
 		TitleTextureData.m_pTexture[a]->Release();
 		TitleTextureData.m_pTexture[a] = nullptr;
 	}
 
 	// 次のシーンの遷移先IDを返す
-	return SceneId::GameScene;
+
+	switch (sceneSelct.SceneState)
+	{
+	case 0:
+		break;
+	case 1:
+		return SceneId::GameScene;
+		break;
+	case 2:
+		return SceneId::HelpScene;
+		break;
+	case 3:
+		return SceneId::GameScene;
+		break;
+	}
+
 }
 

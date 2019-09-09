@@ -7,7 +7,7 @@
 #include "Scene.h"
 #include "TitleScene.h"
 #include "ResultSceneTwo.h"
-#include "Option.h"
+#include "HelpScene.h"
 #include "GameScene.h"
 #include "ResultScene.h"
 #include"Meteorite.h"
@@ -78,8 +78,8 @@ void UpdateScene(DirectX* directX, MapChipData MapData  , Count* count, FlameCou
 			result_id = ResultSceneTwoMain(directX, count ,flamCount);
 			break;
 			// 設定、ヘルプシーン
-		case SceneId::OptionScene:
-			result_id = OptionSceneMain(directX);
+		case SceneId::HelpScene:
+			result_id = HelpSceneMain(directX);
 			break;
 			// メインゲームシーン
 		case SceneId::GameScene:
@@ -120,8 +120,8 @@ void DrawScene(DirectX* directX, MapChipData MapData, Count* count  )
 		case SceneId::ResultSceneTwo:
 			DrawResultSceneTwo(directX, count );
 			break;
-		case SceneId::OptionScene:
-			DrawOptionScene(directX);
+		case SceneId::HelpScene:
+			DrawHelpScene(directX);
 			break;
 		case SceneId::GameScene:
 			DrawGameScene(directX, MapData ,count);

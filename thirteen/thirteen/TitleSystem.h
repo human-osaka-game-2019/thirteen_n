@@ -31,8 +31,13 @@ public:
 	float m_pos_tv;
 	float m_tv_size;
 
-	void InputTextureStatus(float x, float y, float x_size, float y_size, float tu, float tv, float tu_size, float tv_size);
 	void InputTu(float tu, float tu_size);
+};
+
+class SceneSelect
+{
+public:
+	int SceneState;
 };
 
 void TextureDataSet(SelectTexture selectTexture[]);
@@ -40,5 +45,7 @@ void TextureDataSet(SelectTexture selectTexture[]);
 void SelectMenu(TitleSystem* titleSystem, KeyState* keyState, SelectTexture selectTexture[], FlameCount flamCount[]);
 
 void InputSelectKey(TitleSystem* titleSystem, KeyState* keyState);
+
+void SelectScene(SelectTexture selectTexture[], SceneSelect* sceneSelct);
 
 #endif // !TITLEINPUTKEY

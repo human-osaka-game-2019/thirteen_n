@@ -16,7 +16,7 @@ enum SceneId
 {
 	TitleScene,			//!< タイトルシーン
 	ResultSceneTwo,			//!< 難易度設定シーン
-	OptionScene,        //!< ヘルプ(遊戯説明画面)シーン
+	HelpScene,        //!< ヘルプ(遊戯説明画面)シーン
 	GameScene,			//!< ゲーム本編シーン
 	ResultScene,		//!< リザルトシーン
 	SceneIdMax,			//!< シーンID最大
