@@ -277,6 +277,10 @@ void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState *tds, Flame
 
 	if (GetKeyStatus(DIK_RETURN))
 	{
+		m_soundsManager.AddFile("Sound/MenuPick.wav", "Select");
+		m_soundsManager.SetVolume("Select", 15);
+		m_soundsManager.Start("Select");
+
 		ChangeSceneStep(SceneStep::EndStep);
 	}
 }
