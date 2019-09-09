@@ -24,7 +24,7 @@ extern int g_SceneStep;
 void DrawGameScene(DirectX* directX, MapChipData MapData,Count * count);
 void InitGameScene(DirectX* directX);
 void UpdateGameScene(Count* count, FlameCount flamCount[]);
-SceneId FinisGameScene();
+SceneId FinisGameScene(Count* count);
 int* MAPR[22];
 
 TEXTUREDATA GameTextureData;
@@ -92,7 +92,7 @@ SceneId GameSceneMain(DirectX* directX, Count* count,FlameCount flamCount[])
 		break;
 		// 終了
 	case SceneStep::EndStep:
-		return FinisGameScene();
+		return FinisGameScene(count);
 	}
 	return SceneId::GameScene;
 }
@@ -273,15 +273,18 @@ void UpdateGameScene(Count* count, FlameCount flamCount[])
 
 	DrawBreakMeteorite(meteorite,meteoMotion);
 
-	if (count->StarCount >= 12 || mainCara.DeathFlag == 1)
+	if (count->StarCount >= 12)
 	{
-
 		ChangeSceneStep(SceneStep::EndStep);
-	}
+	}else
+		if (mainCara.DeathFlag == 1)
+		{
+			ChangeSceneStep(SceneStep::EndStep);
+		}
 }
 
 // 次に飛ぶシーン先の設定
-SceneId FinisGameScene()
+SceneId FinisGameScene(Count * count)
 {
 	for (int a = 0; a < GameTextureList::MaxGameTexture; a++)
 	{
@@ -289,6 +292,17 @@ SceneId FinisGameScene()
 		GameTextureData.m_pTexture[a] = nullptr;
 	}
 	// 次のシーンの遷移先IDを返す
-	return SceneId::ResultScene;
+
+	if (count->StarCount >= 12)
+	{
+
+		return SceneId::ResultScene;
+	}
+	else
+		if (mainCara.DeathFlag == 1)
+		{
+			return SceneId::TitleScene;
+		}
+	
 
 }

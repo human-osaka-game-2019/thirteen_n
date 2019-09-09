@@ -1,8 +1,11 @@
 ﻿#ifndef TITLESYSTEM_H
 #define TITLESYSTEM_H
 
+
+#include"InputKey.h"
 enum 
 {
+	noKey,
 	Up,
 	Down,
 	Left,
@@ -31,5 +34,11 @@ public:
 	void InputTextureStatus(float x, float y, float x_size, float y_size, float tu, float tv, float tu_size, float tv_size);
 	void InputTu(float tu, float tu_size);
 };
+
+void TextureDataSet(SelectTexture selectTexture[]);
+
+void SelectMenu(TitleSystem* titleSystem, KeyState* keyState, SelectTexture selectTexture[], FlameCount flamCount[]);
+
+void InputSelectKey(TitleSystem* titleSystem, KeyState* keyState);
 
 #endif // !TITLEINPUTKEY

@@ -13,6 +13,7 @@ enum TitleTextureList
 	LogoTexture5,
 	LogoTexture6,
 	LogoTexture7,
+	TitleUiTexture,
 	MaxTitleTexture,
 
 };
@@ -75,7 +76,7 @@ public:
     float m_tv_size = (float) 80  / 128;
 
 };
-SceneId TitleSceneMain(DirectX* directX, Count* count);
+SceneId TitleSceneMain(DirectX* directX, Count* count, FlameCount flamCount[]);
 
 void DrawTitleScene(DirectX* directX, Count* count);
 

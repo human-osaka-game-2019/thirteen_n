@@ -18,7 +18,7 @@ public:
 	float m_chip_y;                  // 統合画像から切り取る座標(Y座標)
 };
 
-const int TEXTUREMAX(10); // 各シーンで読み込みができる画像の最大枚数
+const int TEXTUREMAX(20); // 各シーンで読み込みができる画像の最大枚数
 
 // テクスチャデータ						
 struct TEXTUREDATA  

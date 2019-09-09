@@ -71,7 +71,7 @@ void UpdateScene(DirectX* directX, MapChipData MapData  , Count* count, FlameCou
 		{
 			// タイトルシーン
 		case SceneId::TitleScene:
-			result_id = TitleSceneMain(directX, count);
+			result_id = TitleSceneMain(directX, count, flamCount);
 			break;
 			// 難易度設定シーン
 		case SceneId::ResultSceneTwo:

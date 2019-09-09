@@ -9,25 +9,32 @@
 #include <random>
 #include <iostream>
 
-void SelectTexture::InputTextureStatus(float x, float y, float x_size, float y_size, float tu, float tv, float tu_size, float tv_size)
+void InputTextureStatus(float x, float y, float x_size, float y_size, float tu, float tv, float tu_size, float tv_size, SelectTexture selectTexture[],int a)
 {
-	float m_pos_x = x;
-	float m_x_size  = x_size;
-	float m_pos_y   = y;
-	float m_y_size  = y_size;
-	float m_pos_tu  = tu / 512;
-	float m_tu_size = (tu_size + tu) / 512;
-	float m_pos_tv  = tv / 512;
-	float m_tv_size = (tv_size + tv) / 512;
+	selectTexture[a].m_pos_x = x;
+	selectTexture[a].m_x_size  = x_size;
+	selectTexture[a].m_pos_y   = y;
+	selectTexture[a].m_y_size  = y_size;
+	selectTexture[a].m_pos_tu  = tu / 512;
+	selectTexture[a].m_tu_size = (tu_size + tu) / 512;
+	selectTexture[a].m_pos_tv  = tv / 512;
+	selectTexture[a].m_tv_size = (tv_size + tv) / 512;
 
 }
 
 void SelectTexture::InputTu(float tu, float tu_size)
 {
 
-	float m_pos_tu = tu / 512;
-	float m_tu_size = (tu_size + tu) / 512;
+	float m_pos_tu =  (float) tu / 512;
+	float m_tu_size = (float)(tu_size + tu) / 512;
 
+}
+
+void TextureDataSet(SelectTexture selectTexture[])
+{
+	InputTextureStatus(832, 620, 256, 90, 256, 0, 256, 90, selectTexture,0);
+	InputTextureStatus(884, 711, 256, 90, 0, 90, 256, 90, selectTexture,1);
+	InputTextureStatus(956, 792, 256, 90, 0, 180, 256, 90, selectTexture,2);
 }
 
 void InputSelectKey(TitleSystem *titleSystem, KeyState* keyState)
@@ -51,35 +58,69 @@ void InputSelectKey(TitleSystem *titleSystem, KeyState* keyState)
 
 }
 
-void SelectMenu(TitleSystem* titleSystem, KeyState* keyState,SelectTexture selectTexture[] )
+void SelectMenu(TitleSystem* titleSystem, KeyState* keyState,SelectTexture selectTexture[], FlameCount flamCount[])
 {
-
-	switch (titleSystem->KeyState)
+	if (flamCount[1].m_count == 15)
 	{
-	case Up:
-		if (selectTexture[2].m_pos_tu == 256)
+
+
+		switch (titleSystem->KeyState)
 		{
-			selectTexture[1].InputTu(256, 256);
-			selectTexture[2].InputTu(  0, 256);
+		case Up:
+			if (selectTexture[2].m_pos_tu == 0.5)
+			{
+				selectTexture[1].m_pos_tu = (float)256 / 512;
+				selectTexture[1].m_tu_size = (float)512 / 512;
+				selectTexture[2].m_pos_tu = (float)0 / 512;
+				selectTexture[2].m_tu_size = (float)256 / 512;
+			}else
+				if (selectTexture[0].m_pos_tu == 0.5)
+				{
+					selectTexture[2].m_pos_tu = (float)256 / 512;
+					selectTexture[2].m_tu_size = (float)512 / 512;
+					selectTexture[0].m_pos_tu = (float)0 / 512;
+					selectTexture[0].m_tu_size = (float)256 / 512;
+				}
+				else
+					if (selectTexture[1].m_pos_tu == 0.5)
+					{
+						selectTexture[0].m_pos_tu = (float)256 / 512;
+						selectTexture[0].m_tu_size = (float)512 / 512;
+						selectTexture[1].m_pos_tu = (float)0 / 512;
+						selectTexture[1].m_tu_size = (float)256 / 512;
+					}
+			titleSystem->KeyState = 0;
+			break;
+
+		case Down:
+			if (selectTexture[2].m_pos_tu == 0.5)
+			{
+				selectTexture[0].m_pos_tu = (float)256 / 512;
+				selectTexture[0].m_tu_size = (float)512 / 512;
+				selectTexture[2].m_pos_tu = (float)0 / 512;
+				selectTexture[2].m_tu_size = (float)256 / 512;
+			}
+			else
+				if (selectTexture[1].m_pos_tu == 0.5)
+				{
+					selectTexture[2].m_pos_tu = (float)256 / 512;
+					selectTexture[2].m_tu_size = (float)512 / 512;
+					selectTexture[1].m_pos_tu = (float)0 / 512;
+					selectTexture[1].m_tu_size = (float)256 / 512;
+				}
+				else
+					if (selectTexture[0].m_pos_tu == 0.5)
+					{
+						selectTexture[1].m_pos_tu = (float)256 / 512;
+						selectTexture[1].m_tu_size = (float)512 / 512;
+						selectTexture[0].m_pos_tu = (float)0 / 512;
+						selectTexture[0].m_tu_size = (float)256 / 512;
+					}
+			titleSystem->KeyState = 0;
+			break;
 		}
-		if (selectTexture[1].m_pos_tu == 256)
-		{
-			selectTexture[0].InputTu(256, 256);
-			selectTexture[1].InputTu(  0, 256);
-		}
-		break;
-	case Down:
-		selectTexture->InputTu();
-		break;
-	case Left:
-		selectTexture->InputTu();
-		break;
-	case Right:
-		selectTexture->InputTu();
-		break;
+
+		flamCount[1].m_count = 0;
 	}
-
-
-
 
 }

@@ -3,13 +3,14 @@
 #include"TitleScene.h"
 #include"DrawTexture.h"
 #include"Device.h"
+#include"TitleSystem.h"
 #include<SoundsManager.h>
 
 extern SoundLib::SoundsManager m_soundsManager;
 
 void DrawTitleScene(DirectX* directX, Count* count);
 void InitTitleScene(DirectX* directX, Count* count);
-void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState* tds);
+void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState* tds, FlameCount flamCount[]);
 SceneId FinisTitleScene();
 
 TEXTUREDATA TitleTextureData;
@@ -18,6 +19,9 @@ TitleDrawState tds;
 WhiteSmallStar white_stra[11];
 BlueSmallStar blue_stra[5];
 PinkSmallStar pink_stra[3];
+SelectTexture selectTexture[3];
+TitleSystem titleSystem;
+KeyState TitlekeyState;
 
 void WhiteSmallStar::InputTu(float tu, float TuSize)
 {
@@ -36,20 +40,27 @@ void PinkSmallStar::InputTu(float tu, float TuSize)
 	m_tu_size = (float)(tu + TuSize) / 256;
 }
 
+void FlamCountReset(FlameCount flamCount[])
+{
+	flamCount[1].m_count = 0;
+}
 
-SceneId TitleSceneMain(DirectX* directX, Count* count)
+
+SceneId TitleSceneMain(DirectX* directX, Count* count, FlameCount flamCount[])
 {
 	switch (GetCurrentSceneStep())
 	{
 		// 初期化
 	case SceneStep::InitStep:
 		count->AllReset();
+		FlamCountReset(flamCount);
+		TextureDataSet(selectTexture);
 		InitTitleScene(directX, count);
 		break;
 		// 本編
 	case SceneStep::MainStep:
 
-		UpdateTitleScene(directX,count,&tds);
+		UpdateTitleScene(directX,count,&tds, flamCount);
 		break;
 		// 終了
 	case SceneStep::EndStep:
@@ -68,31 +79,31 @@ void DrawTitleScene(DirectX* directX, Count* count)
 	switch (tds.m_draw_state)
 	{
 	case 0:
-		DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture7], *directX);
+		DrawTest(78, 90, 780, 780, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture7], *directX);
 		break;
 	case 1:
-		DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture0], *directX);
+		DrawTest(78, 90, 780, 780, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture0], *directX);
 		break;
 	case 2:
-		DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture1], *directX);
+		DrawTest(78, 90, 780, 780, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture1], *directX);
 		break;
 	case 3:
-		DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture2], *directX);
+		DrawTest(78, 90, 780, 780, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture2], *directX);
 		break;
 	case 4:
-		DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture3], *directX);
+		DrawTest(78, 90, 780, 780, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture3], *directX);
 		break;
 	case 5:
-		DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture4], *directX);
+		DrawTest(78, 90, 780, 780, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture4], *directX);
 		break;
 	case 6:
-		DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture5], *directX);
+		DrawTest(78, 90, 780, 780, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture5], *directX);
 		break;
 	case 7:
-		DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture6], *directX);
+		DrawTest(78, 90, 780, 780, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture6], *directX);
 		break;
 	case 8:
-		DrawTest(48, 130, 730, 730, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture7], *directX);
+		DrawTest(78, 90, 780, 780, 0, 0, 1, 1, &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture7], *directX);
 		break;
 		
 	}
@@ -119,6 +130,10 @@ void DrawTitleScene(DirectX* directX, Count* count)
 	DrawTest( 240, 742, pink_stra[1].m_pos_x_size, pink_stra[1].m_pos_y_size, pink_stra[1].m_pos_tu, pink_stra[1].m_pos_tv, pink_stra[1].m_tu_size, pink_stra[1].m_tv_size, &TitleTextureData.m_pTexture[TitleTextureList::StarTexture], *directX);
 	DrawTest(1062, 276, pink_stra[2].m_pos_x_size, pink_stra[2].m_pos_y_size, pink_stra[2].m_pos_tu, pink_stra[2].m_pos_tv, pink_stra[2].m_tu_size, pink_stra[2].m_tv_size, &TitleTextureData.m_pTexture[TitleTextureList::StarTexture], *directX);
 
+	for (int a = 0 ; a < 3; a++)
+	{
+		DrawTest(selectTexture[a].m_pos_x, selectTexture[a].m_pos_y, selectTexture[a].m_x_size, selectTexture[a].m_y_size, selectTexture[a].m_pos_tu, selectTexture[a].m_pos_tv, selectTexture[a].m_tu_size, selectTexture[a].m_tv_size, &TitleTextureData.m_pTexture[TitleTextureList::TitleUiTexture], *directX);
+	}
 }
 
 // 描画設定等
@@ -135,6 +150,7 @@ void InitTitleScene(DirectX* directX, Count* count)
 	LoadTexture("Texture/title7.png", &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture6], 0, directX);
 	LoadTexture("Texture/title8.png", &TitleTextureData.m_pTexture[TitleTextureList::LogoTexture7], 0, directX); 
 	LoadTexture("Texture/hoshi.png", &TitleTextureData.m_pTexture[TitleTextureList::StarTexture], 0, directX);
+	LoadTexture("Texture/title_ui.png", &TitleTextureData.m_pTexture[TitleTextureList::TitleUiTexture], 0, directX);
 
 	count->Frame0 = 0;
 
@@ -150,8 +166,10 @@ void InitTitleScene(DirectX* directX, Count* count)
 }
 
 // 次のシーンに行くための条件記入
-void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState *tds)
+void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState *tds, FlameCount flamCount[])
 {
+	flamCount[1].m_count += 1;
+
 	switch (count->TitleScene)
 	{
 	case 10:
@@ -246,6 +264,12 @@ void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState *tds)
 			break;
 		}
 	}
+
+	InputSelectKey(&titleSystem,&TitlekeyState);
+	
+	SelectMenu(&titleSystem,&TitlekeyState,selectTexture,flamCount);
+
+
 
 	if (GetKeyStatus(DIK_RETURN))
 	{
