@@ -7,6 +7,7 @@
 #include"MainCaracter.h"
 #include"Meteorite.h"
 #include"Scene.h"
+#include"Star.h"
 
 #include <random>
 #include <iostream>
@@ -81,6 +82,11 @@ void DrawMeteorite(Count* count  , int MapChipList[20][28], Meteorite meteorite[
 		meteorite->MeteoriteState = 1;
 		count->draw_meteorite_two_indication = 0;
 		count->draw_meteorite_indication = 0;
+
+		for (int a = 0; a < 4; a++)
+		{
+			meteorite[a].DropStarFlag = 0;
+		}
 
 	}
 
@@ -178,6 +184,10 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 		count->draw_meteorite_two = 0;
 		count->Frame0 = 0;
 
+		for (int a = 4; a < 8; a++)
+		{
+			meteorite[a].DropStarFlag = 0;
+		}
 	}
 
 	if (meteorite->MeteoriteState == 1)
@@ -304,7 +314,7 @@ void HitCharMeteorite(Meteorite meteorite[], MainCharacter* mainCara, Count* cou
 }
 
 
-void HiBulletMeteorite(Meteorite meteorite[],Bullet bullet[], Count* count, MeteoMotion  meteoMotion[], KeyState keyState[])
+void HiBulletMeteorite(Meteorite meteorite[],Bullet bullet[], Count* count, MeteoMotion  meteoMotion[], KeyState keyState[], Star star[])
 {
 
 	// for (int a = 0; a < 5; a++)
@@ -317,10 +327,14 @@ void HiBulletMeteorite(Meteorite meteorite[],Bullet bullet[], Count* count, Mete
 			{
 				if ((bullet->m_pos_y < meteorite[b].m_pos_y + 40)/*自キャラが下から当たった時ののあたり判定*/ && (bullet->m_pos_y + 40 > meteorite[b].m_pos_y/*自キャラが上から当たった時のあたり判定*/))
 				{
-
+					
 					meteorite[b].MeteoriteBreakFlag = 1;
 					meteoMotion[b].FramCount = 0;
 					meteorite[b].InputTu(40, 40);
+
+					meteorite[b].DropStarFlag = 1;
+					star[b + 4].m_pos_x = meteorite[b].m_pos_x;
+					star[b + 4].m_pos_y = meteorite[b].m_pos_y;
 
 				}
 			}
@@ -334,10 +348,14 @@ void HiBulletMeteorite(Meteorite meteorite[],Bullet bullet[], Count* count, Mete
 			{
 				if ((bullet->m_pos_y < meteorite[c].m_pos_y + 40)/*自キャラが下から当たった時ののあたり判定*/ && (bullet->m_pos_y + 40 > meteorite[c].m_pos_y/*自キャラが上から当たった時のあたり判定*/))
 				{
-
+					
 					meteorite[c].MeteoriteBreakFlag = 1;
 					meteoMotion[c].FramCount = 0;
 					meteorite[c].InputTu(40, 40);
+
+					meteorite[c].DropStarFlag = 1;
+					star[c + 4].m_pos_x = meteorite[c].m_pos_x;
+					star[c + 4].m_pos_y = meteorite[c].m_pos_y;
 
 				}
 			}
@@ -377,15 +395,18 @@ void DrawBreakMeteorite(Meteorite meteorite[], MeteoMotion  meteoMotion[])
 				
 				meteorite[a].MeteoriteBreakFlag = 0;
 				meteorite[a].InputTu(0, 40);
+				
 
 				if (a < 4)
 				{
+					meteorite[a].DropStarFlag = 2;
 					meteorite[a].MeteoriteDrawState = 0;
 					meteorite[a].m_pos_x = 0;
 					meteorite[a].m_pos_y = 0;
 				}
 				if (a >= 4 && a < 8)
 				{
+					meteorite[a].DropStarFlag = 2;
 					meteorite[a].MeteoriteDrawStateTwo = 0;
 					meteorite[a].m_pos_x = 0;
 					meteorite[a].m_pos_y = 0;
@@ -393,12 +414,29 @@ void DrawBreakMeteorite(Meteorite meteorite[], MeteoMotion  meteoMotion[])
 				}
 				break;
 			}
-
+		
 		m_soundsManager.Start("MeteorDestroy");
 
 		}
+	}
 
-		
+}
+
+void StarDrop(Meteorite meteorite[], FlameCount flamCount[], Star star[])
+{
+	for (int a = 0; a < 8; a++)
+	{
+		if (meteorite[a].DropStarFlag == 2)
+		{
+			star[a + 4].DrawFlag = true;
+			meteorite[a].DropStarFlag = 3;
+		}else
+			if (meteorite[a].DropStarFlag == 0)
+			{
+				star[a + 4].DrawFlag = false;
+				star[a + 4].m_pos_x = 0;
+				star[a + 4].m_pos_y = 0;
+			}
 
 	}
 

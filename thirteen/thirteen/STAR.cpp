@@ -83,7 +83,7 @@ void HitBulletStar(MainCharacter* mainCara, Star star[12], Count* count, KeyStat
 
 void StarMotion(Count* count, Star star[])
 {
-	for (int a = 0; a < 4; a++)
+	for (int a = 0; a < 12; a++)
 	{
 		if (count->StarMotion == 15)
 		{
@@ -124,6 +124,7 @@ void Constellation::InputValue(float x, float y, float x_size, float y_size, flo
 	m_tv_size = (float)tv_size / 2048;
 }
 
+// 背景星座描画	
 void Drawconstellation(DirectX *directX, TEXTUREDATA GameTextureData,Count *count, Constellation constellation[],Beam* beam)
 {
 

@@ -8,6 +8,7 @@
 #include"Scene.h"
 #include"MainCaracter.h"
 #include"Bullet.h"
+#include"Star.h"
 
 class Meteorite
 {
@@ -27,6 +28,8 @@ public:
 	int MeteoriteDrawState;
 	int MeteoriteDrawStateTwo;
 	int MeteoriteBreakFlag = 0;
+	int DropStarFlag =0;
+	
 };
 
 
@@ -36,10 +39,12 @@ void DrawMeteoriteTwo(Count* count  , int MapChipList[20][28], Meteorite meteori
 
 void HitCharMeteorite(Meteorite meteorite[], MainCharacter* mainCara, Count* count, KeyState* keyState);
 
-void HiBulletMeteorite(Meteorite meteorite[], Bullet bullet[], Count* count, MeteoMotion  meteoMotion[], KeyState keyState[]);
+void HiBulletMeteorite(Meteorite meteorite[], Bullet bullet[], Count* count, MeteoMotion  meteoMotion[], KeyState keyState[], Star star[]);
 
 void DrawBreakMeteorite(Meteorite meteorite[], MeteoMotion  meteoMotion[]);
 
 void MeteoriteMotion(Count* count, Meteorite meteorite[]);
+
+void StarDrop(Meteorite meteorite[], FlameCount flamCount[], Star star[]);
 
 #endif // !

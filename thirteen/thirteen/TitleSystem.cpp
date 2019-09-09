@@ -60,10 +60,13 @@ void InputSelectKey(TitleSystem *titleSystem, KeyState* keyState)
 
 void SelectMenu(TitleSystem* titleSystem, KeyState* keyState,SelectTexture selectTexture[], FlameCount flamCount[])
 {
-	if (flamCount[1].m_count == 15)
+	if (titleSystem->KeyState == 0)
 	{
 
+	}
 
+	if (flamCount[1].m_count == 30)
+	{
 		switch (titleSystem->KeyState)
 		{
 		case Up:
@@ -89,6 +92,7 @@ void SelectMenu(TitleSystem* titleSystem, KeyState* keyState,SelectTexture selec
 						selectTexture[1].m_pos_tu = (float)0 / 512;
 						selectTexture[1].m_tu_size = (float)256 / 512;
 					}
+			flamCount[1].m_count = 0;
 			titleSystem->KeyState = 0;
 			break;
 
@@ -116,6 +120,7 @@ void SelectMenu(TitleSystem* titleSystem, KeyState* keyState,SelectTexture selec
 						selectTexture[0].m_pos_tu = (float)0 / 512;
 						selectTexture[0].m_tu_size = (float)256 / 512;
 					}
+			flamCount[1].m_count = 0;
 			titleSystem->KeyState = 0;
 			break;
 		}

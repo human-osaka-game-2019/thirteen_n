@@ -217,8 +217,6 @@ void InitGameScene(DirectX* directX)
 // ゲーム設定記入
 void UpdateGameScene(Count* count, FlameCount flamCount[])
 {
-	flamCount[0].m_count += 1;
-
 	FrameCount(count, &keyState);
 
 	InputKeyState(count, &keyState,ShotkeyState, bullet);
@@ -265,7 +263,9 @@ void UpdateGameScene(Count* count, FlameCount flamCount[])
 
 	StarMotion(count,star);
 
-	HiBulletMeteorite(meteorite,bullet,count, meteoMotion,ShotkeyState);
+	HiBulletMeteorite(meteorite,bullet,count, meteoMotion,ShotkeyState, star);
+
+	StarDrop(meteorite,flamCount,star);
 
 	HitMainCaraEnemy(&mainCara, count, e_green, e_white, ShotkeyState);
 
