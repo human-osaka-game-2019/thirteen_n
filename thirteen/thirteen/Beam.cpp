@@ -482,6 +482,11 @@ void BeamMotio(Count* count, BeamSide beamSide[], BeamVerticality beamVerticalit
 void HitCaraBeam(MainCharacter* mainCara, Count* count, BeamSide beamSide[], BeamVerticality beamVerticality[], KeyState ShotkeyState[])
 {
 
+	m_soundsManager.AddFile("Sound/Damage.wav", "DamageA");
+	m_soundsManager.SetVolume("DamageA", 50);
+	m_soundsManager.AddFile("Sound/Damage.wav", "DamageB");
+	m_soundsManager.SetVolume("DamageB", 50);
+
 	for (int b = 0; b < 3; b++)
 	{
 		if (beamSide[b].BeamSideFlag == true && beamSide[b].MainCharacterHItFlag == 0)
@@ -493,6 +498,8 @@ void HitCaraBeam(MainCharacter* mainCara, Count* count, BeamSide beamSide[], Bea
 				if ((mainCara->m_pos_y < beamSide[b].m_pos_y + 120)/*弾が下から当たった時ののあたり判定*/ && (mainCara->m_pos_y + 40 > beamSide[b].m_pos_y/*弾が上から当たった時のあたり判定*/))
 				{
 					beamSide[b].MainCharacterHItFlag = 1;
+
+					m_soundsManager.Start("DamageA");
 
 					if (count->BulletCount < 4)
 					{
@@ -523,6 +530,8 @@ void HitCaraBeam(MainCharacter* mainCara, Count* count, BeamSide beamSide[], Bea
 					{
 
 						beamVerticality[a].MainCharacterHItFlag = 1;
+
+						m_soundsManager.Start("DamageB");
 
 						if (count->BulletCount < 4)
 						{

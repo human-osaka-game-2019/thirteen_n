@@ -219,8 +219,15 @@ void EnemyMotion(Count* count, Enemy_Green e_green[], Enemy_White e_white[], Ene
 // 敵と弾丸のあたり判定
 void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[])
 {
-	m_soundsManager.AddFile("Sound/AlienDestroy.wav", "AlienDead");
-	m_soundsManager.SetVolume("AlienDead", 15);
+	m_soundsManager.AddFile("Sound/AlienDestroy.wav", "AlienDeadA");
+	m_soundsManager.AddFile("Sound/AlienDestroy.wav", "AlienDeadB");
+	m_soundsManager.SetVolume("AlienDeadA", 15);
+	m_soundsManager.SetVolume("AlienDeadB", 15);
+
+	m_soundsManager.AddFile("Sound/HealMax.wav", "RecoveryA");
+	m_soundsManager.AddFile("Sound/HealMax.wav", "RecoveryB");
+	m_soundsManager.SetVolume("RecoveryA", 3);
+	m_soundsManager.SetVolume("RecoveryB", 3);
 
 	// 敵の数　緑＊２　白＊２
 	for (int a = 0; a < 2; a++)
@@ -248,10 +255,11 @@ void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_
 
 						}
 
-						m_soundsManager.Start("AlienDead");
+						m_soundsManager.Start("AlienDeadA");
+
+						m_soundsManager.Start("RecoveryA");
 
 					}
-
 
 				}
 
@@ -273,8 +281,10 @@ void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_
 
 						}
 
-						m_soundsManager.Start("AlienDead");
+						m_soundsManager.Start("AlienDeadB");
 
+						m_soundsManager.Start("RecoveryB");
+						
 					}
 
 				}
@@ -290,6 +300,11 @@ void HitBulletEnemy(Bullet bullet[], Count* count, Enemy_Green e_green[], Enemy_
 // 操作キャラと弾丸のあたり判定
 void HitMainCaraEnemy(MainCharacter* mainCharacter, Count* count, Enemy_Green e_green[], Enemy_White e_white[], KeyState ShotkeyState[])
 {
+	m_soundsManager.AddFile("Sound/Damage.wav", "DamageC");
+	m_soundsManager.SetVolume("DamageC", 50);
+	m_soundsManager.AddFile("Sound/Damage.wav", "DamageD");
+	m_soundsManager.SetVolume("DamageD", 50);
+
 	// 敵の数　緑＊２　白＊２
 	for (int a = 0; a < 2; a++)
 	{
@@ -306,6 +321,8 @@ void HitMainCaraEnemy(MainCharacter* mainCharacter, Count* count, Enemy_Green e_
 					if ((mainCharacter->m_pos_y < e_green[a].m_pos_y + 40)/*弾が下から当たった時ののあたり判定*/ && (mainCharacter->m_pos_y + 40 > e_green[a].m_pos_y/*弾が上から当たった時のあたり判定*/))
 					{
 						e_green[a].MainCharacterHItFlag = 1;
+
+						m_soundsManager.Start("DamageC");
 
 						if(count->BulletCount < 4)
 						{
@@ -330,6 +347,8 @@ void HitMainCaraEnemy(MainCharacter* mainCharacter, Count* count, Enemy_Green e_
 					if ((mainCharacter->m_pos_y < e_white[a].m_pos_y + 40)/*弾が下から当たった時ののあたり判定*/ && (mainCharacter->m_pos_y + 40 > e_white[a].m_pos_y/*弾が上から当たった時のあたり判定*/))
 					{
 						e_white[a].MainCharacterHItFlag = 1;
+
+						m_soundsManager.Start("DamageD");
 
 						if (count->BulletCount < 4)
 						{
