@@ -207,8 +207,6 @@ void InitGameScene(DirectX* directX)
 
 	m_soundsManager.AddFile("Sound/Beam.wav", "LaserBeam");
 	m_soundsManager.SetVolume("LaserBeam", 15);
-	
-
 
 	ChangeSceneStep(SceneStep::MainStep);
 }
@@ -298,12 +296,13 @@ SceneId FinisGameScene(Count * count)
 
 	if (count->StarCount >= 120)
 	{
-
+		count->StarCount = 0;
 		return SceneId::ResultScene;
 	}
 	else
 		if (mainCara.DeathFlag == 1)
 		{
+			mainCara.DeathFlag = 0;
 			return SceneId::TitleScene;
 		}
 	

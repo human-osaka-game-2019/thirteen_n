@@ -167,7 +167,7 @@ void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState *tds, Flame
 
 	flamCount[1].m_count += 1;
 
-	if (flamCount[2].m_count == 90)
+	if (flamCount[2].m_count == 180)
 	{
 		m_soundsManager.Start("GameBGM", TRUE);
 	}
@@ -280,6 +280,7 @@ void UpdateTitleScene(DirectX* directX, Count* count, TitleDrawState *tds, Flame
 		m_soundsManager.AddFile("Sound/MenuPick.wav", "Select");
 		m_soundsManager.SetVolume("Select", 15);
 		m_soundsManager.Start("Select");
+		m_soundsManager.Start("GameBGM", TRUE);
 
 		ChangeSceneStep(SceneStep::EndStep);
 	}

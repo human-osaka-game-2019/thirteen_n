@@ -19,6 +19,7 @@ public:
 	float m_pos_tv = (float)0 / 512;
 	float m_pos_tv_size = (float)40 / 512;
 	bool DrawFlag = false;
+	int count_sound_num = 0;
 
 };
 

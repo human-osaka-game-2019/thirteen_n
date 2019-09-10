@@ -53,9 +53,14 @@ void DrawStar(Star star[12], Count* count)
 // 星と自キャラ(操作キャラ)のあたり判定
 void HitBulletStar(MainCharacter* mainCara, Star star[12], Count* count, KeyState* keyState)
 {
-
 	m_soundsManager.AddFile("Sound/GetStar.wav", "GetStar");
 	m_soundsManager.SetVolume("GetStar", 15);
+
+	m_soundsManager.AddFile("Sound/GetStar.wav", "GetStar2");
+	m_soundsManager.SetVolume("GetStar2", 15);
+
+	m_soundsManager.AddFile("Sound/GetStar.wav", "GetStar3");
+	m_soundsManager.SetVolume("GetStar3", 15);
 
 	for (int a = 0; a < 12; a++)
 	{
@@ -71,7 +76,21 @@ void HitBulletStar(MainCharacter* mainCara, Star star[12], Count* count, KeyStat
 				star[a].m_pos_x = 0;
 				star[a].m_pos_y = 0;
 
-				m_soundsManager.Start("GetStar");
+				switch (star->count_sound_num)
+				{
+				case 0:
+					m_soundsManager.Start("GetStar");
+					star->count_sound_num = 1;
+					break;
+				case 1:
+					m_soundsManager.Start("GetStar2");
+					star->count_sound_num = 2;
+					break;
+				case 2:
+					m_soundsManager.Start("GetStar3");
+					star->count_sound_num = 0;
+					break;
+				}
 
 			}
 
