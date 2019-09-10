@@ -217,6 +217,9 @@ void InitGameScene(DirectX* directX)
 // ゲーム設定記入
 void UpdateGameScene(Count* count, FlameCount flamCount[])
 {
+
+	flamCount[0].m_count += 1;
+
 	FrameCount(count, &keyState);
 
 	InputKeyState(count, &keyState,ShotkeyState, bullet);
@@ -273,7 +276,7 @@ void UpdateGameScene(Count* count, FlameCount flamCount[])
 
 	DrawBreakMeteorite(meteorite,meteoMotion);
 
-	if (count->StarCount >= 12)
+	if (count->StarCount >= 120)
 	{
 		ChangeSceneStep(SceneStep::EndStep);
 	}else
@@ -293,7 +296,7 @@ SceneId FinisGameScene(Count * count)
 	}
 	// 次のシーンの遷移先IDを返す
 
-	if (count->StarCount >= 12)
+	if (count->StarCount >= 120)
 	{
 
 		return SceneId::ResultScene;
