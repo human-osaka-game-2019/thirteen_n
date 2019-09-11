@@ -12,8 +12,8 @@ public:
 	int m_input_tu_left = 0;
 	int m_input_tu_right = 1260;
 
-	float m_pos_tu  = (float) 0 / 2560;
-	float m_tu_size = (float) 1260 / 2560;
+	float m_pos_tu  = (float) 0 / 3840;
+	float m_tu_size = (float) 1260 / 3840;
 	void InputTu(int Tu, int TuSize);
 
 	float m_pos_tv;
@@ -49,9 +49,18 @@ public:
 	void InputTv(float Tv,float TvSize);
 };
 
+class ResultRank
+{
+public:
+	int m_rank = 0;
+};
+
 enum ResultTwoTextureList
 {
-	MainbackTexture,
+	MainbackTextureS,
+	MainbackTextureA,
+	MainbackTextureB,
+	MainbackTextureC,
 	UiTexture,
 	MaxResultTwoTexture,
 };
