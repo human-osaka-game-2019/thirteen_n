@@ -4,9 +4,6 @@
 #include"Engine.h"
 #include"Device.h"
 #include"GameScene.h"
-#include"Bullet.h"
-
-
 
 class KeyState
 {
@@ -15,6 +12,17 @@ public:
 	int m_shot;
 };
 
-void InputKeyState(Count* count, KeyState* keyState, KeyState ShotkeyState[5], Bullet bullet[5]);
+enum KeyStatus
+{
+	CLEAR = 0x0000,
+	UP = 0x0002,
+	DOWN = 0x0004,
+	LEFT = 0x0008,
+	RIGHT = 0x0010,
+};
+
+void InputKeyState(Count* count, KeyState* keyState);
+
+bool GetKeyDown(DWORD key_code);
 
 #endif // !

@@ -50,7 +50,6 @@ void Count::AllReset()
 	draw_meteorite_two_indication = 0;
 	draw_meteorite_two = 0;
 	draw_main_caracter= 0;
-	re_shot_count = 0;
 	StarMotion = 0;
 	DrawStarCount = 0;
 	HealTime = 0;
@@ -150,7 +149,6 @@ void FrameCount(Count* count)
 	count->draw_meteorite_two = count->draw_meteorite_two + 1;
 	count->draw_main_caracter = count->draw_main_caracter + 1;
 	count->DrawStarCount = count->DrawStarCount + 1;
-	count->re_shot_count += 1;
 	count->StarMotion += 1;
 	count->TitleScene += 1;
 	count->EnemyGreenMotion += 1;

@@ -15,11 +15,8 @@ public:
 	
 	float BulletCount = 0;
 	float ReShot = 0;
+	int count_sound_num = 0;
 };
-
-//void ShotMove(KeyState* keyState, Bullet bullet[5], MainCaracter* MainCara);
-//
-//void ShotHitJudge(Bullet bullet[5], KeyState* keyState, MainCara* MainCara);
 
 #endif // !
 

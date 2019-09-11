@@ -3,6 +3,12 @@
 
 #include"Engine.h"
 
+struct INPUTSTATE
+{
+	DWORD now;
+	DWORD pushed;
+};
+
 HRESULT BuildDxDevice(HWND* hInst, DirectX* directX);
 
 void UpdateKeyStatus(DirectX* directX);

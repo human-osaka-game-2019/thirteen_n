@@ -10,30 +10,22 @@
 extern SoundLib::SoundsManager m_soundsManager;
 
 // 弾丸の移動描画
-void ShotMove(KeyState keyState[5], Bullet bullet[5], MainCharacter* mainCara)
+void ShotMove(KeyState keyState[5], Bullet bullet[12], MainCharacter* mainCara)
 {
 
-	for (int a = 0; a < 5; a++)
+	for (int a = 0; a < 12; a++)
 	{
 	
 		if (bullet[a].ShotFlag == false)
 		{
 
-			if (((int)mainCara->m_pos_x % 40 == 0) && ((int)mainCara->m_pos_y % 40 == 0))
-			{
-				bullet[a].m_pos_x = mainCara->m_pos_x;
-				bullet[a].m_pos_y = mainCara->m_pos_y;
-			}
-			else
-			{
-				bullet[a].m_pos_x = (int)((int)mainCara->m_pos_x / 40) * 40;
-				bullet[a].m_pos_y = (int)((int)mainCara->m_pos_y / 40) * 40;
-			}
+			bullet[a].m_pos_x = mainCara->m_pos_x;
+			bullet[a].m_pos_y = mainCara->m_pos_y;
 
 		}
 	}
 	
-	for (int b = 0; b < 5; b++)
+	for (int b = 0; b < 12; b++)
 	{
 		if (bullet[b].ShotFlag == true)
 		{
@@ -62,7 +54,7 @@ void ShotMove(KeyState keyState[5], Bullet bullet[5], MainCharacter* mainCara)
 }
 
 // 弾丸のあたり判定
-void ShotHitJudge(Bullet bullet[5], KeyState keyState[5], MainCharacter* mainCara,Count *count)
+void ShotHitJudge(Bullet bullet[12], KeyState keyState[5], MainCharacter* mainCara, Count* count)
 {
 	for (int a = 0; a < 12; a++)
 	{

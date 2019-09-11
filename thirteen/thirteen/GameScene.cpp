@@ -145,7 +145,7 @@ void DrawGameScene(DirectX* directX, MapChipData MapData,Count* count)
 	
 	for (int a = 4; a < 8; a++)
 	{
-		if (meteorite[a].MeteoriteDrawStateTwo == 1)
+		if (meteorite[a].MeteoriteDrawState == 1)
 		{
 			DrawTest(meteorite[a].m_pos_x, meteorite[a].m_pos_y, meteorite[a].m_draw_size, meteorite[a].m_draw_size, meteorite[a].m_pos_tu, meteorite[a].m_pos_tv, meteorite[a].m_Tu_Size, meteorite[a].m_tv_size, &GameTextureData.m_pTexture[GameTextureList::CharTexture], *directX);
 		}
@@ -220,7 +220,9 @@ void UpdateGameScene(Count* count, FlameCount flamCount[])
 
 	FrameCount(count, &keyState);
 
-	InputKeyState(count, &keyState,ShotkeyState, bullet);
+	InputKeyState(count, &keyState);
+
+	CheckBulletDirectionKey(count, ShotkeyState, bullet);
 
 	MoveCharacter(count, &keyState, &mainCara);
 
@@ -258,23 +260,23 @@ void UpdateGameScene(Count* count, FlameCount flamCount[])
 
 	HitCharMeteorite(meteorite, &mainCara, count, &keyState);
 
-	HitBulletStar(&mainCara,star,count,&keyState);
-
-	HitBulletEnemy(bullet, count, e_green, e_white, ShotkeyState);
-
-	StarMotion(count,star);
-
 	HiBulletMeteorite(meteorite,bullet,count, meteoMotion,ShotkeyState, star);
 
 	StarDrop(meteorite,flamCount,star);
 
-	HitMainCaraEnemy(&mainCara, count, e_green, e_white, ShotkeyState);
+	HitBulletStar(&mainCara,star,count,&keyState);
+
+	HitBulletEnemy(bullet, count, e_green, e_white, ShotkeyState, enemy);
+
+	StarMotion(count,star);
+
+	HitMainCaraEnemy(&mainCara, count, e_green, e_white, ShotkeyState, enemy);
 
 	HitCaraBeam(&mainCara, count, beamSide, beamVerticality, ShotkeyState);
 
 	DrawBreakMeteorite(meteorite,meteoMotion);
 
-	if (count->StarCount >= 120)
+	if (count->StarCount >= 60)
 	{
 		ChangeSceneStep(SceneStep::EndStep);
 	}else
@@ -294,7 +296,7 @@ SceneId FinisGameScene(Count * count)
 	}
 	// 次のシーンの遷移先IDを返す
 
-	if (count->StarCount >= 120)
+	if (count->StarCount >= 60)
 	{
 		count->StarCount = 0;
 		return SceneId::ResultScene;

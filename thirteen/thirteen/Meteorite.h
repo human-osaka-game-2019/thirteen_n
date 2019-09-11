@@ -26,9 +26,9 @@ public:
 
 	int MeteoriteState;
 	int MeteoriteDrawState;
-	int MeteoriteDrawStateTwo;
 	int MeteoriteBreakFlag = 0;
-	int DropStarFlag =0;
+	int DropStarFlag = 0;
+	int count_sound_num = 0;
 	
 };
 

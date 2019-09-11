@@ -85,7 +85,6 @@ public:
 	float BulletCount = 0;
 
 	int shotcount = 0;
-	int re_shot_count = 0;
 
 	void AllReset();
 };
