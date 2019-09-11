@@ -8,7 +8,7 @@ ResultTwoTextureSize ResultTexTwo;
 TEXTUREDATA ResultTwoTextureData;
 FinishGameRankTexture RankTexture;
 ResultUITexture ResultUi;
-
+ResultRank  rsultRank;
 void DrawResultSceneTwo(DirectX* directX, Count* count  );
 void InitResultSceneTwo(DirectX* directX);
 void UpdateResultSceneTwo(ResultTwoTextureSize *ResultTexTwo);
@@ -47,23 +47,44 @@ SceneId ResultSceneTwoMain(DirectX* directX, Count* count ,FlameCount flamCount[
 
 void ResultTwoTextureSize::InputTu(int Tu, int TuSize)
 {
-	m_pos_tu = (float)Tu / 2560;
-	m_tu_size = (float)TuSize / 2560;
+	m_pos_tu = (float)Tu / 3840;
+	m_tu_size = (float)TuSize / 3840;
 }
 
 // 描画設定等
 void DrawResultSceneTwo(DirectX* directX, Count* count  )
 {
-	DrawTest(0, 0, 1280, 960, ResultTexTwo.m_pos_tu, 0, ResultTexTwo.m_tu_size, 1, &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::MainbackTexture], *directX);
+	switch (rsultRank.m_rank)
+	{
+	case 0:
+		break;
+	case 1:
+		DrawTest(0, 0, 1280, 960, ResultTexTwo.m_pos_tu, 0, ResultTexTwo.m_tu_size, 1, &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::MainbackTextureS], *directX);
+		break;
+	case 2:
+		DrawTest(0, 0, 1280, 960, ResultTexTwo.m_pos_tu, 0, ResultTexTwo.m_tu_size, 1, &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::MainbackTextureA], *directX);
+		break;
+	case 3:
+		DrawTest(0, 0, 1280, 960, ResultTexTwo.m_pos_tu, 0, ResultTexTwo.m_tu_size, 1, &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::MainbackTextureB], *directX);
+		break;
+	case 4:
+		DrawTest(0, 0, 1280, 960, ResultTexTwo.m_pos_tu, 0, ResultTexTwo.m_tu_size, 1, &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::MainbackTextureC], *directX);
+		break;
+	}
+	
 	DrawTest(ResultUi.m_pos_x, ResultUi.m_pos_y, ResultUi.m_x_size, ResultUi.m_y_size, ResultUi.m_pos_tu, ResultUi.m_pos_tv, ResultUi.m_tu_size, ResultUi.m_tv_size, &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::UiTexture], *directX);
 	DrawTest(RankTexture.m_pos_x, RankTexture.m_pos_y, RankTexture.m_x_size, RankTexture.m_y_size, RankTexture.m_pos_tu, RankTexture.m_pos_tv, RankTexture.m_tu_size, RankTexture.m_tv_size, &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::UiTexture], *directX);
 }
 
 void InitResultSceneTwo(DirectX* directX)
 {
-	LoadTexture("Texture/result_2.png", &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::MainbackTexture], 0, directX);
-	LoadTexture("Texture/result_ui.png", &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::UiTexture], 0, directX);
+	LoadTexture("Texture/result_S_rank.png", &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::MainbackTextureS], 0, directX);
+	LoadTexture("Texture/result_A_rank.png", &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::MainbackTextureA], 0, directX);
+	LoadTexture("Texture/result_B_rank.png", &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::MainbackTextureB], 0, directX);
+	LoadTexture("Texture/result_C_rank.png", &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::MainbackTextureC], 0, directX);
 
+	LoadTexture("Texture/result_ui.png", &ResultTwoTextureData.m_pTexture[ResultTwoTextureList::UiTexture], 0, directX);
+	
 
 	ChangeSceneStep(SceneStep::MainStep);
 }
@@ -102,18 +123,22 @@ void FlameRank(FlameCount flamCount[], FinishGameRankTexture *RankTexture)
 {
 	if (flamCount[0].m_count < ( 60 * 150))
 	{
+		rsultRank.m_rank = 1;
 		RankTexture->InputTv(0, 80);
 	}else
 		if (flamCount[0].m_count < ( 60 * 180))
 		{
+			rsultRank.m_rank = 2;
 			RankTexture->InputTv(80, 80);
 		}else
 			if(flamCount[0].m_count < ( 60 * 240))
 			{
+				rsultRank.m_rank = 3;
 				RankTexture->InputTv(160, 80);
 			}else
 				if (flamCount[0].m_count < ( 60 * 300))
 				{
+					rsultRank.m_rank = 4;
 					RankTexture->InputTv(240, 80);
 				}
 }
