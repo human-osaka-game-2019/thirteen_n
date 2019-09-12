@@ -19,9 +19,16 @@ void ShotMove(KeyState keyState[5], Bullet bullet[12], MainCharacter* mainCara)
 		if (bullet[a].ShotFlag == false)
 		{
 
-			bullet[a].m_pos_x = mainCara->m_pos_x;
-			bullet[a].m_pos_y = mainCara->m_pos_y;
-
+			if (((int)mainCara->m_pos_x % 40 == 0) && ((int)mainCara->m_pos_y % 40 == 0))
+			{
+				bullet[a].m_pos_x = mainCara->m_pos_x;
+				bullet[a].m_pos_y = mainCara->m_pos_y;
+			}
+			else
+			{
+				bullet[a].m_pos_x = (int)((int)mainCara->m_pos_x / 40) * 40;
+				bullet[a].m_pos_y = (int)((int)mainCara->m_pos_y / 40) * 40;
+			}
 		}
 	}
 	

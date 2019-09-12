@@ -74,13 +74,13 @@ void InputKeyState(Count* count, KeyState* keyState)
 
 	if (count->BulletCount <= 4 && count->BulletCount >= 1)
 	{
-		if (count->HealTime == (1 * 1))
+		if (count->HealTime == (60 * 15))
 		{
 			count->HealTime = 0;
 			count->BulletCount -= 1;
 		}
 	}else
-		if (count->HealTime == (1 * 1))
+		if (count->HealTime == (60 * 15))
 		{
 			count->HealTime = 0;
 		}
